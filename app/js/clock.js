@@ -22,7 +22,10 @@ var clock = (function() {
   };
 
   var resetClock = function() {
-    // body...
+    pauseClock();
+
+    currentIntervalIndex = 0;
+    currentCountdown = workInterval;
   };
 
   var countdownLogic = function () {
@@ -60,6 +63,7 @@ var clock = (function() {
   return {
     init: init,
     startClock: startClock,
+    resetClock: resetClock,
     pauseClock: pauseClock
   };
 
