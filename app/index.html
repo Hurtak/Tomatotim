@@ -23,13 +23,31 @@
     <!-- endbuild -->
 
     <!-- build:css css/main.css -->
+    <link rel="stylesheet" href="components/normalize.css/normalize.css">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
     <!-- endbuild -->
   </head>
   <body>
     <div>
 
+      <div class="block">
+        <div class="centered">
+          <div class="clock">
+            23:18
+          </div>
+          <div class="controls">
+            <button name="start">start</button>
+            <button name="stop">stop</button>
+            <button name="skip">skip</button>
+            <button name="reset">reset</button>
+          </div>
+        </div>
+      </div>
+
+
     </div>
+
 
     <!-- build:js js/vendor.js -->
     <!-- bower:js -->
@@ -40,6 +58,7 @@
     <!-- build:js js/main.js -->
     <script src="js/main.js"></script>
     <!-- endbuild -->
+    
     <!-- TODO(Hurtak): google analytics -->
   </body>
 </html>
