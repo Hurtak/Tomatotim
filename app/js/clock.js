@@ -7,25 +7,60 @@ var clock = (function() {
 
   var repeat = 4;
 
+  var currentIntervalIndex = 0;
+  var currentCountdown = workInterval;
+
+  var intervals = [];
+  var countdown;
+
   var startClock = function() {
-    setInterval(function () {
-
-      views.clock.setTime((Math.floor(Math.random() * (60 - 0 + 1)) + 0));
-    }, 1000);
+    countdown = setInterval(countdownLogic, 1000);
   };
 
-  var _pauseClock = function() {
+  var pauseClock = function() {
+    clearInterval(countdown);
+  };
+
+  var resetClock = function() {
     // body...
   };
 
-  var _resetClock = function() {
-    // body...
+  var countdownLogic = function () {
+    currentCountdown--;
+
+    console.log(intervals);
+    console.log(currentIntervalIndex + ' - ' + intervals[currentIntervalIndex]);
+    console.log(currentCountdown);
+
+    if (currentCountdown <= 0) {
+      if (currentIntervalIndex === intervals.length - 1) {
+        currentIntervalIndex = 0;
+      }
+      currentIntervalIndex++;
+      currentCountdown = intervals[currentIntervalIndex];
+    }
   };
 
+
+  var init = function () {
+
+    for (var i = 0; i < repeat; i++) {
+      intervals.push(workInterval);
+      if (i < repeat - 1) {
+        intervals.push(breakInterval);
+      }
+    }
+    intervals.push(bigBreakInterval);
+
+    startClock();
+
+  };
 
 
   return {
-    startClock: startClock
+    init: init,
+    startClock: startClock,
+    pauseClock: pauseClock
   };
 
 }());

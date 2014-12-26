@@ -1,6 +1,6 @@
 (function() {
   'use strict';
 
-  clock.startClock();
+  clock.init();
 
 }());
