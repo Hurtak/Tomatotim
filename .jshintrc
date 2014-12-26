@@ -30,13 +30,16 @@
                              //   "single" : require single quotes
                              //   "double" : require double quotes
   "strict"        : true,    // true: Requires all functions run in ES5 Strict Mode
-  "undef"         : true,    // true: Require all non-global variables to be declared (prevents global leaks)
-  "unused"        : true,    // true: Require all defined variables be used
+  "undef"         : false,   // true: Require all non-global variables to be declared (prevents global leaks)
+                             // TODO(Hurtak): turn on before going into production
+  "unused"        : false,   // true: Require all defined variables be used
+                             // TODO(Hurtak): turn on before going into production
 
   // Environments
   "browser"       : true,    // Web Browser (window, document, etc)
+  "devel"         : true,    // Development/debugging (alert, confirm, etc)
   "browserify"    : false,   // Browserify (node.js code in the browser)
-  "devel"         : false,   // Development/debugging (alert, confirm, etc)
+                             // TODO(Hurtak): turn off when going into production
   "jquery"        : false,   // jQuery
   "node"          : false,   // Node.js
 
