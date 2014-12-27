@@ -1,16 +1,16 @@
 views.timer = (function() {
   'use strict';
 
-  var _getTimeDiv = function() {
+  var getTimeDiv = function() {
     return document.getElementById('clock');
   };
 
   var getTime = function() {
-    return _getTimeDiv().innerHTML.trim();
+    return getTimeDiv().innerHTML.trim();
   };
 
   var setTime = function(time) {
-    _getTimeDiv().innerHTML = time;
+    getTimeDiv().innerHTML = time;
   };
 
   return {
