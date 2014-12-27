@@ -50,7 +50,11 @@ var timer = (function() {
   var startTimer = function() {
     if (!timer) {
       timer = setInterval(timerTick, 1000);
+    } else {
+      timer = clearInterval(timer);
     }
+
+    views.timerControls.toogleStartButtonCaption();
   };
 
   var pauseTimer = function() {

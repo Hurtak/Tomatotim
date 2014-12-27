@@ -5,8 +5,14 @@ views.timerControls = (function() {
     return document.getElementById('start');
   };
 
-  var getPauseButton = function () {
-    return document.getElementById('pause');
+  var toogleStartButtonCaption = function() {
+    var button = getStartButton();
+
+    if (button.innerHTML === 'start') {
+      button.innerHTML = 'pause';
+    } else {
+      button.innerHTML = 'start';
+    }
   };
 
   var getResetButton = function () {
@@ -19,9 +25,9 @@ views.timerControls = (function() {
 
   return {
     getStartButton: getStartButton,
-    getPauseButton: getPauseButton,
     getResetButton: getResetButton,
-    getSkipButton: getSkipButton
+    getSkipButton: getSkipButton,
+    toogleStartButtonCaption: toogleStartButtonCaption
   };
 
 }());
