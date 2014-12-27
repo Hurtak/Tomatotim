@@ -1,6 +1,4 @@
-var views = {};
-
-views.clock = (function() {
+var timer = (function() {
   'use strict';
 
   var _getTimeDiv = function() {

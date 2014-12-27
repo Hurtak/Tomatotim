@@ -1,9 +1,15 @@
 var clock = (function() {
   'use strict';
 
-  var workInterval = 25;
-  var breakInterval = 5;
-  var bigBreakInterval = 20;
+  var workInterval = 25 * 60 * 60;
+  var breakInterval = 5 * 60 * 60;
+  var bigBreakInterval = 20 * 60 * 60;
+
+  if (debug) {
+    workInterval = 25;
+    breakInterval = 5;
+    bigBreakInterval = 20;
+  }
 
   var repeat = 4;
 
@@ -31,9 +37,11 @@ var clock = (function() {
   var countdownLogic = function () {
     currentCountdown--;
 
-    console.log(intervals);
-    console.log(currentIntervalIndex + ' - ' + intervals[currentIntervalIndex]);
-    console.log(currentCountdown);
+    if (debug) {
+      console.log(intervals);
+      console.log(currentIntervalIndex + ' - ' + intervals[currentIntervalIndex]);
+      console.log(currentCountdown);
+    }
 
     if (currentCountdown <= 0) {
       if (currentIntervalIndex === intervals.length - 1) {
@@ -44,9 +52,7 @@ var clock = (function() {
     }
   };
 
-
   var init = function () {
-
     for (var i = 0; i < repeat; i++) {
       intervals.push(workInterval);
       if (i < repeat - 1) {
@@ -58,7 +64,6 @@ var clock = (function() {
     startClock();
 
   };
-
 
   return {
     init: init,
