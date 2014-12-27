@@ -28,7 +28,7 @@ var timer = (function() {
     if (intervalIndex > intervals.length - 1) {
       intervalIndex = 0;
     }
-    
+
     timerInterval = intervals[intervalIndex];
   };
 
@@ -48,7 +48,9 @@ var timer = (function() {
   };
 
   var startTimer = function() {
-    timer = setInterval(timerTick, 1000);
+    if (!timer) {
+      timer = setInterval(timerTick, 1000);
+    }
   };
 
   var pauseTimer = function() {
