@@ -1,8 +1,10 @@
+var debug = true; // TODO: remove debug functions when going live
+
 (function() {
   'use strict';
 
-  var debug = true; // TODO: remove debug function when going live
 
-  clock.init();
+
+  timer.init();
 
 }());

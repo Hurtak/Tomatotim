@@ -1,75 +1,63 @@
-var clock = (function() {
+var timer = (function() {
   'use strict';
 
-  var workInterval = 25 * 60 * 60;
-  var breakInterval = 5 * 60 * 60;
-  var bigBreakInterval = 20 * 60 * 60;
-
-  if (debug) {
-    workInterval = 25;
-    breakInterval = 5;
-    bigBreakInterval = 20;
-  }
-
-  var repeat = 4;
-
-  var currentIntervalIndex = 0;
-  var currentCountdown = workInterval;
+  var intervalIndex = 0;
+  var timerInterval = config.workInterval;
 
   var intervals = [];
-  var countdown;
+  var timer;
 
-  var startClock = function() {
-    countdown = setInterval(countdownLogic, 1000);
-  };
+  var _timerTick = function () {
+    timerInterval--;
 
-  var pauseClock = function() {
-    clearInterval(countdown);
-  };
-
-  var resetClock = function() {
-    pauseClock();
-
-    currentIntervalIndex = 0;
-    currentCountdown = workInterval;
-  };
-
-  var countdownLogic = function () {
-    currentCountdown--;
-
-    if (debug) {
+    if (config.debug) {
       console.log(intervals);
-      console.log(currentIntervalIndex + ' - ' + intervals[currentIntervalIndex]);
-      console.log(currentCountdown);
+      console.log(intervalIndex + ' - ' + intervals[intervalIndex]);
+      console.log(timerInterval);
     }
 
-    if (currentCountdown <= 0) {
-      if (currentIntervalIndex === intervals.length - 1) {
-        currentIntervalIndex = 0;
+    if (timerInterval <= 0) {
+      if (intervalIndex === intervals.length - 1) {
+        intervalIndex = 0;
       }
-      currentIntervalIndex++;
-      currentCountdown = intervals[currentIntervalIndex];
+      intervalIndex++;
+      timerInterval = intervals[intervalIndex];
     }
+  };
+
+  var startTimer = function() {
+    timer = setInterval(_timerTick, 1000);
+  };
+
+  var pauseTimer = function() {
+    clearInterval(timer);
+  };
+
+  var resetTimer = function() {
+    pauseTimer();
+
+    intervalIndex = 0;
+    timerInterval = config.workInterval;
   };
 
   var init = function () {
-    for (var i = 0; i < repeat; i++) {
-      intervals.push(workInterval);
-      if (i < repeat - 1) {
-        intervals.push(breakInterval);
+    for (var i = 0; i < config.repeat; i++) {
+      intervals.push(config.workInterval);
+      if (i < config.repeat - 1) {
+        intervals.push(config.breakInterval);
       }
     }
-    intervals.push(bigBreakInterval);
+    intervals.push(config.bigBreakInterval);
 
-    startClock();
+    startTimer();
 
   };
 
   return {
     init: init,
-    startClock: startClock,
-    resetClock: resetClock,
-    pauseClock: pauseClock
+    startTimer: startTimer,
+    resetTimer: resetTimer,
+    pauseTimer: pauseTimer
   };
 
 }());
