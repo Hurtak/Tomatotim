@@ -17,14 +17,19 @@ var timer = (function() {
     }
 
     if (timerInterval <= 0) {
-      if (intervalIndex === intervals.length - 1) {
-        intervalIndex = 0;
-      }
-      intervalIndex++;
-      timerInterval = intervals[intervalIndex];
+      nextInterval();
     }
 
     views.timer.setTime(secondsToTime(timerInterval));
+  };
+
+  var nextInterval = function() {
+    intervalIndex++;
+    if (intervalIndex > intervals.length - 1) {
+      intervalIndex = 0;
+    }
+    
+    timerInterval = intervals[intervalIndex];
   };
 
   var addLeadingZero = function(number) {
@@ -76,8 +81,9 @@ var timer = (function() {
   return {
     init: init,
     startTimer: startTimer,
-    resetTimer: resetTimer,
-    pauseTimer: pauseTimer
+    pauseTimer: pauseTimer,
+    nextInterval: nextInterval,
+    resetTimer: resetTimer
   };
 
 }());
