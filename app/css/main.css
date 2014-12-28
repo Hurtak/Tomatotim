@@ -1,4 +1,37 @@
+body {
+  background-color: #424242;
+}
 
+button {
+  background-color: transparent;
+  border: 3px solid #ff5656;
+  color: #ff5656;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  margin: 0 10px;
+  font-size: 150%;
+}
+
+  button:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  button:focus {
+    outline: 0;
+  }
+
+  button:active {
+    position: relative;
+    top: 2px;
+  }
+
+.clock {
+  font-size: 700%;
+  margin-bottom: 30px;
+  color: #fff;
+}
 
 .block {
   text-align: center;
@@ -9,18 +42,17 @@
   left: 0;
 }
 
-.block:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
+  .block:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 
-  /* TODO(Hurtak): Adjusts for spacing */
-  margin-right: -0.25em;
-}
+    /* TODO(Hurtak): Adjusts for spacing */
+    margin-right: -0.25em;
+  }
 
 .centered {
   display: inline-block;
   vertical-align: middle;
-  width: 300px;
 }
