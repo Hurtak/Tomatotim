@@ -10,17 +10,13 @@ var timer = (function() {
   var timerTick = function () {
     timerInterval--;
 
-    if (config.debug) {
-      console.log(intervals);
-      console.log(intervalIndex + ' - ' + intervals[intervalIndex]);
-      console.log(timerInterval);
-    }
-
     if (timerInterval <= 0) {
       nextInterval();
     }
 
-    views.timer.setTime(secondsToTime(timerInterval));
+    var time = secondsToTime(timerInterval);
+    views.timer.setTime(time);
+    views.title.setTitle(time);
   };
 
   var nextInterval = function() {
@@ -30,6 +26,14 @@ var timer = (function() {
     }
 
     timerInterval = intervals[intervalIndex];
+
+    if (intervalIndex === intervals.length - 1) {
+      views.title.setFaviconToLongBreak();
+    } else if (intervalIndex % 2 === 0) {
+      views.title.setFaviconToWork();
+    } else {
+      views.title.setFaviconToBreak();
+    }
   };
 
   var addLeadingZero = function(number) {
@@ -66,7 +70,12 @@ var timer = (function() {
 
     intervalIndex = 0;
     timerInterval = config.workInterval;
-    views.timer.setTime(secondsToTime(timerInterval));
+
+    var time = secondsToTime(timerInterval);
+
+    views.timer.setTime(time);
+    views.title.setFaviconToWork();
+    views.title.setTitle(time);
   };
 
   var init = function () {
