@@ -33,7 +33,7 @@ button {
   color: #fff;
 }
 
-.block {
+.wrapper {
   text-align: center;
   position: absolute;
   width: 100%;
@@ -42,7 +42,7 @@ button {
   left: 0;
 }
 
-  .block:before {
+  .wrapper:before {
     content: '';
     display: inline-block;
     height: 100%;
