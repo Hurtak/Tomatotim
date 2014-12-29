@@ -24,7 +24,7 @@ views.images = (function() {
     }
 
     images[index].src = 'img/tomato-' + imgName + '.png';
-    images[index].al = imgAlt;
+    images[index].alt = imgAlt;
 
   };
 
