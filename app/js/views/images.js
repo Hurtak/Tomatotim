@@ -5,19 +5,27 @@ views.images = (function() {
 
   var setImageType = function(type, index) {
     var imgName;
+    var imgAlt;
     if (type === 'unfinished') {
       imgName = 'black';
+      imgAlt = 'Unfinished interval';
     } else if (type === 'finished') {
       imgName = 'white';
+      imgAlt = 'Finished interval';
     } else if (type === 'work') {
       imgName = 'red';
+      imgAlt = 'Work interval';
     } else if (type === 'break') {
       imgName = 'green';
+      imgAlt = 'Break interval';
     } else if (type === 'bigBreak') {
       imgName = 'blue';
+      imgAlt = 'Long break interval';
     }
 
     images[index].src = 'img/tomato-' + imgName + '.png';
+    images[index].al = imgAlt;
+
   };
 
   var resetImages = function() {
