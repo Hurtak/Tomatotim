@@ -4,8 +4,8 @@ body {
 
 button {
   background-color: transparent;
-  border: 3px solid #ff5656;
-  color: #ff5656;
+  border: 3px solid #f04444;
+  color: #f04444; /* TODO: make sure this is the same clor as the red tomato image*/
   border-radius: 10px;
   padding: 20px;
   width: 200px;
