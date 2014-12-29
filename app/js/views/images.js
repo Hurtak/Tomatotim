@@ -20,8 +20,15 @@ views.images = (function() {
     images[index].src = 'img/tomato-' + imgName + '.png';
   };
 
+  var resetImages = function() {
+    for (var index = 0; index < images.length; index++) {
+      setImageType('unfinished', index);
+    }
+  };
+
   return {
-    setImageType: setImageType
+    setImageType: setImageType,
+    resetImages: resetImages
   };
 
 }());

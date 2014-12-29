@@ -1,6 +1,9 @@
 var timer = (function() {
   'use strict';
 
+  // TODO: after timer reset set icon to gray tomato. also default icon should
+  // be gray tomato
+
   var intervalIndex = 0;
   var timerInterval = config.workInterval;
 
@@ -19,20 +22,57 @@ var timer = (function() {
     views.title.setTitle(time);
   };
 
+  var skipInterval = function () {
+    nextInterval();
+    if (timer) {
+      pauseTimer();
+      runTimer();
+    }
+  };
+
   var nextInterval = function() {
     intervalIndex++;
     if (intervalIndex > intervals.length - 1) {
       intervalIndex = 0;
+      resetTimer();
     }
 
     timerInterval = intervals[intervalIndex];
 
+    // countdown update
+    var time = secondsToTime(timerInterval);
+    views.timer.setTime(time);
+
+    // favicon update
     if (intervalIndex === intervals.length - 1) {
       views.title.setFaviconToLongBreak();
     } else if (intervalIndex % 2 === 0) {
       views.title.setFaviconToWork();
     } else {
       views.title.setFaviconToBreak();
+    }
+
+    // tomato img progress update
+    if (intervalIndex === 0) {
+      views.images.resetImages();
+      views.images.setImageType('work', 0);
+    } else if (intervalIndex === 1) {
+      views.images.setImageType('break', 0);
+    } else if (intervalIndex === 2) {
+      views.images.setImageType('work', 1);
+      views.images.setImageType('finished', 0);
+    } else if (intervalIndex === 3) {
+      views.images.setImageType('break', 1);
+    } else if (intervalIndex === 4) {
+      views.images.setImageType('work', 2);
+      views.images.setImageType('finished', 1);
+    } else if (intervalIndex === 5) {
+      views.images.setImageType('break', 2);
+    } else if (intervalIndex === 6) {
+      views.images.setImageType('work', 3);
+      views.images.setImageType('finished', 2);
+    } else if (intervalIndex === 7) {
+      views.images.setImageType('bigBreak', 3);
     }
   };
 
@@ -53,16 +93,24 @@ var timer = (function() {
 
   var startTimer = function() {
     if (!timer) {
-      timer = setInterval(timerTick, 1000);
+      runTimer();
     } else {
-      timer = clearInterval(timer);
+      pauseTimer();
     }
 
     views.timerControls.toogleStartButtonCaption();
+
+    if (intervalIndex === 0) {
+      views.images.setImageType('work', 0);
+    }
+  };
+
+  var runTimer = function () {
+    timer = setInterval(timerTick, 1000);
   };
 
   var pauseTimer = function() {
-    clearInterval(timer);
+    timer = clearInterval(timer);
   };
 
   var resetTimer = function() {
@@ -74,8 +122,13 @@ var timer = (function() {
     var time = secondsToTime(timerInterval);
 
     views.timer.setTime(time);
+
+    views.timerControls.resetStartButton();
+
     views.title.setFaviconToWork();
     views.title.setTitle(time);
+
+    views.images.resetImages();
   };
 
   var init = function () {
@@ -89,15 +142,13 @@ var timer = (function() {
     }
     intervals.push(config.bigBreakInterval);
 
-    startTimer();
-
   };
 
   return {
     init: init,
     startTimer: startTimer,
     pauseTimer: pauseTimer,
-    nextInterval: nextInterval,
+    skipInterval: skipInterval,
     resetTimer: resetTimer
   };
 
