@@ -1,7 +1,8 @@
 views.images = (function() {
   'use strict';
 
-  var images = document.querySelectorAll('#progress img');
+  var imagesWrapper = document.getElementById('progress');
+  var images = imagesWrapper.getElementsByTagName('img');
 
   var setImageType = function(type, index) {
     var imgName;
@@ -34,9 +35,23 @@ views.images = (function() {
     }
   };
 
+  var createImage = function(type, width, height, alt) {
+    var img = document.createElement('img');
+
+    img.src = 'img/tomato-' + type + '.png';
+    img.width = width;
+    img.height = height;
+    img.alt = alt;
+
+    imagesWrapper.appendChild(img);
+
+  };
+
+
   return {
     setImageType: setImageType,
-    resetImages: resetImages
+    resetImages: resetImages,
+    createImage: createImage
   };
 
 }());
