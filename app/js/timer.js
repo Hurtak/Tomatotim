@@ -44,35 +44,26 @@ var timer = (function() {
     views.timer.setTime(time);
 
     // favicon update
-    if (intervalIndex === intervals.length - 1) {
-      views.title.setFaviconToLongBreak();
-    } else if (intervalIndex % 2 === 0) {
+    if (intervals[intervalIndex] === config.workInterval) {
       views.title.setFaviconToWork();
-    } else {
+    } else if (intervals[intervalIndex] === config.breakInterval) {
       views.title.setFaviconToBreak();
+    } else if (intervals[intervalIndex] === config.bigBreakInterval) {
+      views.title.setFaviconToLongBreak();
     }
 
     // tomato img progress update
-    if (intervalIndex === 0) {
-      views.images.setImageType('work', 0);
-    } else if (intervalIndex === 1) {
-      views.images.setImageType('break', 0);
-    } else if (intervalIndex === 2) {
-      views.images.setImageType('work', 1);
-      views.images.setImageType('finished', 0);
-    } else if (intervalIndex === 3) {
-      views.images.setImageType('break', 1);
-    } else if (intervalIndex === 4) {
-      views.images.setImageType('work', 2);
-      views.images.setImageType('finished', 1);
-    } else if (intervalIndex === 5) {
-      views.images.setImageType('break', 2);
-    } else if (intervalIndex === 6) {
-      views.images.setImageType('work', 3);
-      views.images.setImageType('finished', 2);
-    } else if (intervalIndex === 7) {
-      views.images.setImageType('bigBreak', 3);
+    var imageIndex = Math.floor(intervalIndex / 2);
+
+    if (intervalIndex > 0 && intervals[intervalIndex] === config.workInterval) {
+      views.images.setImageType('work', imageIndex);
+      views.images.setImageType('finished', imageIndex - 1);
+    } else if (intervals[intervalIndex] === config.breakInterval) {
+      views.images.setImageType('break', imageIndex);
+    } else if (intervals[intervalIndex] === config.bigBreakInterval) {
+      views.images.setImageType('bigBreak', imageIndex);
     }
+
   };
 
   var addLeadingZero = function(number) {
