@@ -17,7 +17,7 @@ views.timerControls = (function() {
 
   var resetStartButton = function () {
     getStartButton().innerHTML = 'start';
-  }
+  };
 
   var getResetButton = function () {
     return document.getElementById('reset');
@@ -31,7 +31,7 @@ views.timerControls = (function() {
     getStartButton: getStartButton,
     getResetButton: getResetButton,
     getSkipButton: getSkipButton,
-    resetStartButton: resetStartButton, 
+    resetStartButton: resetStartButton,
     toogleStartButtonCaption: toogleStartButtonCaption
   };
 

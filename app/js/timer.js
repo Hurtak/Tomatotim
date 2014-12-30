@@ -54,7 +54,6 @@ var timer = (function() {
 
     // tomato img progress update
     if (intervalIndex === 0) {
-      views.images.resetImages();
       views.images.setImageType('work', 0);
     } else if (intervalIndex === 1) {
       views.images.setImageType('break', 0);
