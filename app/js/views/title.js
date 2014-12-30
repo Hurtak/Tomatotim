@@ -36,7 +36,7 @@ views.title = (function() {
   };
 
   var setFaviconToLongBreak = function() {
-    changeFavicon('/icons/favicon-16x16-break-long.png');
+    changeFavicon('/icons/favicon-16x16-break-big.png');
   };
 
   return {
