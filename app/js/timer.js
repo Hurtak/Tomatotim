@@ -10,6 +10,19 @@ var timer = (function() {
   var intervals = [];
   var timer;
 
+  var init = function () {
+    views.timer.setTime(secondsToTime(timerInterval));
+
+    for (var i = 0; i < config.repeat; i++) {
+      intervals.push(config.workInterval);
+      if (i < config.repeat - 1) {
+        intervals.push(config.breakInterval);
+      }
+    }
+    intervals.push(config.bigBreakInterval);
+
+  };
+  
   var timerTick = function () {
     timerInterval--;
 
@@ -45,36 +58,36 @@ var timer = (function() {
 
     // favicon update
     if (intervals[intervalIndex] === config.workInterval) {
-      views.title.setFaviconToWork();
+      views.favicon.setFavicon('work');
     } else if (intervals[intervalIndex] === config.breakInterval) {
-      views.title.setFaviconToBreak();
+      views.favicon.setFavicon('break');
     } else if (intervals[intervalIndex] === config.bigBreakInterval) {
-      views.title.setFaviconToLongBreak();
+      views.favicon.setFavicon('longbreak');
     }
 
     // tomato img progress update
     var imageIndex = Math.floor(intervalIndex / 2);
 
     if (intervalIndex > 0 && intervals[intervalIndex] === config.workInterval) {
-      views.images.setImageType('work', imageIndex);
-      views.images.setImageType('finished', imageIndex - 1);
+      views.progress.setImageType('work', imageIndex);
+      views.progress.setImageType('finished', imageIndex - 1);
     } else if (intervals[intervalIndex] === config.breakInterval) {
-      views.images.setImageType('break', imageIndex);
+      views.progress.setImageType('break', imageIndex);
     } else if (intervals[intervalIndex] === config.bigBreakInterval) {
-      views.images.setImageType('bigBreak', imageIndex);
+      views.progress.setImageType('bigbreak', imageIndex);
     }
 
-  };
-
-  var addLeadingZero = function(number) {
-    if (number < 10) {
-      number = '0' + number;
-    }
-
-    return number;
   };
 
   var secondsToTime = function(seconds) {
+    var addLeadingZero = function(number) {
+      if (number < 10) {
+        number = '0' + number;
+      }
+
+      return number;
+    };
+
     var minutes = Math.floor(seconds / 60);
     seconds = seconds % 60;
 
@@ -91,7 +104,7 @@ var timer = (function() {
     views.timerControls.toogleStartButtonCaption();
 
     if (intervalIndex === 0) {
-      views.images.setImageType('work', 0);
+      views.progress.setImageType('work', 0);
     }
   };
 
@@ -115,24 +128,13 @@ var timer = (function() {
 
     views.timerControls.resetStartButton();
 
-    views.title.setFaviconToWork();
+    views.favicon.setFavicon('work');
     views.title.setTitle(time);
 
-    views.images.resetImages();
+    views.progress.resetProgress();
   };
 
-  var init = function () {
-    views.timer.setTime(secondsToTime(timerInterval));
 
-    for (var i = 0; i < config.repeat; i++) {
-      intervals.push(config.workInterval);
-      if (i < config.repeat - 1) {
-        intervals.push(config.breakInterval);
-      }
-    }
-    intervals.push(config.bigBreakInterval);
-
-  };
 
   return {
     init: init,

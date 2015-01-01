@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  images.init();
+  progress.init();
   timer.init();
   binding.init();
 
