@@ -22,7 +22,6 @@ body {
 .centered {
   display: inline-block;
   vertical-align: middle;
-  background-color: rgba(255, 255, 255, 0.25); /* XXX:  */
 }
 
 /* Clock */
@@ -31,7 +30,6 @@ body {
   font-size: 120px;
   margin-bottom: 30px;
   color: #fff;
-  background-color: rgba(255, 162, 0, 0.74); /* XXX:  */
 }
 
 /* Progress */
@@ -39,7 +37,6 @@ body {
 .progress {
   /* TODO: adjust height according to img height, also media queries for this */
   height: 100px;
-  background-color: rgba(106, 139, 78, 0.65); /* XXX:  */
 }
 
   .progress img {
@@ -50,14 +47,12 @@ body {
   color: #fff;
   font-size: 50px; /* XXX: if description will be visible always, delete this */
   height: 50px;
-  background-color: rgba(250, 0, 221, 0.48); /* XXX:  */
 }
 
 /* Controls */
 
 .controls {
   margin-top: 30px;
-  background-color: rgba(0, 12, 255, 0.4); /* XXX:  */
 }
 
   .controls button {

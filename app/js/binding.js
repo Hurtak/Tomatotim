@@ -7,6 +7,8 @@ var binding = (function() {
     views.timerControls.getSkipButton().addEventListener('click', timer.skipInterval);
     views.timerControls.getResetButton().addEventListener('click', timer.resetTimer);
 
+    views.sidebar.getSidebarButton().addEventListener('click', views.sidebar.toogleSidebar);
+
   };
 
   return {

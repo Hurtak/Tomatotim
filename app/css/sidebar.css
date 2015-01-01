@@ -1,0 +1,25 @@
+.sidebar-button {
+  z-index: 10;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  background-color: transparent;
+  color: #fff;
+  border: 3px solid #fff;
+  padding: 10px;
+  border-radius: 10px;
+
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  background-color: rgba(86, 122, 255, 1);
+  height: 100%;
+}
+
+.sidebar[data-sidebar-open] {
+  left: 0
+}

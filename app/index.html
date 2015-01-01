@@ -44,12 +44,18 @@
 
     <!-- build:css css/main.css -->
     <link rel="stylesheet" href="components/normalize.css/normalize.css">
+
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/shared.css">
     <!-- endbuild -->
   </head>
   <body>
-    <div class="wrapper">
+    <!-- main -->
+    <div class="wrapper no-select">
       <div class="centered">
         <div id="clock" class="clock">
           25:00
@@ -67,6 +73,18 @@
       </div>
     </div>
 
+    <!-- sidebar button -->
+    <button id="sidebar-button" class="sidebar-button no-select">
+      menu
+    </button>
+    <!-- sidebar -->
+    <div id="sidebar" class="sidebar">
+      <p>lorem lorem  loremlo emlo rem</p>
+      <p>lorem lorem  loremlo emlo rem</p>
+      <p>lorem lorem  loremlo emlo rem</p>
+      <p>lorem lorem  loremlo emlo rem</p>
+      <p>lorem lorem  loremlo emlo rem</p>
+    </div>
 
     <!-- build:js js/vendor.js -->
     <!-- bower:js -->
@@ -83,10 +101,12 @@
     <script src="js/views/title.js"></script>
     <script src="js/views/favicon.js"></script>
     <script src="js/views/progress.js"></script>
+    <script src="js/views/sidebar.js"></script>
 
     <script src="js/timer.js"></script>
-    <script src="js/binding.js"></script>
     <script src="js/progress.js"></script>
+
+    <script src="js/binding.js"></script>
 
     <script src="js/app.js"></script>
     <!-- endbuild -->
