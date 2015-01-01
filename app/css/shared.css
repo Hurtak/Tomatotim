@@ -6,3 +6,24 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+/* colors */
+.color-work {
+  color: #ff0000;
+}
+
+.color-break {
+  color: #00ff00;
+}
+
+.color-longbreak {
+  color: #0000ff;
+}
+
+.color-unfinished {
+  color: #555555;
+}
+
+.color-finished {
+  color: #ffffff;
+}

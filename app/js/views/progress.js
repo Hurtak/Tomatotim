@@ -2,7 +2,7 @@ views.progress = (function() {
   'use strict';
 
   var imagesWrapper = document.getElementById('progress');
-  var images = imagesWrapper.getElementsByTagName('img');
+  var images = imagesWrapper.getElementsByTagName('i');
 
   var description = document.getElementById('description');
 
@@ -12,11 +12,10 @@ views.progress = (function() {
     'break': 'Break interval',
     'longbreak': 'Long break interval',
     'finished' : 'Finished interval'
-  };
+  }; // TODO: remove this or use it in tooltip
 
   var setImageType = function(type, index) {
-    images[index].src = 'img/tomato-' + type + '.png';
-    images[index].alt = imagesAlt[type];
+    images[index].className = 'icon-tomato color-' + type;
   };
 
   var resetProgress = function() {
@@ -27,16 +26,10 @@ views.progress = (function() {
     }
   };
 
-  var createImage = function(type, width, height) {
-    var img = document.createElement('img');
-
-    img.src = 'img/tomato-' + type + '.png';
-    img.width = width;
-    img.height = height;
-    img.alt = imagesAlt[type];
-
-    imagesWrapper.appendChild(img);
-
+  var createImage = function(type) {
+    var i = document.createElement('i');
+    i.className = 'icon-tomato color-' + type;
+    imagesWrapper.appendChild(i);
   };
 
   var setDescription = function(text) {

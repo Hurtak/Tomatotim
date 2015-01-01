@@ -3,7 +3,7 @@ var progress = (function() {
 
   var init = function() {
     for (var i = 0; i < config.repeat; i++) {
-      views.progress.createImage('unfinished', 100, 100);
+      views.progress.createImage('unfinished');
     }
   };
 

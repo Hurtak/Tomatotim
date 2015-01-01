@@ -28,7 +28,6 @@ body {
 
 .clock {
   font-size: 120px;
-  margin-bottom: 30px;
   color: #fff;
 }
 
@@ -36,11 +35,11 @@ body {
 
 .progress {
   /* TODO: adjust height according to img height, also media queries for this */
-  height: 100px;
+  height: 50px;
 }
 
-  .progress img {
-    margin: 0 5px;
+  .progress i {
+    font-size: 50px;
   }
 
 .description {
