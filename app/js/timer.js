@@ -16,7 +16,7 @@ var timer = (function() {
         intervals.push(config.breakInterval);
       }
     }
-    intervals.push(config.bigBreakInterval);
+    intervals.push(config.longbreakInterval);
 
   };
 
@@ -57,37 +57,25 @@ var timer = (function() {
     timerInterval = intervals[intervalIndex];
 
     // countdown update
-    var time = secondsToTime(timerInterval);
-    views.timer.setTime(time);
+    views.timer.setTime(secondsToTime(timerInterval));
 
-    // favicon update
-    if (intervals[intervalIndex] === config.workInterval) {
-      views.favicon.setFavicon('work');
-    } else if (intervals[intervalIndex] === config.breakInterval) {
-      views.favicon.setFavicon('break');
-    } else if (intervals[intervalIndex] === config.bigBreakInterval) {
-      views.favicon.setFavicon('longbreak');
-    }
-
-    // progress description update
-    if (intervalIndex > 0 && intervals[intervalIndex] === config.workInterval) {
-      views.progress.setDescription('work');
-    } else if (intervals[intervalIndex] === config.breakInterval) {
-      views.progress.setDescription('break');
-    } else if (intervals[intervalIndex] === config.bigBreakInterval) {
-      views.progress.setDescription('long break');
-    }
-
-    // progress img update
     var imageIndex = Math.floor(intervalIndex / 2);
 
-    if (intervalIndex > 0 && intervals[intervalIndex] === config.workInterval) {
-      views.progress.setImageType('work', imageIndex);
-      views.progress.setImageType('finished', imageIndex - 1);
+    if (intervals[intervalIndex] === config.workInterval) {
+      views.favicon.setFavicon('work');
+      if (intervalIndex > 0) {
+        views.progress.setDescription('work');
+        views.progress.setImageType('work', imageIndex);
+        views.progress.setImageType('finished', imageIndex - 1);
+      }
     } else if (intervals[intervalIndex] === config.breakInterval) {
+      views.favicon.setFavicon('break');
+      views.progress.setDescription('break');
       views.progress.setImageType('break', imageIndex);
-    } else if (intervals[intervalIndex] === config.bigBreakInterval) {
-      views.progress.setImageType('bigbreak', imageIndex);
+    } else if (intervals[intervalIndex] === config.longbreakInterval) {
+      views.favicon.setFavicon('longbreak');
+      views.progress.setDescription('long break');
+      views.progress.setImageType('longbreak', imageIndex);
     }
 
   };
