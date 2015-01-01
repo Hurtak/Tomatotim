@@ -22,7 +22,7 @@ var timer = (function() {
     intervals.push(config.bigBreakInterval);
 
   };
-  
+
   var timerTick = function () {
     timerInterval--;
 
@@ -65,7 +65,16 @@ var timer = (function() {
       views.favicon.setFavicon('longbreak');
     }
 
-    // tomato img progress update
+    // progress description update
+    if (intervalIndex > 0 && intervals[intervalIndex] === config.workInterval) {
+      views.progress.setDescription('work');
+    } else if (intervals[intervalIndex] === config.breakInterval) {
+      views.progress.setDescription('break');
+    } else if (intervals[intervalIndex] === config.bigBreakInterval) {
+      views.progress.setDescription('long break');
+    }
+
+    // progress img update
     var imageIndex = Math.floor(intervalIndex / 2);
 
     if (intervalIndex > 0 && intervals[intervalIndex] === config.workInterval) {
@@ -105,6 +114,7 @@ var timer = (function() {
 
     if (intervalIndex === 0) {
       views.progress.setImageType('work', 0);
+      views.progress.setDescription('work');
     }
   };
 
@@ -125,16 +135,13 @@ var timer = (function() {
     var time = secondsToTime(timerInterval);
 
     views.timer.setTime(time);
-
     views.timerControls.resetStartButton();
 
-    views.favicon.setFavicon('work');
     views.title.setTitle(time);
+    views.favicon.setFavicon('work');
 
     views.progress.resetProgress();
   };
-
-
 
   return {
     init: init,

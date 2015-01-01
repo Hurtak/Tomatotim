@@ -20,6 +20,8 @@ views.progress = (function() {
   };
 
   var resetProgress = function() {
+    setDescription('');
+
     for (var index = 0; index < images.length; index++) {
       setImageType('unfinished', index);
     }
@@ -37,11 +39,12 @@ views.progress = (function() {
 
   };
 
-  var functionName = function() {
-
+  var setDescription = function(text) {
+    description.innerHTML = text;
   };
 
   return {
+    setDescription: setDescription,
     setImageType: setImageType,
     resetProgress: resetProgress,
     createImage: createImage

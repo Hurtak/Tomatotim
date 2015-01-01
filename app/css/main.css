@@ -37,8 +37,6 @@ body {
 /* Progress */
 
 .progress {
-  /* images into progress div are added dynamically with js so we added css
-     height to prevent content jumping and repositioning  when we reload page */
   /* TODO: adjust height according to img height, also media queries for this */
   height: 100px;
   background-color: rgba(106, 139, 78, 0.65); /* XXX:  */
@@ -50,7 +48,8 @@ body {
 
 .description {
   color: #fff;
-  font-size: 50px;
+  font-size: 50px; /* XXX: if description will be visible always, delete this */
+  height: 50px;
   background-color: rgba(250, 0, 221, 0.48); /* XXX:  */
 }
 
