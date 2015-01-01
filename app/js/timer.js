@@ -1,9 +1,6 @@
 var timer = (function() {
   'use strict';
 
-  // TODO: after timer reset set icon to gray tomato. also default icon should
-  // be gray tomato
-
   var intervalIndex = 0;
   var timerInterval = config.workInterval;
 
@@ -23,6 +20,21 @@ var timer = (function() {
 
   };
 
+  var secondsToTime = function(seconds) {
+    var addLeadingZero = function(number) {
+      if (number < 10) {
+        number = '0' + number;
+      }
+
+      return number;
+    };
+
+    var minutes = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+
+    return addLeadingZero(minutes) + ':' + addLeadingZero(seconds);
+  };
+
   var timerTick = function () {
     timerInterval--;
 
@@ -33,14 +45,6 @@ var timer = (function() {
     var time = secondsToTime(timerInterval);
     views.timer.setTime(time);
     views.title.setTitle(time);
-  };
-
-  var skipInterval = function () {
-    nextInterval();
-    if (timer) {
-      pauseTimer();
-      runTimer();
-    }
   };
 
   var nextInterval = function() {
@@ -88,19 +92,14 @@ var timer = (function() {
 
   };
 
-  var secondsToTime = function(seconds) {
-    var addLeadingZero = function(number) {
-      if (number < 10) {
-        number = '0' + number;
-      }
+  var skipInterval = function () {
+    nextInterval();
+    if (timer) {
+      pauseTimer();
+      runTimer();
+    }
 
-      return number;
-    };
-
-    var minutes = Math.floor(seconds / 60);
-    seconds = seconds % 60;
-
-    return addLeadingZero(minutes) + ':' + addLeadingZero(seconds);
+    views.title.setTitle(secondsToTime(timerInterval));
   };
 
   var startTimer = function() {
@@ -110,6 +109,7 @@ var timer = (function() {
       pauseTimer();
     }
 
+    views.title.setTitle(secondsToTime(timerInterval));
     views.timerControls.toogleStartButtonCaption();
 
     if (intervalIndex === 0) {
@@ -137,7 +137,7 @@ var timer = (function() {
     views.timer.setTime(time);
     views.timerControls.resetStartButton();
 
-    views.title.setTitle(time);
+    views.title.resetTitle();
     views.favicon.setFavicon('work');
 
     views.progress.resetProgress();
