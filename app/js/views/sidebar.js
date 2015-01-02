@@ -6,21 +6,35 @@ views.sidebar = (function() {
 
   var sidebarOpen = false;
 
-  var toogleSidebar = function() {
-    if (!sidebarOpen) {
-      document.body.setAttribute('data-sidebar-open', '');
-    } else {
-      document.body.removeAttribute('data-sidebar-open');
-    }
-    sidebarOpen = !sidebarOpen;
-  };
-
   var getSidebarButton = function () {
     return sidebarButton;
   };
 
+  var openSidebar = function () {
+    if (!sidebarOpen) {
+      document.body.setAttribute('data-sidebar-open', '');
+      sidebarOpen = true;
+    }
+  };
+
+  var closeSidebar = function () {
+    if (sidebarOpen) {
+      document.body.removeAttribute('data-sidebar-open');
+      sidebarOpen = false;
+    }
+  };
+
+  var toogleSidebar = function() {
+    if (sidebarOpen) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  };
+
   return {
     getSidebarButton: getSidebarButton,
+    closeSidebar: closeSidebar,
     toogleSidebar: toogleSidebar
   };
 
