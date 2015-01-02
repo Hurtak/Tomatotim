@@ -63,32 +63,71 @@
         </div>
 
         <div id="progress" class="progress">
-          <!-- TODO: responsive images? -->
         </div>
 
         <div id="description" class="description">
         </div>
 
         <div class="controls">
-          <button id="start">start</button>
-          <button id="skip">skip</button>
-          <button id="reset">reset</button>
+          <button id="start">
+            <i class="icon-play-1"></i>
+            start
+          </button>
+          <button id="skip">
+            <i class="icon-fast-forward"></i>
+            skip
+          </button>
+          <button id="reset">
+            <i class="icon-cw-1"></i>
+            reset
+          </button>
         </div>
       </div>
-
     </div>
 
     <!-- sidebar button -->
     <button id="sidebar-button" class="sidebar-button no-select">
-      menu
+      <i class="icon-cog-circled"></i>
+      <i class="icon-cancel-circle-2"></i>
     </button>
     <!-- sidebar -->
     <div id="sidebar" class="sidebar">
+      <h2>
+        <i class="icon-info-circled-1"></i>
+        What is this
+      </h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. lorem  loremlo emlo rem</p>
       <p>lorem lorem  loremlo emlo rem</p>
       <p>lorem lorem  loremlo emlo rem</p>
       <p>lorem lorem  loremlo emlo rem</p>
-      <p>lorem lorem  loremlo emlo rem</p>
-      <p>lorem lorem  loremlo emlo rem</p>
+      <h2>
+        <i class="icon-sliders"></i>
+        Settings
+      </h2>
+      <p>TODO</p>
+      <h2>
+        <i class="icon-bitcoin"></i>
+        Donate
+      </h2>
+      <p>
+        1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ
+      </p>
+      <p>
+        <a class="donate" href="bitcoin:1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ?label=Tomatodoro%20donation">
+          <i class="icon-wallet"></i>
+          wallet
+        </a>
+        <a class="donate" href="http://api.qrserver.com/v1/create-qr-code/?data=bitcoin%3A1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ&size=400x400&prov=goqrme" target="_blank">
+          <i class="icon-qrcode-1"></i>
+          QR code
+        </a>
+        <a class="donate" href="https://blockchain.info/address/1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ" target="_blank">
+          <i class="icon-search-5"></i>
+          blockchain
+        </a>
+        <!-- TODO: maybe change label? -->
+      </p>
+
     </div>
 
     <!-- build:js js/vendor.js -->

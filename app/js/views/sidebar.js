@@ -3,15 +3,14 @@ views.sidebar = (function() {
 
   // TODO: maybe this should be inside init function?
   var sidebarButton = document.getElementById('sidebar-button');
-  var sidebar = document.getElementById('sidebar');
 
   var sidebarOpen = false;
 
   var toogleSidebar = function() {
     if (!sidebarOpen) {
-      sidebar.setAttribute('data-sidebar-open', '');
+      document.body.setAttribute('data-sidebar-open', '');
     } else {
-      sidebar.removeAttribute('data-sidebar-open');
+      document.body.removeAttribute('data-sidebar-open');
     }
     sidebarOpen = !sidebarOpen;
   };

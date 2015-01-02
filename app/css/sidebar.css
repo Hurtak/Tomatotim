@@ -1,25 +1,74 @@
 .sidebar-button {
   z-index: 10;
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
 
   background-color: transparent;
   color: #fff;
-  border: 3px solid #fff;
-  padding: 10px;
-  border-radius: 10px;
+  border: 0;
 
+  width: 55px;
+  height: 55px;
+  font-size: 40px;
+
+  outline: 0;
 }
+
+  .sidebar-button i {
+    position: absolute;
+    top: 5px;
+    left: 0;
+  }
+
+    .sidebar-button i:last-child { /* XXX: dont use last child */
+      opacity: 0;
+    }
 
 .sidebar {
   position: absolute;
+  background-color: rgb(51, 77, 158); /* XXX:  */
+
   top: 0;
-  left: -100%;
-  background-color: rgba(86, 122, 255, 1);
+  left: -400px;
+  width: 400px;
   height: 100%;
+
+  padding: 30px 20px 0px;
+  overflow: auto;
 }
 
-.sidebar[data-sidebar-open] {
-  left: 0
+.sidebar .donate {
+  text-decoration: none;
+  color: #000;
+  background-color: #ffffff;
+  margin-left: 10px;
+  padding: 0 10px 0 7px;
+  display: inline-block;
+  line-height: 30px;
 }
+
+  .sidebar .donate:first-child {
+  margin-left: 0;
+  }
+
+/* Sidebar animations */
+
+body[data-sidebar-open] .sidebar {
+  transform: translateX(400px);
+}
+
+body[data-sidebar-open] .sidebar-button {
+  transform: translateX(325px);
+}
+
+  body[data-sidebar-open] .sidebar-button i {
+    transform: rotate(360deg);
+  }
+
+    body[data-sidebar-open] .sidebar-button i:first-child {
+      opacity: 0;
+    }
+    body[data-sidebar-open] .sidebar-button i:last-child {
+      opacity: 1;
+    }
