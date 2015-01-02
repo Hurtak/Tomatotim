@@ -12,10 +12,11 @@ views.progress = (function() {
     'break': 'Break interval',
     'longbreak': 'Long break interval',
     'finished' : 'Finished interval'
-  }; // TODO: remove this or use it in tooltip
+  };
 
   var setImageType = function(type, index) {
     images[index].className = 'icon-tomato color-' + type;
+    images[index].title = imagesAlt[type];
   };
 
   var resetProgress = function() {
@@ -29,6 +30,7 @@ views.progress = (function() {
   var createImage = function(type) {
     var i = document.createElement('i');
     i.className = 'icon-tomato color-' + type;
+    i.title = imagesAlt[type];
     imagesWrapper.appendChild(i);
   };
 
