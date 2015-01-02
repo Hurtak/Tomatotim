@@ -60,21 +60,25 @@ var timer = (function() {
 
     var imageIndex = Math.floor(intervalIndex / 2);
 
-    if (intervals[intervalIndex] === config.workInterval) {
+    // invervals[ work, break, work, break, ... , long break ]
+    if (intervalIndex === intervals.length - 1) {
+      // last interval
+      views.favicon.setFavicon('longbreak');
+      views.progress.setDescription('long break');
+      views.progress.setImageType('longbreak', imageIndex);
+    } else if (intervalIndex % 2 === 1) {
+      // odd interval
+      views.favicon.setFavicon('break');
+      views.progress.setDescription('break');
+      views.progress.setImageType('break', imageIndex);
+    } else if (intervalIndex % 2 === 0) {
+      // even interval
       views.favicon.setFavicon('work');
       if (intervalIndex > 0) {
         views.progress.setDescription('work');
         views.progress.setImageType('work', imageIndex);
         views.progress.setImageType('finished', imageIndex - 1);
       }
-    } else if (intervals[intervalIndex] === config.breakInterval) {
-      views.favicon.setFavicon('break');
-      views.progress.setDescription('break');
-      views.progress.setImageType('break', imageIndex);
-    } else if (intervals[intervalIndex] === config.longbreakInterval) {
-      views.favicon.setFavicon('longbreak');
-      views.progress.setDescription('long break');
-      views.progress.setImageType('longbreak', imageIndex);
     }
 
   };
