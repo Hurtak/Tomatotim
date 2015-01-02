@@ -12,7 +12,7 @@ var config = (function() {
   if (debug) {
     workInterval = 25;
     breakInterval = 5;
-    longbreakInterval = 20;
+    longbreakInterval = 5;
   }
 
   return {

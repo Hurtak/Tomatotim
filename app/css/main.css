@@ -1,5 +1,6 @@
 body {
   background-color: #424242;
+  overflow: hidden;
 }
 
 /* Wrapper */
@@ -56,13 +57,14 @@ body {
 
   .controls button {
     background-color: transparent;
-    border: 3px solid #f04444;
-    color: #f04444; /* TODO: make sure this is the same clor as the red tomato image*/
+    border: 3px solid #fff;
+    color: #fff; /* TODO: make sure this is the same clor as the red tomato image*/
     border-radius: 10px;
     padding: 20px;
     width: 180px;
     margin: 0 10px;
     font-size: 25px;
+    position: relative;
   }
 
     .controls button:hover {
@@ -78,3 +80,12 @@ body {
       position: relative;
       top: 2px;
     }
+
+  .controls button i {
+    position: absolute;
+    left: 25px;
+  }
+
+  .controls button span {
+    padding-left: 32px;
+  }

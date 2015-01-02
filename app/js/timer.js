@@ -44,7 +44,7 @@ var timer = (function() {
 
     var time = secondsToTime(timerInterval);
     views.timer.setTime(time);
-    views.title.setTitle(time);
+    views.title.setTitle(time, timer);
   };
 
   var nextInterval = function() {
@@ -56,7 +56,6 @@ var timer = (function() {
 
     timerInterval = intervals[intervalIndex];
 
-    // countdown update
     views.timer.setTime(secondsToTime(timerInterval));
 
     var imageIndex = Math.floor(intervalIndex / 2);
@@ -82,12 +81,14 @@ var timer = (function() {
 
   var skipInterval = function () {
     nextInterval();
+
     if (timer) {
+      // resets timeout countdown
       pauseTimer();
       runTimer();
     }
 
-    views.title.setTitle(secondsToTime(timerInterval));
+    views.title.setTitle(secondsToTime(timerInterval), timer);
   };
 
   var startTimer = function() {
@@ -97,7 +98,7 @@ var timer = (function() {
       pauseTimer();
     }
 
-    views.title.setTitle(secondsToTime(timerInterval));
+    views.title.setTitle(secondsToTime(timerInterval), timer);
     views.timerControls.toogleStartButtonCaption();
 
     if (intervalIndex === 0) {

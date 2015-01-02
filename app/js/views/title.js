@@ -3,8 +3,13 @@ views.title = (function() {
 
   var appName = document.title;
 
-  var setTitle = function(title) {
-    document.title = title + ' – ' + appName;
+  var setTitle = function(title, paused) {
+    var titlePrefix = '';
+    if (!paused) {
+      titlePrefix = '\u25A0 ';
+    }
+
+    document.title = titlePrefix + title + ' – ' + appName;
   };
 
   var resetTitle = function () {

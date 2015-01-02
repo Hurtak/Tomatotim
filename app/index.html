@@ -58,28 +58,28 @@
     <!-- main -->
     <div class="wrapper no-select">
       <div class="centered">
+        <div id="description" class="description">
+        </div>
         <div id="clock" class="clock">
           25:00
         </div>
-
         <div id="progress" class="progress">
         </div>
 
-        <div id="description" class="description">
-        </div>
+
 
         <div class="controls">
           <button id="start">
             <i class="icon-play-1"></i>
-            start
+            <span>start</span>
           </button>
           <button id="skip">
             <i class="icon-fast-forward"></i>
-            skip
+            <span>skip</span>
           </button>
           <button id="reset">
             <i class="icon-cw-1"></i>
-            reset
+            <span>reset</span>
           </button>
         </div>
       </div>
@@ -90,23 +90,81 @@
       <i class="icon-cog-circled"></i>
       <i class="icon-cancel-circle-2"></i>
     </button>
+
     <!-- sidebar -->
     <div id="sidebar" class="sidebar">
+      <!-- info -->
       <h2>
         <i class="icon-info-circled-1"></i>
-        What is this
+        What is this?
       </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. lorem  loremlo emlo rem</p>
-      <p>lorem lorem  loremlo emlo rem</p>
-      <p>lorem lorem  loremlo emlo rem</p>
-      <p>lorem lorem  loremlo emlo rem</p>
+      <p>
+        Pomodoro is a workflow technique, where you have bursts of productivty
+        with small breaks, then after a certain duration, you have an extended
+        break. This is to help alleviate either burning yourself out from long
+        intense sessions or the exact opposite, not concentrating enough!
+      </p>
+      <p>
+        The most common implementation and used on this site is as follows:
+      </p>
+      <ol>
+        <li>
+          25 minutes of work
+        </li>
+        <li>
+          5 minute break
+        </li>
+        <li>
+          Repeat four times, after which you have a 20 minute break
+        </li>
+        <li>
+          Start a new Pomodoro
+        </li>
+      </ol>
+      <p>
+        Your pomodori (1 interval) count is displayed in the top left hand
+        corner.
+      </p>
+      <p>
+        For more extensive information please see the Pomodoro technique
+        Wikipedia entry.
+      </p>
+
+      <!-- settings -->
       <h2>
-        <i class="icon-sliders"></i>
+        <i class="icon-wrench-4"></i>
         Settings
       </h2>
       <p>TODO</p>
+
+      <!-- settings -->
       <h2>
-        <i class="icon-bitcoin"></i>
+        <!-- TODO: when styles are finalized try this second icon, it was
+                   better in some cases -->
+        <!-- <i class="icon-keyboard-1"></i> -->
+        <i class="icon-keyboard"></i>
+        Keyboard shortcuts
+      </h2>
+      <p>
+        <span class="hotkey">esc</span>
+        closes this menu
+      </p>
+      <p>
+        <span class="hotkey">space</span>
+        pause unpause timer
+      </p>
+      <p>
+        <span class="hotkey">r</span>
+        reset timer
+      </p>
+      <p>
+        <span class="hotkey">s</span>
+        skip interval
+      </p>
+
+      <!-- donate -->
+      <h2>
+        <i class="icon-bitcoin-1"></i>
         Donate
       </h2>
       <p>

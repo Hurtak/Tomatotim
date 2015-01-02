@@ -1,22 +1,32 @@
 views.timerControls = (function() {
   'use strict';
 
-  var getStartButton = function () {
-    return document.getElementById('start');
-  };
+  var startButtonState = true;
 
   var toogleStartButtonCaption = function() {
     var button = getStartButton();
+    var caption = button.querySelector('span');
+    var icon = button.querySelector('i');
 
-    if (button.innerHTML === 'start') {
-      button.innerHTML = 'pause';
+    if (startButtonState) {
+      caption.innerHTML = 'pause';
+      icon.className = 'icon-pause-1';
     } else {
-      button.innerHTML = 'start';
+      caption.innerHTML = 'start';
+      icon.className = 'icon-play-1';
     }
+
+    startButtonState = !startButtonState;
   };
 
   var resetStartButton = function () {
-    getStartButton().innerHTML = 'start';
+    if (!startButtonState) {
+      toogleStartButtonCaption();
+    }
+  };
+
+  var getStartButton = function () {
+    return document.getElementById('start');
   };
 
   var getResetButton = function () {
