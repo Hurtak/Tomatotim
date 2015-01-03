@@ -13,10 +13,8 @@ body {
   .wrapper:before {
     content: '';
     display: inline-block;
-    height: 100%;
     vertical-align: middle;
-
-    /* TODO: Adjusts for spacing */
+    height: 100%;
     margin-right: -0.25em;
   }
 
@@ -25,46 +23,49 @@ body {
   vertical-align: middle;
 }
 
+/* Description */
+
+.description {
+  color: #fff;
+  height: 60px;
+  font-size: 60px;
+}
+
 /* Clock */
 
 .clock {
-  font-size: 120px;
+  font-size: 150px;
   color: #fff;
 }
 
 /* Progress */
 
 .progress {
-  /* TODO: adjust height according to img height, also media queries for this */
-  height: 50px;
+  height: 70px;
 }
 
   .progress i {
-    font-size: 50px;
+    font-size: 60px;
   }
-
-.description {
-  color: #fff;
-  font-size: 50px; /* XXX: if description will be visible always, delete this */
-  height: 50px;
-}
 
 /* Controls */
 
 .controls {
-  margin-top: 30px;
+  margin-top: 35px;
 }
 
   .controls button {
-    background-color: transparent;
-    border: 3px solid #fff;
-    color: #fff; /* TODO: make sure this is the same clor as the red tomato image*/
-    border-radius: 10px;
-    padding: 20px;
-    width: 180px;
-    margin: 0 10px;
-    font-size: 25px;
     position: relative;
+    width: 180px;
+
+    padding: 20px;
+    margin: 0 10px;
+
+    background-color: transparent;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    font-size: 25px;
   }
 
     .controls button:hover {

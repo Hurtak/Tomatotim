@@ -1,7 +1,5 @@
 .sidebar {
   position: absolute;
-  background-color: rgb(51, 77, 158); /* TODO:  */
-
   top: 0;
   right: -400px;
   width: 400px;
@@ -10,46 +8,63 @@
   padding: 20px;
   overflow-y: scroll;
 
+  background-color: rgb(51, 77, 158); /* TODO:  */
   color: white;/* TODO:  */
 }
 
   .sidebar .hotkey {
     border: 1px solid #fff;
     border-radius: 5px;
+
     padding: 2px 8px 4px;
     margin-right: 5px;
+
     font-family: 'Consolas' 'Courier New';
   }
 
   .sidebar .donate {
-    text-decoration: none;
+    display: inline-block;
+
     color: #000;
     background-color: #ffffff;
+    text-decoration: none;
+
+    line-height: 30px;
     margin-left: 10px;
     padding: 0 10px 0 7px;
-    display: inline-block;
-    line-height: 30px;
   }
 
     .sidebar .donate:first-child {
       margin-left: 0;
     }
 
+  .sidebar h2 {
+    font-family: Verdana;
+    font-weight: 400;
+  }
+
+  .sidebar p,
+  .sidebar li {
+    line-height: 140%;
+    text-align: justify;
+  }
+
+/* Sidebar button */
+
 .sidebar-button {
-  z-index: 10;
   position: absolute;
   top: 10px;
   right: 10px;
+  width: 55px;
+  height: 55px;
+  z-index: 10;
 
   background-color: transparent;
   color: #fff;
   border: 0;
-
-  width: 55px;
-  height: 55px;
-  font-size: 40px;
-
   outline: 0;
+
+  font-size: 40px;
 }
 
   .sidebar-button i {
@@ -62,8 +77,9 @@
       opacity: 0;
     }
 
+/* Sidebar overlay */
+
 .sidebar-overlay {
-  background-color: rgba(0, 0, 0, 0.46);
   position: absolute;
   top: 0;
   left: 100%;
@@ -71,4 +87,5 @@
   height: 100%;
 
   opacity: 0;
+  background-color: rgba(0, 0, 0, 0.46);
 }

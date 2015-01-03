@@ -1,0 +1,47 @@
+@media only screen and (max-width: 620px) {
+
+  .description {
+    height: 40px;
+    font-size: 40px;
+  }
+
+  .clock {
+    font-size: 120px;
+  }
+
+  .progress {
+    height: 52px;
+  }
+
+    .progress i {
+      font-size: 45px;
+    }
+
+  .controls {
+    margin-top: 25px;
+  }
+
+    .controls button {
+      display: block;
+      width: 65%;
+      font-size: 20px;
+      border: 2px solid #fff;
+
+      padding: 10px;
+      margin: 10px auto;
+    }
+
+    .controls button:first-child {
+      padding: 20px;
+    }
+
+  .sidebar {
+    width: 100%;
+    right: -100%;
+  }
+
+  body[data-sidebar-open] .sidebar {
+    transform: translateX(-100%);
+  }
+
+}
