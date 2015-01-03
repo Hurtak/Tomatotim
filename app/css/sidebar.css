@@ -1,3 +1,40 @@
+.sidebar {
+  position: absolute;
+  background-color: rgb(51, 77, 158); /* TODO:  */
+
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100%;
+
+  padding: 20px;
+  overflow-y: scroll;
+
+  color: white;/* TODO:  */
+}
+
+  .sidebar .hotkey {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 2px 8px 4px;
+    margin-right: 5px;
+    font-family: 'Consolas' 'Courier New';
+  }
+
+  .sidebar .donate {
+    text-decoration: none;
+    color: #000;
+    background-color: #ffffff;
+    margin-left: 10px;
+    padding: 0 10px 0 7px;
+    display: inline-block;
+    line-height: 30px;
+  }
+
+    .sidebar .donate:first-child {
+      margin-left: 0;
+    }
+
 .sidebar-button {
   z-index: 10;
   position: absolute;
@@ -25,59 +62,13 @@
       opacity: 0;
     }
 
-.sidebar {
+.sidebar-overlay {
+  background-color: rgba(0, 0, 0, 0.46);
   position: absolute;
-  background-color: rgb(51, 77, 158); /* TODO:  */
-
   top: 0;
-  right: -400px;
-  width: 400px;
+  left: 100%;
+  width: 100%;
   height: 100%;
 
-  padding: 20px;
-  overflow-y: scroll;
-
-  color: white;/* TODO:  */
+  opacity: 0;
 }
-
-  .sidebar .hotkey {
-    border: 1px solid #fff;
-    border-radius: 5px;
-    padding: 2px 8px 4px;
-    font-family: 'Consolas' 'Courier New';
-  }
-
-  .sidebar .donate {
-    text-decoration: none;
-    color: #000;
-    background-color: #ffffff;
-    margin-left: 10px;
-    padding: 0 10px 0 7px;
-    display: inline-block;
-    line-height: 30px;
-  }
-
-    .sidebar .donate:first-child {
-      margin-left: 0;
-    }
-
-/* Sidebar animations */
-
-body[data-sidebar-open] .sidebar {
-  transform: translateX(-400px);
-}
-
-body[data-sidebar-open] .sidebar-button {
-  transform: translateX(-20px);
-}
-
-  body[data-sidebar-open] .sidebar-button i {
-    transform: rotate(-180deg);
-  }
-
-    body[data-sidebar-open] .sidebar-button i:first-child {
-      opacity: 0;
-    }
-    body[data-sidebar-open] .sidebar-button i:last-child {
-      opacity: 1;
-    }

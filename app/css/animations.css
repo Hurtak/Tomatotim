@@ -1,4 +1,48 @@
-/* TODO: be more specific */
-* {
-  transition: .5s all;
+
+/* animations */
+
+body[data-sidebar-open] .sidebar {
+  transform: translateX(-400px);
+}
+
+body[data-sidebar-open] .sidebar-overlay {
+  opacity: 1;
+  transform: translateX(-100%);
+}
+
+body[data-sidebar-open] .sidebar-button {
+  transform: translateX(-20px);
+}
+
+  body[data-sidebar-open] .sidebar-button i {
+    transform: rotate(-180deg);
+  }
+
+    body[data-sidebar-open] .sidebar-button i:first-child {
+      opacity: 0;
+    }
+
+    body[data-sidebar-open] .sidebar-button i:last-child {
+      opacity: 1;
+    }
+
+/* transitions */
+
+body[data-sidebar-open] .sidebar,
+body[data-sidebar-open] .sidebar-button,
+body[data-sidebar-open] .sidebar-button i,
+.sidebar,
+.sidebar-button,
+.sidebar-button i {
+  transition: all .6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+body[data-sidebar-open] .sidebar-overlay {
+  transition: opacity 1s;
+}
+
+.sidebar-overlay {
+  transition: -webkit-transform .3s step-end,
+                      transform .3s step-end,
+                        opacity .3s;
 }

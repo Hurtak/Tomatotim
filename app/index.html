@@ -61,7 +61,7 @@
         <div id="description" class="description">
         </div>
         <div id="clock" class="clock">
-          25:00
+          25:00 <!-- TODO: remove this and set fixed height to .clock -->
         </div>
         <div id="progress" class="progress">
         </div>
@@ -87,6 +87,10 @@
       <i class="icon-cog-circled"></i>
       <i class="icon-cancel-circle-2"></i>
     </button>
+
+    <!-- sidebar overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay">
+    </div>
 
     <!-- sidebar -->
     <div id="sidebar" class="sidebar">
@@ -133,7 +137,7 @@
       </h2>
       <p>TODO</p>
 
-      <!-- settings -->
+      <!-- keyboard shortcuts -->
       <h2>
         <!-- TODO: when styles are finalized try this second icon, it was
                    better in some cases -->
@@ -160,9 +164,15 @@
 
       <!-- donate -->
       <h2>
-        <i class="icon-bitcoin-1"></i>
+        <i class="icon-gift-2"></i>
         Donate
       </h2>
+      <p>
+        <i>
+          <i class="icon-bitcoin"></i>
+          Bitcoin
+        </i>
+      </p>
       <p>
         1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ
       </p>
@@ -180,6 +190,41 @@
           blockchain
         </a>
         <!-- TODO: maybe change label? -->
+      </p>
+      <p>
+        <i class="icon-paypal-1"></i>
+        Paypal
+
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_donations">
+          <input type="hidden" name="business" value="petr.hurtak@gmail.com">
+          <input type="hidden" name="lc" value="US">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_SM.gif:NonHosted">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+
+      </p>
+
+      <!-- links -->
+      <h2>
+        <!-- <i class="icon-link-ext"></i> -->
+        <i class="icon-link-1"></i>
+        Links
+      </h2>
+      <p>
+        <a class="donate" href="https://www.twitter.com/PetrHurtak" target="_blank">
+          <i class="icon-twitter"></i>
+          @PetrHurtak
+        </a>
+      </p>
+      <p>
+        <a class="donate" href="https://github.com/Hurtak/Tomatodoro" target="_blank">
+          <i class="icon-github"></i>
+          source code
+          <!-- TODO: if we rename app, update this link -->
+        </a>
       </p>
 
     </div>

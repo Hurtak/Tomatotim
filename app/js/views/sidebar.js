@@ -3,8 +3,13 @@ views.sidebar = (function() {
 
   // TODO: maybe this should be inside init function?
   var sidebarButton = document.getElementById('sidebar-button');
+  var sidebarOverlay = document.getElementById('sidebar-overlay');
 
   var sidebarOpen = false;
+
+  var getSidebarOverlay = function () {
+    return sidebarOverlay;
+  };
 
   var getSidebarButton = function () {
     return sidebarButton;
@@ -33,6 +38,7 @@ views.sidebar = (function() {
   };
 
   return {
+    getSidebarOverlay: getSidebarOverlay,
     getSidebarButton: getSidebarButton,
     closeSidebar: closeSidebar,
     toogleSidebar: toogleSidebar

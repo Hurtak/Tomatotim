@@ -17,6 +17,7 @@ var binding = (function() {
     views.timerControls.getResetButton().addEventListener('click', timer.resetTimer);
 
     views.sidebar.getSidebarButton().addEventListener('click', views.sidebar.toogleSidebar);
+    views.sidebar.getSidebarOverlay().addEventListener('click', views.sidebar.closeSidebar);
 
     document.addEventListener('keydown', keyDown);
 
