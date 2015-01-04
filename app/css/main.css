@@ -68,17 +68,12 @@ body {
     font-size: 25px;
   }
 
-    .controls button:hover {
-      color: #fff;
-      border-color: #fff;
-    }
-
     .controls button:focus {
       outline: 0;
     }
 
     .controls button:active {
-      position: relative;
+      position: relative; /* TODO: maybe change to translate transitionY */
       top: 2px;
     }
 
