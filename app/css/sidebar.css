@@ -40,8 +40,8 @@
     color: #ffffff;
 
     border-radius: 5px;
-    padding: 2px 8px 4px;
-    margin-right: 5px;
+    padding: 3px 8px 4px;
+    margin-right: 6px;
 
     font-family: 'Consolas' 'Courier New';
   }
@@ -63,6 +63,10 @@
 
     .sidebar .link:first-child {
       margin-left: 0;
+    }
+
+    .sidebar .link:active {
+      transform: translateY(2px);
     }
 
 /* Sidebar button */
