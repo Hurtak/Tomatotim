@@ -1,15 +1,16 @@
 .sidebar {
   position: absolute;
   top: 0;
-  right: -400px;
-  width: 400px;
+  right: -450px;
+  width: 450px;
   height: 100%;
 
   padding: 20px;
   overflow-y: scroll;
 
-  background-color: rgb(51, 77, 158); /* TODO:  */
-  color: white;/* TODO:  */
+  color: #fff;
+  background-color: #213a57;
+  /*border-left: 3px solid #fff;*/
 }
 
   .sidebar .hotkey {
@@ -41,7 +42,13 @@
   .sidebar h2 {
     font-family: Verdana;
     font-weight: 400;
+
+    margin-top: 40px;
   }
+
+    .sidebar h2:first-child {
+      margin-top: 10px;
+    }
 
   .sidebar p,
   .sidebar li {
