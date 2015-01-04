@@ -17,10 +17,12 @@ var paths = {
     css: appPath + '/css/**/*.css',
     js: appPath + '/js/**/*.js',
     fonts: appPath + '/fonts/*.{eot,svg,ttf,woff}',
+    icons: appPath + '/icons/*',
     html: appPath + '/**/*.{html,htm}'
   },
   dist: {
     fonts: distPath + '/fonts',
+    icons: distPath + '/icons',
     img: distPath + '/img'
   },
 };
@@ -102,6 +104,16 @@ var options = {
       .pipe(gulp.dest(paths.dist.fonts));
   });
 
+  gulp.task('icons', function () {
+    return gulp.src(paths.app.icons)
+      .pipe(gulp.dest(paths.dist.icons));
+  });
+
+  gulp.task('extras', function () {
+    return gulp.src(appPath + '/browserconfig.xml')
+      .pipe(gulp.dest(distPath));
+  });
+
 // Browser sync
 
   gulp.task('browser-sync', function() {
@@ -127,7 +139,8 @@ var options = {
 // Main gulp tasks
 
   // builds all files and runs from dist directory
-  gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'browser-sync']);
+  gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'icons',
+                        'extras', 'browser-sync']);
 
   // skips building phase and runs from dist directory
   gulp.task('run', ['browser-sync']);
