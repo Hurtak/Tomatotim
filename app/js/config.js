@@ -1,11 +1,11 @@
 var config = (function() {
   'use strict';
 
-  var debug = true;
+  var debug = false;
 
-  var workInterval = 25 * 60 * 60;
-  var breakInterval = 5 * 60 * 60;
-  var longbreakInterval = 20 * 60 * 60;
+  var workInterval = 25 * 60;
+  var breakInterval = 5 * 60;
+  var longbreakInterval = 20 * 60;
 
   var repeat = 4;
 
@@ -16,12 +16,11 @@ var config = (function() {
   }
 
   return {
+    debug: debug,
     workInterval: workInterval,
     breakInterval: breakInterval,
     longbreakInterval: longbreakInterval,
-    repeat: repeat,
-
-    debug: debug
+    repeat: repeat
   };
 
 }());

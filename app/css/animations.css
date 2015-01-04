@@ -3,8 +3,8 @@ body[data-sidebar-open] .sidebar {
 }
 
 body[data-sidebar-open] .sidebar-overlay {
-  opacity: 1;
   transform: translateX(-100%);
+  opacity: 1;
 }
 
 body[data-sidebar-open] .sidebar-button {
@@ -47,7 +47,7 @@ body[data-sidebar-open] .sidebar-button i,
 }
 
 body[data-sidebar-open] .sidebar-overlay {
-  /* TODO: check if cubicoverlay doesent impact performance */
+  /* TODO: check if overlay doesent impact performance */
   transition: opacity .7s ease;
 }
 
