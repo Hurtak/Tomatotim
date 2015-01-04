@@ -1,19 +1,22 @@
 views.timerControls = (function() {
   'use strict';
 
-  var startButtonState = true;
+  var startButtonState = true; // true == start state, false == pause state
+
+  var startButton = document.getElementById('start');
+  var resetButton = document.getElementById('reset');
+  var skipButton = document.getElementById('skip');
+
+  var startButtonIcon = document.getElementById('start-icon');
+  var startButtonCaption = document.getElementById('start-caption');
 
   var toogleStartButtonCaption = function() {
-    var button = getStartButton();
-    var caption = button.querySelector('span');
-    var icon = button.querySelector('i');
-
     if (startButtonState) {
-      caption.innerHTML = 'pause';
-      icon.className = 'icon-pause-1';
+      startButtonCaption.innerHTML = 'pause';
+      startButtonIcon.className = 'icon-pause-1';
     } else {
-      caption.innerHTML = 'start';
-      icon.className = 'icon-play-1';
+      startButtonCaption.innerHTML = 'start';
+      startButtonIcon.className = 'icon-play-1';
     }
 
     startButtonState = !startButtonState;
@@ -26,15 +29,15 @@ views.timerControls = (function() {
   };
 
   var getStartButton = function () {
-    return document.getElementById('start');
+    return startButton;
   };
 
   var getResetButton = function () {
-    return document.getElementById('reset');
+    return resetButton;
   };
 
   var getSkipButton = function () {
-    return document.getElementById('skip');
+    return skipButton;
   };
 
   return {

@@ -6,7 +6,7 @@ views.progress = (function() {
 
   var description = document.getElementById('description');
 
-  var imagesAlt = {
+  var imagesTitle = {
     'unfinished': 'Unfinished interval',
     'work': 'Work interval',
     'break': 'Break interval',
@@ -16,7 +16,7 @@ views.progress = (function() {
 
   var setImageType = function(type, index) {
     images[index].className = 'icon-tomato color-' + type;
-    images[index].title = imagesAlt[type];
+    images[index].title = imagesTitle[type];
   };
 
   var resetProgress = function() {
@@ -30,7 +30,7 @@ views.progress = (function() {
   var createImage = function(type) {
     var i = document.createElement('i');
     i.className = 'icon-tomato color-' + type;
-    i.title = imagesAlt[type];
+    i.title = imagesTitle[type];
     imagesWrapper.appendChild(i);
   };
 

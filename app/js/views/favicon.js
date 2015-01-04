@@ -1,9 +1,6 @@
 views.favicon = (function() {
   'use strict';
 
-  // TODO: check if this line is needed
-  var head = document.head || document.getElementsByTagName('head')[0];
-
   /**
    * types: 'work', 'break', 'longbreak'
    */
@@ -18,10 +15,10 @@ views.favicon = (function() {
     link.id = 'dynamic-favicon';
 
     if (oldLink) {
-      head.removeChild(oldLink);
+      document.head.removeChild(oldLink);
     }
 
-    head.appendChild(link);
+    document.head.appendChild(link);
   };
 
   return {

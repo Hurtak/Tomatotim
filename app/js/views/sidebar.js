@@ -1,11 +1,10 @@
 views.sidebar = (function() {
   'use strict';
 
-  // TODO: maybe this should be inside init function?
+  var sidebarOpen = false;
+
   var sidebarButton = document.getElementById('sidebar-button');
   var sidebarOverlay = document.getElementById('sidebar-overlay');
-
-  var sidebarOpen = false;
 
   var getSidebarOverlay = function () {
     return sidebarOverlay;
