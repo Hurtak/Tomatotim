@@ -1,27 +1,53 @@
 views.favicon = (function() {
   'use strict';
 
+  var init = function() {
+    // When we change .ico favicon, IE switches to otherwise unsused .png icons,
+    // instead of using the changed one. If we remove these icons, dynamic
+    // favicon change works.
+    if (browserDetection.isIE) {
+      var del = document.querySelectorAll('[data-js-favicon-explorer]');
+
+      for (var i = 0; i < del.length; i++) {
+        document.head.removeChild(del[i]);
+      }
+    }
+  };
+
   /**
    * types: 'work', 'break', 'longbreak'
    */
   var setFavicon = function(type) {
-    var link = document.createElement('link'),
-    oldLink = document.getElementById('dynamic-favicon');
+    var icon;
+    if (browserDetection.isFirefox || browserDetection.isIE) {
+      icon = document.getElementById('favicon-ico');
 
-    link.rel = 'icon';
-    link.setAttribute('type', 'image/png'); // TODO: maybe remove these?
-    link.href = '/icons/favicon-16x16-' + type + '.png';
-    link.setAttribute('sizes', '16x16'); // TODO: maybe remove these?
-    link.id = 'dynamic-favicon';
+      icon.rel = 'shortcut icon';
+      icon.href = 'icons/favicon-' + type + '.ico';
+      icon.id = 'favicon-ico';
+    } else {
+      // chrome, opera
+      // TODO: test with Safari
+      icon = document.createElement('link');
+      var oldIcon = document.getElementById('favicon-png');
 
-    if (oldLink) {
-      document.head.removeChild(oldLink);
+      icon.rel = 'icon';
+      icon.setAttribute('type', 'image/png'); // TODO: maybe remove these?
+      icon.href = '/icons/favicon-16x16-' + type + '.png';
+      icon.setAttribute('sizes', '16x16'); // TODO: maybe remove these?
+      icon.id = 'favicon-png';
+
+      if (oldIcon) {
+        document.head.removeChild(oldIcon);
+      }
+
+      document.head.appendChild(icon);
     }
 
-    document.head.appendChild(link);
   };
 
   return {
+    init: init,
     setFavicon: setFavicon
   };
 
