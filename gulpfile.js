@@ -109,11 +109,6 @@ var options = {
       .pipe(gulp.dest(paths.dist.icons));
   });
 
-  gulp.task('extras', function () {
-    return gulp.src(appPath + '/browserconfig.xml')
-      .pipe(gulp.dest(distPath));
-  });
-
 // Browser sync
 
   gulp.task('browser-sync', function() {
@@ -140,7 +135,7 @@ var options = {
 
   // builds all files and runs from dist directory
   gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'icons',
-                        'extras', 'browser-sync']);
+                        'browser-sync']);
 
   // skips building phase and runs from dist directory
   gulp.task('run', ['browser-sync']);
