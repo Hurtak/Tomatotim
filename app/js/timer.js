@@ -103,7 +103,7 @@ var timer = (function() {
     }
 
     views.title.setTitle(secondsToTime(timerInterval), timer);
-    views.timerControls.toogleStartButtonCaption();
+    views.controls.toogleStartButtonCaption();
 
     if (intervalIndex === 0) {
       views.progress.setImageType('work', 0);
@@ -128,7 +128,7 @@ var timer = (function() {
     var time = secondsToTime(timerInterval);
 
     views.timer.setTime(time);
-    views.timerControls.resetStartButton();
+    views.controls.resetStartButton();
 
     views.title.resetTitle();
     views.favicon.setFavicon('work');

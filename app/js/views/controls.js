@@ -1,4 +1,4 @@
-views.timerControls = (function() {
+views.controls = (function() {
   'use strict';
 
   var startButtonState = true; // true == start state, false == pause state

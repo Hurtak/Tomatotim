@@ -12,9 +12,9 @@ var binding = (function() {
 
   var init = function () {
 
-    views.timerControls.getStartButton().addEventListener('click', timer.startTimer);
-    views.timerControls.getSkipButton().addEventListener('click', timer.skipInterval);
-    views.timerControls.getResetButton().addEventListener('click', timer.resetTimer);
+    views.controls.getStartButton().addEventListener('click', timer.startTimer);
+    views.controls.getSkipButton().addEventListener('click', timer.skipInterval);
+    views.controls.getResetButton().addEventListener('click', timer.resetTimer);
 
     views.sidebar.getSidebarButton().addEventListener('click', views.sidebar.toogleSidebar);
     views.sidebar.getSidebarOverlay().addEventListener('click', views.sidebar.closeSidebar);
