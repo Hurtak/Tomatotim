@@ -47,7 +47,9 @@ var timer = (function() {
     services.title.setTitle(time, timer);
   };
 
-  var nextInterval = function() {
+  var nextInterval = function(skipped) {
+    skipped = skipped || false;
+
     intervalIndex++;
     if (intervalIndex > intervals.length - 1) {
       intervalIndex = 0;
@@ -64,11 +66,19 @@ var timer = (function() {
     if (intervalIndex === intervals.length - 1) {
       // last interval
       services.favicon.setFavicon('longbreak');
+      if (!skipped) {
+        services.notification.newNotification(config.longbreakInterval / 60 +
+          ' minute long break', 'longbreak');
+      }
       views.progress.setDescription('long break');
       views.progress.setImageType('longbreak', imageIndex);
     } else if (intervalIndex % 2 === 1) {
       // odd interval
       services.favicon.setFavicon('break');
+      if (!skipped) {
+        services.notification.newNotification(config.breakInterval / 60 +
+          ' minute break', 'break');
+      }
       views.progress.setDescription('break');
       views.progress.setImageType('break', imageIndex);
     } else if (intervalIndex % 2 === 0) {
@@ -78,13 +88,20 @@ var timer = (function() {
         views.progress.setDescription('work');
         views.progress.setImageType('work', imageIndex);
         views.progress.setImageType('finished', imageIndex - 1);
+        if (!skipped) {
+          services.notification.newNotification(config.workInterval / 60 +
+            ' minute work', 'work');
+        }
+      } else if (!skipped) {
+        // TODO: think of better notification text
+        services.notification.newNotification('Done', 'work');
       }
     }
 
   };
 
   var skipInterval = function () {
-    nextInterval();
+    nextInterval(true);
 
     if (timer) {
       // resets timeout countdown
