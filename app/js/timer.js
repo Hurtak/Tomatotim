@@ -44,7 +44,7 @@ var timer = (function() {
 
     var time = secondsToTime(timerInterval);
     views.timer.setTime(time);
-    views.title.setTitle(time, timer);
+    services.title.setTitle(time, timer);
   };
 
   var nextInterval = function() {
@@ -63,17 +63,17 @@ var timer = (function() {
     // invervals[ work, break, work, break, ... , long break ]
     if (intervalIndex === intervals.length - 1) {
       // last interval
-      views.favicon.setFavicon('longbreak');
+      services.favicon.setFavicon('longbreak');
       views.progress.setDescription('long break');
       views.progress.setImageType('longbreak', imageIndex);
     } else if (intervalIndex % 2 === 1) {
       // odd interval
-      views.favicon.setFavicon('break');
+      services.favicon.setFavicon('break');
       views.progress.setDescription('break');
       views.progress.setImageType('break', imageIndex);
     } else if (intervalIndex % 2 === 0) {
       // even interval
-      views.favicon.setFavicon('work');
+      services.favicon.setFavicon('work');
       if (intervalIndex > 0) {
         views.progress.setDescription('work');
         views.progress.setImageType('work', imageIndex);
@@ -92,7 +92,7 @@ var timer = (function() {
       runTimer();
     }
 
-    views.title.setTitle(secondsToTime(timerInterval), timer);
+    services.title.setTitle(secondsToTime(timerInterval), timer);
   };
 
   var startTimer = function() {
@@ -102,7 +102,7 @@ var timer = (function() {
       pauseTimer();
     }
 
-    views.title.setTitle(secondsToTime(timerInterval), timer);
+    services.title.setTitle(secondsToTime(timerInterval), timer);
     views.controls.toogleStartButtonCaption();
 
     if (intervalIndex === 0) {
@@ -130,8 +130,8 @@ var timer = (function() {
     views.timer.setTime(time);
     views.controls.resetStartButton();
 
-    views.title.resetTitle();
-    views.favicon.setFavicon('work');
+    services.title.resetTitle();
+    services.favicon.setFavicon('work');
 
     views.progress.resetProgress();
   };

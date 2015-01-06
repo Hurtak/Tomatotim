@@ -1,19 +1,17 @@
-views.title = (function() {
+services.title = (function() {
   'use strict';
-
-  var appName = document.title;
 
   var setTitle = function(title, paused) {
     var titlePrefix = '';
     if (!paused) {
-      titlePrefix = '\u25A0 ';
+      titlePrefix = '\u25A0 '; // black square character
     }
 
-    document.title = titlePrefix + title + ' – ' + appName;
+    document.title = titlePrefix + title + ' – ' + config.appName;
   };
 
   var resetTitle = function () {
-    document.title = appName;
+    document.title = config.appName;
   };
 
   return {

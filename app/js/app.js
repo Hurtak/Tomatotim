@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  views.favicon.init();
+  services.favicon.init();
 
   progress.init();
   timer.init();

@@ -1,4 +1,4 @@
-views.favicon = (function() {
+services.favicon = (function() {
   'use strict';
 
   var icon = document.getElementById('favicon-ico');

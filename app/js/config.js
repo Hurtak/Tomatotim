@@ -3,11 +3,13 @@ var config = (function() {
 
   var debug = false;
 
-  var workInterval = 25 * 60;
+  var workInterval = 25 * 60; // seconds
   var breakInterval = 5 * 60;
   var longbreakInterval = 20 * 60;
 
   var repeat = 4;
+
+  var appName = document.title;
 
   if (debug) {
     workInterval = 25;
@@ -20,7 +22,11 @@ var config = (function() {
     workInterval: workInterval,
     breakInterval: breakInterval,
     longbreakInterval: longbreakInterval,
-    repeat: repeat
+    repeat: repeat,
+    appName: appName
   };
 
 }());
+
+var services = {};
+var views = {};
