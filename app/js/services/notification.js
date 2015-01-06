@@ -1,23 +1,23 @@
 services.notification = (function() {
   'use strict';
 
-  var notificationTimeout = 3000; // miliseconds
+  var notificationTimeout = 5; // seconds
+  var notificationsSupported = false;
 
   var init = function() {
-    if (Notification && Notification.permission !== 'granted') {
+
+    if (typeof Notification === 'function' && Notification.permission !== 'granted') {
       Notification.requestPermission();
+      notificationsSupported = true;
     }
 
-    // if (!Notification) {
-    //   return;
-    // }
-    //
-    // if (Notification.permission !== 'granted') {
-    //   Notification.requestPermission();
-    // }
   };
 
   var newNotification = function (message, iconType) {
+    if (!notificationsSupported) {
+      return;
+    }
+
     var notification = new Notification(config.appName, {
       icon: 'icons/favicon-' + iconType + '.ico',
       body: message,
@@ -26,7 +26,7 @@ services.notification = (function() {
     notification.onshow = function () {
       setTimeout(function () {
         notification.close();
-      }, notificationTimeout);
+      }, notificationTimeout * 1000);
     };
 
     // TODO: when we have option which automatically pauses timer after
