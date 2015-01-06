@@ -8,8 +8,7 @@ var timer = (function() {
   var timer;
 
   var init = function () {
-    views.timer.setTime(secondsToTime(timerInterval));
-
+    // initialize intervals array
     for (var i = 0; i < config.repeat; i++) {
       intervals.push(config.workInterval);
       if (i < config.repeat - 1) {
@@ -17,6 +16,25 @@ var timer = (function() {
       }
     }
     intervals.push(config.longbreakInterval);
+
+    // load save progress
+    intervalIndex = services.storage.get('intervalIndex') || intervalIndex;
+    timerInterval = services.storage.get('timerInterval') || timerInterval;
+
+    for (var index = 0; index <= intervalIndex; index++) {
+      updateTimerViews(index, true);
+    }
+
+    if (intervalIndex === 0 && timerInterval < config.workInterval) {
+      views.progress.setImageType('work', 0);
+      views.progress.setDescription('work');
+    }
+
+    if (intervalIndex === 0 && timerInterval === config.workInterval) {
+      services.title.resetTitle();
+    } else {
+      services.title.setTitle(secondsToTime(timerInterval));
+    }
 
   };
 
@@ -43,8 +61,11 @@ var timer = (function() {
     }
 
     var time = secondsToTime(timerInterval);
+
     views.timer.setTime(time);
+
     services.title.setTitle(time, timer);
+    services.storage.set('timerInterval', timerInterval);
   };
 
   var nextInterval = function(skipped) {
@@ -58,25 +79,43 @@ var timer = (function() {
 
     timerInterval = intervals[intervalIndex];
 
-    var imageIndex = Math.floor(intervalIndex / 2);
+    updateTimerViews(intervalIndex, skipped);
+
+    services.storage.set('intervalIndex', intervalIndex);
+
+    if (skipped) {
+      if (timer) {
+        // resets timeout countdown
+        pauseTimer();
+        runTimer();
+      }
+
+      services.title.setTitle(secondsToTime(timerInterval), timer);
+      services.storage.set('intervalIndex', intervalIndex);
+      services.storage.set('timerInterval', timerInterval);
+    }
+  };
+
+  var updateTimerViews = function(index, skipped) {
+    var imageIndex = Math.floor(index / 2);
 
     views.timer.setTime(secondsToTime(timerInterval));
 
     // invervals[ work, break, work, break, ... , long break ]
-    if (intervalIndex === intervals.length - 1) {
+    if (index === intervals.length - 1) {
       // last interval
 
       services.favicon.setFavicon('longbreak');
       if (!skipped) {
         services.notification.newNotification(config.longbreakInterval / 60 +
           ' minute long break', 'longbreak');
-        services.audio.play();
+          services.audio.play();
       }
 
       views.progress.setDescription('long break');
       views.progress.setImageType('longbreak', imageIndex);
 
-    } else if (intervalIndex === 0) {
+    } else if (index === 0) {
       // first interval: 0
 
       services.favicon.setFavicon('work');
@@ -86,21 +125,21 @@ var timer = (function() {
         services.audio.play();
       }
 
-    } else if (intervalIndex % 2 === 0) {
+    } else if (index % 2 === 0) {
       // even interval: 2, 4, 6
 
       services.favicon.setFavicon('work');
       if (!skipped) {
         services.notification.newNotification(config.workInterval / 60 +
           ' minute work', 'work');
-          services.audio.play();
+        services.audio.play();
       }
 
       views.progress.setDescription('work');
       views.progress.setImageType('work', imageIndex);
       views.progress.setImageType('finished', imageIndex - 1);
 
-    } else if (intervalIndex % 2 === 1) {
+    } else if (index % 2 === 1) {
       // odd interval: 1, 3, 6..
 
       services.favicon.setFavicon('break');
@@ -115,19 +154,15 @@ var timer = (function() {
 
     }
 
-    if (skipped) {
-      if (timer) {
-        // resets timeout countdown
-        pauseTimer();
-        runTimer();
-      }
-
-      services.title.setTitle(secondsToTime(timerInterval), timer);
-    }
   };
 
   var skipInterval = function () {
     nextInterval(true);
+
+
+    console.log('timerInterval', timerInterval);
+    console.log('intervalIndex', intervalIndex);
+
   };
 
   var startTimer = function() {
@@ -167,6 +202,8 @@ var timer = (function() {
 
     services.title.resetTitle();
     services.favicon.setFavicon('work');
+    services.storage.set('intervalIndex', intervalIndex);
+    services.storage.set('timerInterval', timerInterval);
 
     views.progress.resetProgress();
   };
