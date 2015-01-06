@@ -20,6 +20,9 @@ services.favicon = (function() {
    * types: 'work', 'break', 'longbreak'
    */
   var setFavicon = function(type) {
+    // firefox: only uses .ico, changing href changes the icon
+    // chrome: we need to delete icon and create new one
+
     if (browserDetection.isFirefox || browserDetection.isIE) {
       icon.rel = 'shortcut icon';
       icon.href = 'icons/favicon-' + type + '.ico';
