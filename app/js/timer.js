@@ -58,58 +58,76 @@ var timer = (function() {
 
     timerInterval = intervals[intervalIndex];
 
-    views.timer.setTime(secondsToTime(timerInterval));
-
     var imageIndex = Math.floor(intervalIndex / 2);
+
+    views.timer.setTime(secondsToTime(timerInterval));
 
     // invervals[ work, break, work, break, ... , long break ]
     if (intervalIndex === intervals.length - 1) {
       // last interval
+
       services.favicon.setFavicon('longbreak');
       if (!skipped) {
         services.notification.newNotification(config.longbreakInterval / 60 +
           ' minute long break', 'longbreak');
+        services.audio.play();
       }
+
       views.progress.setDescription('long break');
       views.progress.setImageType('longbreak', imageIndex);
+
+    } else if (intervalIndex === 0) {
+      // first interval: 0
+
+      services.favicon.setFavicon('work');
+      if (!skipped) {
+        // TODO: think of better notification text
+        services.notification.newNotification('Done', 'work');
+        services.audio.play();
+      }
+
+    } else if (intervalIndex % 2 === 0) {
+      // even interval: 2, 4, 6
+
+      services.favicon.setFavicon('work');
+      if (!skipped) {
+        services.notification.newNotification(config.workInterval / 60 +
+          ' minute work', 'work');
+          services.audio.play();
+      }
+
+      views.progress.setDescription('work');
+      views.progress.setImageType('work', imageIndex);
+      views.progress.setImageType('finished', imageIndex - 1);
+
     } else if (intervalIndex % 2 === 1) {
-      // odd interval
+      // odd interval: 1, 3, 6..
+
       services.favicon.setFavicon('break');
       if (!skipped) {
         services.notification.newNotification(config.breakInterval / 60 +
           ' minute break', 'break');
+        services.audio.play();
       }
+
       views.progress.setDescription('break');
       views.progress.setImageType('break', imageIndex);
-    } else if (intervalIndex % 2 === 0) {
-      // even interval
-      services.favicon.setFavicon('work');
-      if (intervalIndex > 0) {
-        views.progress.setDescription('work');
-        views.progress.setImageType('work', imageIndex);
-        views.progress.setImageType('finished', imageIndex - 1);
-        if (!skipped) {
-          services.notification.newNotification(config.workInterval / 60 +
-            ' minute work', 'work');
-        }
-      } else if (!skipped) {
-        // TODO: think of better notification text
-        services.notification.newNotification('Done', 'work');
-      }
+
     }
 
+    if (skipped) {
+      if (timer) {
+        // resets timeout countdown
+        pauseTimer();
+        runTimer();
+      }
+
+      services.title.setTitle(secondsToTime(timerInterval), timer);
+    }
   };
 
   var skipInterval = function () {
     nextInterval(true);
-
-    if (timer) {
-      // resets timeout countdown
-      pauseTimer();
-      runTimer();
-    }
-
-    services.title.setTitle(secondsToTime(timerInterval), timer);
   };
 
   var startTimer = function() {
