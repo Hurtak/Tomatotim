@@ -2,6 +2,9 @@ var config = (function() {
   'use strict';
 
   var debug = false;
+  if (window.location.search.indexOf('debug') > -1) {
+    debug = true;
+  }
 
   var workInterval = 25 * 60; // seconds
   var breakInterval = 5 * 60;
