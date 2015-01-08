@@ -3,6 +3,7 @@ var binding = (function() {
 
   var keys = {
     space: 32,
+    enter: 13,
     esc: 27,
     tab: 9,
     r: 82,
@@ -44,6 +45,7 @@ var binding = (function() {
         views.sidebar.toogleSidebar();
         break;
       case keys.tab:
+      case keys.enter:
         e.preventDefault();
         break;
       default:
