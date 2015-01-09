@@ -26,7 +26,6 @@
   .sidebar p,
   .sidebar li {
     line-height: 140%;
-    text-align: justify;
   }
 
   .sidebar a {
@@ -67,6 +66,10 @@
     .sidebar .link:active {
       transform: translateY(2px);
     }
+
+  .sidebar .bitcoin-address {
+    word-wrap: break-word;
+  }
 
 /* Settings */
 

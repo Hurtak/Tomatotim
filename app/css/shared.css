@@ -7,6 +7,10 @@
   user-select: none;
 }
 
+.justify {
+  text-align: justify;
+}
+
 /* colors */
 .color-work {
   color: #e94a4a;
