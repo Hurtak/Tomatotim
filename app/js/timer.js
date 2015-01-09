@@ -158,11 +158,6 @@ var timer = (function() {
 
   var skipInterval = function () {
     nextInterval(true);
-
-
-    console.log('timerInterval', timerInterval);
-    console.log('intervalIndex', intervalIndex);
-
   };
 
   var startTimer = function() {
