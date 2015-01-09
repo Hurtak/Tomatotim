@@ -10,8 +10,6 @@
 
   color: #fff;
   background-color: #213a57;
-  /* TODO: maybe add border? */
-  /*border-left: 3px solid #fff;*/
 }
 
   .sidebar h2 {
@@ -36,14 +34,15 @@
   }
 
   .sidebar .hotkey {
-    background-color: rgba(255, 255, 255, 0.15); /* TODO: change to hex */
+    /* TODO: change to hex */
+    background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 
     border-radius: 5px;
     padding: 3px 8px 4px;
     margin-right: 6px;
 
-    font-family: 'Consolas' 'Courier New';
+    font-family: 'Consolas', 'Courier New';
   }
 
   .sidebar .link {
@@ -57,12 +56,12 @@
 
     text-decoration: none;
     line-height: 30px;
-    margin-left: 15px;
+    margin-right: 15px;
     padding: 0 10px 0 7px;
   }
 
-    .sidebar .link:first-child {
-      margin-left: 0;
+    .sidebar .link:last-child {
+      margin-right: 0;
     }
 
     .sidebar .link:active {

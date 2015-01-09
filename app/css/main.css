@@ -18,10 +18,10 @@ body {
     margin-right: -0.25em;
   }
 
-.centered {
-  display: inline-block;
-  vertical-align: middle;
-}
+  .wrapper .centered {
+    display: inline-block;
+    vertical-align: middle;
+  }
 
 /* Description */
 
