@@ -126,10 +126,38 @@
         <i class="icon-wrench-4"></i>
         Settings
       </h2>
-      <p>
-        Coming soon (sound notifications, web browser notifications,
-        customizable interval lengths...)
-      </p>
+      <div class="settings">
+        <p>
+          <label>
+            <input type="checkbox" name="some_name">
+            <span>Audio notifications</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="checkbox" name="some_name" checked>
+            <span>Web notifications</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="number" name="some_name" value="25" min="5" max="600">
+            <span>Work interval length</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="number" name="some_name" value="5" min="1" max="30">
+            <span>Break interval length</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="number" name="some_name" value="20" min="5" max="120">
+            <span>Long break interval length</span>
+          </label>
+        </p>
+      </div>
 
       <!-- keyboard shortcuts -->
       <h2>
@@ -212,6 +240,8 @@
           <i class="icon-twitter"></i>
           twitter
         </a>
+      </p>
+      <p>
         <a class="link" href="https://github.com/Hurtak/Tomatodoro" target="_blank">
           <i class="icon-github"></i>
           source code

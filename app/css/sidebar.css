@@ -69,6 +69,35 @@
       transform: translateY(2px);
     }
 
+/* Settings */
+
+.settings span {
+  left: 6em;
+  position: absolute;
+}
+
+input[type=number] {
+  width: 3.7em;
+
+  border: 1px solid #fff;
+  border-radius: 5px;
+
+  text-align: right;
+  font-family: 'Consolas', 'Courier New';
+  background-color: transparent;
+}
+
+input[type=checkbox] {
+  -moz-appearance: none;
+
+  position: relative;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+
+  margin-left: 20px;
+}
+
 /* Sidebar button */
 
 .sidebar-button {
