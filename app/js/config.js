@@ -3,8 +3,14 @@ var config = (function() {
 
   var debug = false;
   if (window.location.search.indexOf('debug') > -1) {
+    // '?debug' at the end of URL activates debug mode
     debug = true;
   }
+
+  var appName = document.title;
+
+  var audioNotifications = false;
+  var webNotifications = false;
 
   var workInterval = 25 * 60; // seconds
   var breakInterval = 5 * 60;
@@ -12,21 +18,28 @@ var config = (function() {
 
   var repeat = 4;
 
-  var appName = document.title;
-
   if (debug) {
-    workInterval = 25;
+    audioNotifications = true;
+    webNotifications = true;
+
+    workInterval = 10;
     breakInterval = 5;
     longbreakInterval = 5;
+
+    repeat = 3;
+
+    appName = 'DEBUG';
   }
 
   return {
     debug: debug,
+    appName: appName,
+    audioNotifications: audioNotifications,
+    webNotifications: webNotifications,
     workInterval: workInterval,
     breakInterval: breakInterval,
     longbreakInterval: longbreakInterval,
-    repeat: repeat,
-    appName: appName
+    repeat: repeat
   };
 
 }());

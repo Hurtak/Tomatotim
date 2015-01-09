@@ -5,6 +5,7 @@
   services.notification.init();
   services.audio.init();
 
+  settings.init();
   progress.init();
   timer.init();
   binding.init();
