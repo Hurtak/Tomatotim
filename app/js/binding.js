@@ -24,6 +24,13 @@ var binding = (function() {
 
   };
 
+  var loseFocus = function() {
+    var focus = document.querySelectorAll(':focus');
+    for (var i = 0; i < focus.length; i++) {
+      focus[i].blur();
+    }
+  };
+
   var keyDown = function (e) {
     e = window.event || e; // TODO: is this necessary?
 
@@ -42,6 +49,7 @@ var binding = (function() {
         timer.skipInterval();
         break;
       case keys.h:
+        loseFocus();
         views.sidebar.toogleSidebar();
         break;
       case keys.tab:
