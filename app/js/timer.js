@@ -113,7 +113,7 @@ var timer = (function() {
       // last interval
 
       services.favicon.setFavicon('longbreak');
-      if (!skipped && config.webNotifications) {
+      if (!skipped && config.notifications) {
         services.notification.newNotification(config.longbreakInterval / 60 + ' minute long break', 'longbreak');
           services.audio.play();
       }
@@ -126,11 +126,11 @@ var timer = (function() {
 
       services.favicon.setFavicon('work');
       if (!skipped) {
-        if (config.webNotifications) {
+        if (config.notifications) {
           // TODO: think of better notification text
           services.notification.newNotification('Done', 'work');
         }
-        if (config.audioNotifications) {
+        if (config.audio) {
           services.audio.play();
         }
       }
@@ -140,10 +140,10 @@ var timer = (function() {
 
       services.favicon.setFavicon('work');
       if (!skipped) {
-        if (config.webNotifications) {
+        if (config.notifications) {
           services.notification.newNotification(config.workInterval / 60 + ' minute work', 'work');
         }
-        if (config.audioNotifications) {
+        if (config.audio) {
           services.audio.play();
         }
       }
@@ -157,10 +157,10 @@ var timer = (function() {
 
       services.favicon.setFavicon('break');
       if (!skipped) {
-        if (config.webNotifications) {
+        if (config.notifications) {
           services.notification.newNotification(config.breakInterval / 60 + ' minute break', 'break');
         }
-        if (config.audioNotifications) {
+        if (config.audio) {
           services.audio.play();
         }
       }

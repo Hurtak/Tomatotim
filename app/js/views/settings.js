@@ -1,8 +1,10 @@
 views.settings = (function() {
   'use strict';
 
-  var audioNotifications = document.getElementById('audio-notifications');
-  var webNotifications = document.getElementById('web-notifications');
+  var audio = document.getElementById('audio');
+  var audioTest = document.getElementById('audio-test');
+  var notifications = document.getElementById('notifications');
+  var notificationsTest = document.getElementById('notifications-test');
 
   var workInterval = document.getElementById('work-interval');
   var breakInterval = document.getElementById('break-interval');
@@ -13,8 +15,10 @@ views.settings = (function() {
   var resetSettings = document.getElementById('reset-settings');
 
   return {
-    audioNotifications: audioNotifications,
-    webNotifications: webNotifications,
+    audio: audio,
+    audioTest: audioTest,
+    notifications: notifications,
+    notificationsTest: notificationsTest,
     workInterval: workInterval,
     breakInterval: breakInterval,
     longbreakInterval: longbreakInterval,

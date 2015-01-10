@@ -20,14 +20,14 @@ var settings = (function() {
 
     // update config defaults with saved settings (if avaliable)
 
-    var audio = services.storage.get('audioNotifications');
+    var audio = services.storage.get('audio');
     if (audio !== null) {
-      config.audioNotifications = audio;
+      config.audio = audio;
     }
 
-    var notifications = services.storage.get('webNotifications');
+    var notifications = services.storage.get('notifications');
     if (notifications !== null) {
-      config.webNotifications = notifications;
+      config.notifications = notifications;
     }
 
     config.workInterval = services.storage.get('workInterval') || config.workInterval;
@@ -38,8 +38,8 @@ var settings = (function() {
 
     // update settings view
 
-    views.settings.audioNotifications.checked = config.audioNotifications;
-    views.settings.webNotifications.checked = config.webNotifications;
+    views.settings.audio.checked = config.audio;
+    views.settings.notifications.checked = config.notifications;
 
     views.settings.workInterval.value = config.workInterval / 60;
     views.settings.breakInterval.value = config.breakInterval / 60;
@@ -49,17 +49,25 @@ var settings = (function() {
 
     // binding
 
-    views.settings.audioNotifications.addEventListener('blur', function() {
-      config.audioNotifications = this.checked;
-      services.storage.set('audioNotifications', config.audioNotifications);
+    views.settings.audio.addEventListener('blur', function() {
+      config.audio = this.checked;
+      services.storage.set('audio', config.audio);
     });
-    views.settings.webNotifications.addEventListener('blur', function() {
-      config.webNotifications = this.checked;
-      services.storage.set('webNotifications', config.webNotifications);
-      if (config.webNotifications === true) {
+    views.settings.notifications.addEventListener('blur', function() {
+      config.notifications = this.checked;
+      services.storage.set('notifications', config.notifications);
+      if (config.notifications === true) {
         services.notification.requestPermission();
       }
     });
+
+    views.settings.audioTest.addEventListener('click', function() {
+      services.audio.play();
+    });
+    views.settings.notificationsTest.addEventListener('click', function() {
+      services.notification.newNotification('Web notification test', 'work');
+    });
+
 
     views.settings.workInterval.addEventListener('blur', function() {
       this.value = validateInput(this.value, this.min, this.max, config.workInterval / 60);
@@ -101,7 +109,7 @@ var settings = (function() {
 
     // request permisions
 
-    if (config.webNotifications === true) {
+    if (config.notifications === true) {
       services.notification.requestPermission();
     }
 

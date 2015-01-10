@@ -9,8 +9,8 @@ var config = (function() {
 
   var appName = document.title;
 
-  var audioNotifications = false;
-  var webNotifications = false;
+  var audio = false;
+  var notifications = false;
 
   var workInterval = 25 * 60; // seconds
   var breakInterval = 5 * 60;
@@ -19,8 +19,8 @@ var config = (function() {
   var repeat = 4;
 
   if (debug) {
-    audioNotifications = true;
-    webNotifications = true;
+    audio = true;
+    notifications = true;
 
     workInterval = 10;
     breakInterval = 5;
@@ -34,8 +34,8 @@ var config = (function() {
   return {
     debug: debug,
     appName: appName,
-    audioNotifications: audioNotifications,
-    webNotifications: webNotifications,
+    audio: audio,
+    notifications: notifications,
     workInterval: workInterval,
     breakInterval: breakInterval,
     longbreakInterval: longbreakInterval,

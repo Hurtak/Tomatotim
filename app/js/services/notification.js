@@ -5,17 +5,20 @@ services.notification = (function() {
 
   var requestPermission = function() {
     if (!window.Notification) {
-      return;
+      return false;
     }
 
     if (Notification.permission !== 'granted') {
       Notification.requestPermission();
+    } else {
+      return true;
     }
 
+    return false;
   };
 
   var newNotification = function(message, iconType) {
-    if (!window.Notification) {
+    if (!requestPermission()) {
       return;
     }
 
