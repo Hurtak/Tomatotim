@@ -44,6 +44,11 @@ var timer = (function() {
       services.title.setTitle(secondsToTime(timerInterval));
     }
 
+    // binding
+    views.controls.getStartButton().addEventListener('click', startTimer);
+    views.controls.getSkipButton().addEventListener('click', skipInterval);
+    views.controls.getResetButton().addEventListener('click', resetTimer);
+
   };
 
   var updateIntervals = function() {

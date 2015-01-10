@@ -19,7 +19,6 @@ var settings = (function() {
   var init = function() {
 
     // update config defaults with saved settings (if avaliable)
-
     var audio = services.storage.get('audio');
     if (audio !== null) {
       config.audio = audio;
@@ -37,7 +36,6 @@ var settings = (function() {
     config.repeat = services.storage.get('repeat') || config.repeat;
 
     // update settings view
-
     views.settings.audio.checked = config.audio;
     views.settings.notifications.checked = config.notifications;
 
@@ -47,13 +45,13 @@ var settings = (function() {
 
     views.settings.repeat.value = config.repeat;
 
-    // binding
-
+    // notifications
     views.settings.audio.addEventListener('click', function() {
       config.audio = this.checked;
 
       services.storage.set('audio', config.audio);
     });
+
     views.settings.notifications.addEventListener('click', function() {
       config.notifications = this.checked;
 
@@ -64,13 +62,16 @@ var settings = (function() {
       services.storage.set('notifications', config.notifications);
     });
 
+    // notifications test buttons
     views.settings.audioTest.addEventListener('click', function() {
       services.audio.play();
     });
+
     views.settings.notificationsTest.addEventListener('click', function() {
       services.notification.newNotification('Web notification test', 'work');
     });
 
+    // interval settings
     views.settings.workInterval.addEventListener('blur', function() {
       this.value = validateInput(this.value, this.min, this.max, config.workInterval / 60);
 
@@ -79,6 +80,7 @@ var settings = (function() {
 
       services.storage.set('workInterval', config.workInterval);
     });
+
     views.settings.breakInterval.addEventListener('blur', function() {
       this.value = validateInput(this.value, this.min, this.max, config.breakInterval / 60);
 
@@ -87,6 +89,7 @@ var settings = (function() {
 
       services.storage.set('breakInterval', config.breakInterval);
     });
+
     views.settings.longbreakInterval.addEventListener('blur', function() {
       this.value = validateInput(this.value, this.min, this.max, config.longbreakInterval / 60);
 
@@ -96,6 +99,7 @@ var settings = (function() {
       services.storage.set('longbreakInterval', config.longbreakInterval);
     });
 
+    // repeat
     views.settings.repeat.addEventListener('input', function() {
       this.value = validateInput(this.value, this.min, this.max, config.repeat);
 
@@ -107,6 +111,7 @@ var settings = (function() {
       services.storage.set('repeat', config.repeat);
     });
 
+    // reset settings
     views.settings.resetSettings.addEventListener('click', function() {
       var confim = confirm('Are you sure?');
       if (confim) {
@@ -116,7 +121,6 @@ var settings = (function() {
     });
 
     // request permisions in case we have notifications enabled in saved settings
-
     if (config.notifications === true) {
       services.notification.requestPermission();
     }

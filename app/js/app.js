@@ -5,7 +5,8 @@
   services.audio.init();
 
   settings.init();
+  sidebar.init();
   timer.init();
-  binding.init();
+  hotkeys.init();
 
 }());

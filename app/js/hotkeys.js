@@ -1,4 +1,4 @@
-var binding = (function() {
+var hotkeys = (function() {
   'use strict';
 
   var keys = {
@@ -12,16 +12,7 @@ var binding = (function() {
   };
 
   var init = function () {
-
-    views.controls.getStartButton().addEventListener('click', timer.startTimer);
-    views.controls.getSkipButton().addEventListener('click', timer.skipInterval);
-    views.controls.getResetButton().addEventListener('click', timer.resetTimer);
-
-    views.sidebar.getSidebarButton().addEventListener('click', views.sidebar.toogleSidebar);
-    views.sidebar.getSidebarOverlay().addEventListener('click', views.sidebar.closeSidebar);
-
     document.addEventListener('keydown', keyDown);
-
   };
 
   var loseFocus = function() {
