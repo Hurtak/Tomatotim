@@ -3,7 +3,7 @@ services.notification = (function() {
 
   var notificationTimeout = 5; // seconds
 
-  var init = function() {
+  var requestPermission = function() {
     if (!window.Notification) {
       return;
     }
@@ -41,7 +41,7 @@ services.notification = (function() {
   };
 
   return {
-    init: init,
+    requestPermission: requestPermission,
     newNotification: newNotification
   };
 

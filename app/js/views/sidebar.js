@@ -36,9 +36,14 @@ views.sidebar = (function() {
     }
   };
 
+  var isSidebarOpen = function() {
+    return sidebarOpen;
+  };
+
   return {
     getSidebarOverlay: getSidebarOverlay,
     getSidebarButton: getSidebarButton,
+    isSidebarOpen: isSidebarOpen,
     closeSidebar: closeSidebar,
     toogleSidebar: toogleSidebar
   };

@@ -8,7 +8,7 @@ views.settings = (function() {
   var breakInterval = document.getElementById('break-interval');
   var longbreakInterval = document.getElementById('longbreak-interval');
 
-  var numberOfIntervals = document.getElementById('number-of-intervals');
+  var repeat = document.getElementById('repeat');
 
   return {
     audioNotifications: audioNotifications,
@@ -16,7 +16,7 @@ views.settings = (function() {
     workInterval: workInterval,
     breakInterval: breakInterval,
     longbreakInterval: longbreakInterval,
-    numberOfIntervals: numberOfIntervals
+    repeat: repeat
   };
 
 }());

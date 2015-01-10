@@ -1,25 +1,19 @@
 var timer = (function() {
   'use strict';
 
-  var intervalIndex = 0;
-  var timerInterval = config.workInterval;
+  var intervalIndex;
+  var timerInterval;
 
   var intervals = [];
   var timer;
 
   var init = function () {
     // initialize intervals array
-    for (var i = 0; i < config.repeat; i++) {
-      intervals.push(config.workInterval);
-      if (i < config.repeat - 1) {
-        intervals.push(config.breakInterval);
-      }
-    }
-    intervals.push(config.longbreakInterval);
+    updateIntervals();
 
     // load save progress
-    intervalIndex = services.storage.get('intervalIndex') || intervalIndex;
-    timerInterval = services.storage.get('timerInterval') || timerInterval;
+    intervalIndex = services.storage.get('intervalIndex') || 0;
+    timerInterval = services.storage.get('timerInterval') || config.workInterval;
 
     for (var index = 0; index <= intervalIndex; index++) {
       updateTimerViews(index, true);
@@ -36,6 +30,19 @@ var timer = (function() {
       services.title.setTitle(secondsToTime(timerInterval));
     }
 
+  };
+
+  var updateIntervals = function() {
+    intervals = [];
+
+    for (var i = 0; i < config.repeat; i++) {
+      intervals.push(config.workInterval);
+      intervals.push(config.breakInterval);
+    }
+
+    // replace last break with long break
+    intervals.pop();
+    intervals.push(config.longbreakInterval);
   };
 
   var secondsToTime = function(seconds) {
@@ -106,9 +113,8 @@ var timer = (function() {
       // last interval
 
       services.favicon.setFavicon('longbreak');
-      if (!skipped) {
-        services.notification.newNotification(config.longbreakInterval / 60 +
-          ' minute long break', 'longbreak');
+      if (!skipped && config.webNotifications) {
+        services.notification.newNotification(config.longbreakInterval / 60 + ' minute long break', 'longbreak');
           services.audio.play();
       }
 
@@ -120,9 +126,13 @@ var timer = (function() {
 
       services.favicon.setFavicon('work');
       if (!skipped) {
-        // TODO: think of better notification text
-        services.notification.newNotification('Done', 'work');
-        services.audio.play();
+        if (config.webNotifications) {
+          // TODO: think of better notification text
+          services.notification.newNotification('Done', 'work');
+        }
+        if (config.audioNotifications) {
+          services.audio.play();
+        }
       }
 
     } else if (index % 2 === 0) {
@@ -130,9 +140,12 @@ var timer = (function() {
 
       services.favicon.setFavicon('work');
       if (!skipped) {
-        services.notification.newNotification(config.workInterval / 60 +
-          ' minute work', 'work');
-        services.audio.play();
+        if (config.webNotifications) {
+          services.notification.newNotification(config.workInterval / 60 + ' minute work', 'work');
+        }
+        if (config.audioNotifications) {
+          services.audio.play();
+        }
       }
 
       views.progress.setDescription('work');
@@ -144,9 +157,12 @@ var timer = (function() {
 
       services.favicon.setFavicon('break');
       if (!skipped) {
-        services.notification.newNotification(config.breakInterval / 60 +
-          ' minute break', 'break');
-        services.audio.play();
+        if (config.webNotifications) {
+          services.notification.newNotification(config.breakInterval / 60 + ' minute break', 'break');
+        }
+        if (config.audioNotifications) {
+          services.audio.play();
+        }
       }
 
       views.progress.setDescription('break');
@@ -205,6 +221,7 @@ var timer = (function() {
 
   return {
     init: init,
+    updateIntervals: updateIntervals,
     startTimer: startTimer,
     pauseTimer: pauseTimer,
     skipInterval: skipInterval,

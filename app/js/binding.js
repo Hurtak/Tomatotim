@@ -45,6 +45,10 @@ var binding = (function() {
         views.sidebar.toogleSidebar();
         break;
       case keys.tab:
+        if (!views.sidebar.isSidebarOpen()) {
+          e.preventDefault();
+        }
+        break;
       case keys.enter:
         e.preventDefault();
         break;
