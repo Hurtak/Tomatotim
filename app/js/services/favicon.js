@@ -8,7 +8,7 @@ services.favicon = (function() {
     // instead of using the changed one. If we remove these icons, dynamic
     // favicon change works.
     if (browserDetection.isIE) {
-      var favicons = document.querySelectorAll('[data-js-favicon-explorer]');
+      var favicons = document.querySelectorAll('[data-favicon-explorer]');
 
       for (var index = 0; index < favicons.length; index++) {
         document.head.removeChild(favicons[index]);
