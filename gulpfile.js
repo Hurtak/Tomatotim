@@ -13,16 +13,18 @@ var distPath = 'dist';
 
 var paths = {
   app: {
-    img: appPath + '/img/**/*',
-    css: appPath + '/css/**/*.css',
+    html: appPath + '/**/*.{html,htm}',
     js: appPath + '/js/**/*.js',
+    css: appPath + '/css/**/*.css',
+    img: appPath + '/img/**/*',
     fonts: appPath + '/fonts/*.{eot,svg,ttf,woff}',
     icons: appPath + '/icons/*',
-    html: appPath + '/**/*.{html,htm}'
+    audio: appPath + '/audio/*'
   },
   dist: {
     fonts: distPath + '/fonts',
     icons: distPath + '/icons',
+    audio: distPath + '/audio',
     img: distPath + '/img'
   },
 };
@@ -109,6 +111,11 @@ var options = {
       .pipe(gulp.dest(paths.dist.icons));
   });
 
+  gulp.task('audio', function () {
+    return gulp.src(paths.app.audio)
+      .pipe(gulp.dest(paths.dist.audio));
+  });
+
 // Browser sync
 
   gulp.task('browser-sync', function() {
@@ -135,7 +142,7 @@ var options = {
 
   // builds all files and runs from dist directory
   gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'icons',
-                        'browser-sync']);
+                        'audio', 'browser-sync']);
 
   // skips building phase and runs from dist directory
   gulp.task('run', ['browser-sync']);
