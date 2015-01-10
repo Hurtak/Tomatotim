@@ -10,11 +10,10 @@ services.notification = (function() {
 
     if (Notification.permission !== 'granted') {
       Notification.requestPermission();
+      return false;
     } else {
       return true;
     }
-
-    return false;
   };
 
   var newNotification = function(message, iconType) {

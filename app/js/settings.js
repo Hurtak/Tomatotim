@@ -49,11 +49,11 @@ var settings = (function() {
 
     // binding
 
-    views.settings.audio.addEventListener('blur', function() {
+    views.settings.audio.addEventListener('click', function() {
       config.audio = this.checked;
       services.storage.set('audio', config.audio);
     });
-    views.settings.notifications.addEventListener('blur', function() {
+    views.settings.notifications.addEventListener('click', function() {
       config.notifications = this.checked;
       services.storage.set('notifications', config.notifications);
       if (config.notifications === true) {
@@ -67,7 +67,6 @@ var settings = (function() {
     views.settings.notificationsTest.addEventListener('click', function() {
       services.notification.newNotification('Web notification test', 'work');
     });
-
 
     views.settings.workInterval.addEventListener('blur', function() {
       this.value = validateInput(this.value, this.min, this.max, config.workInterval / 60);
@@ -107,14 +106,13 @@ var settings = (function() {
       }
     });
 
-    // request permisions
+    // request permisions in case we have notifications enabled in saved settings
 
     if (config.notifications === true) {
       services.notification.requestPermission();
     }
 
   };
-
 
   return {
     init: init
