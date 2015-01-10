@@ -1,6 +1,21 @@
 var settings = (function() {
   'use strict';
 
+  var validateInput = function(value, min, max, defaultValue) {
+    var number = Math.floor(value);
+
+    if (!number) {
+      // after Math.floor all non-number values are converted to 0
+      number = defaultValue;
+    } else if (number < min * 1) {
+      number = min;
+    } else if (number > max * 1) {
+      number = max;
+    }
+
+    return number;
+  };
+
   var init = function() {
 
     // update config defaults with saved settings (if avaliable)
@@ -47,22 +62,30 @@ var settings = (function() {
     });
 
     views.settings.workInterval.addEventListener('blur', function() {
+      this.value = validateInput(this.value, this.min, this.max, config.workInterval / 60);
+
       config.workInterval = this.value * 60;
       services.storage.set('workInterval', config.workInterval);
       timer.updateIntervals();
     });
     views.settings.breakInterval.addEventListener('blur', function() {
+      this.value = validateInput(this.value, this.min, this.max, config.breakInterval / 60);
+
       config.breakInterval = this.value * 60;
       services.storage.set('breakInterval', config.breakInterval);
       timer.updateIntervals();
     });
     views.settings.longbreakInterval.addEventListener('blur', function() {
+      this.value = validateInput(this.value, this.min, this.max, config.longbreakInterval / 60);
+
       config.longbreakInterval = this.value * 60;
       services.storage.set('longbreakInterval', config.longbreakInterval);
       timer.updateIntervals();
     });
 
     views.settings.repeat.addEventListener('blur', function() {
+      this.value = validateInput(this.value, this.min, this.max, config.repeat);
+
       config.repeat = this.value * 1;
       services.storage.set('repeat', config.repeat);
       timer.updateIntervals();
