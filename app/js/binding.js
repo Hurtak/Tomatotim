@@ -25,9 +25,9 @@ var binding = (function() {
   };
 
   var loseFocus = function() {
-    var focus = document.querySelectorAll(':focus');
-    for (var i = 0; i < focus.length; i++) {
-      focus[i].blur();
+    var focus = document.querySelector(':focus');
+    if (focus) {
+      focus.blur();
     }
   };
 
