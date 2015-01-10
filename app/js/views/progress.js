@@ -34,6 +34,12 @@ views.progress = (function() {
     imagesWrapper.appendChild(i);
   };
 
+  var removeImages = function() {
+    while (imagesWrapper.firstChild) {
+      imagesWrapper.removeChild(imagesWrapper.firstChild);
+    }
+  };
+
   var setDescription = function(text) {
     description.innerHTML = text;
   };
@@ -42,7 +48,8 @@ views.progress = (function() {
     setDescription: setDescription,
     setImageType: setImageType,
     resetProgress: resetProgress,
-    createImage: createImage
+    createImage: createImage,
+    removeImages: removeImages
   };
 
 }());

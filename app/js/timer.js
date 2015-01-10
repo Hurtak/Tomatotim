@@ -15,6 +15,15 @@ var timer = (function() {
     intervalIndex = services.storage.get('intervalIndex') || 0;
     timerInterval = services.storage.get('timerInterval') || config.workInterval;
 
+    // when user changes number of intervals in settings
+    if (intervalIndex > intervals.length - 1) {
+      if (intervalIndex % 2 === 0) {
+        intervalIndex = intervals.length - 2;
+      } else {
+        intervalIndex = intervals.length - 1;
+      }
+    }
+
     // initialize progress images
     for (var i = 0; i < config.repeat; i++) {
       views.progress.createImage('unfinished');

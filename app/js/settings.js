@@ -51,14 +51,17 @@ var settings = (function() {
 
     views.settings.audio.addEventListener('click', function() {
       config.audio = this.checked;
+
       services.storage.set('audio', config.audio);
     });
     views.settings.notifications.addEventListener('click', function() {
       config.notifications = this.checked;
-      services.storage.set('notifications', config.notifications);
+
       if (config.notifications === true) {
         services.notification.requestPermission();
       }
+
+      services.storage.set('notifications', config.notifications);
     });
 
     views.settings.audioTest.addEventListener('click', function() {
@@ -72,30 +75,36 @@ var settings = (function() {
       this.value = validateInput(this.value, this.min, this.max, config.workInterval / 60);
 
       config.workInterval = this.value * 60;
-      services.storage.set('workInterval', config.workInterval);
       timer.updateIntervals();
+
+      services.storage.set('workInterval', config.workInterval);
     });
     views.settings.breakInterval.addEventListener('blur', function() {
       this.value = validateInput(this.value, this.min, this.max, config.breakInterval / 60);
 
       config.breakInterval = this.value * 60;
-      services.storage.set('breakInterval', config.breakInterval);
       timer.updateIntervals();
+
+      services.storage.set('breakInterval', config.breakInterval);
     });
     views.settings.longbreakInterval.addEventListener('blur', function() {
       this.value = validateInput(this.value, this.min, this.max, config.longbreakInterval / 60);
 
       config.longbreakInterval = this.value * 60;
-      services.storage.set('longbreakInterval', config.longbreakInterval);
       timer.updateIntervals();
+
+      services.storage.set('longbreakInterval', config.longbreakInterval);
     });
 
-    views.settings.repeat.addEventListener('blur', function() {
+    views.settings.repeat.addEventListener('input', function() {
       this.value = validateInput(this.value, this.min, this.max, config.repeat);
 
       config.repeat = this.value * 1;
+
+      views.progress.removeImages();
+      timer.init();
+
       services.storage.set('repeat', config.repeat);
-      timer.updateIntervals();
     });
 
     views.settings.resetSettings.addEventListener('click', function() {
