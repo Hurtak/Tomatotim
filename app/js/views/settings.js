@@ -10,13 +10,16 @@ views.settings = (function() {
 
   var repeat = document.getElementById('repeat');
 
+  var resetSettings = document.getElementById('reset-settings');
+
   return {
     audioNotifications: audioNotifications,
     webNotifications: webNotifications,
     workInterval: workInterval,
     breakInterval: breakInterval,
     longbreakInterval: longbreakInterval,
-    repeat: repeat
+    repeat: repeat,
+    resetSettings: resetSettings
   };
 
 }());

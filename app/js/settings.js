@@ -68,6 +68,14 @@ var settings = (function() {
       timer.updateIntervals();
     });
 
+    views.settings.resetSettings.addEventListener('click', function() {
+      var confim = confirm('Are you sure?');
+      if (confim) {
+        services.storage.clear();
+        location.reload(false);
+      }
+    });
+
     // request permisions
 
     if (config.webNotifications === true) {

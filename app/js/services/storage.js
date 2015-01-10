@@ -10,9 +10,14 @@ services.storage = (function() {
     localStorage.setItem(storageName, JSON.stringify(value));
   };
 
+  var clear = function() {
+    localStorage.clear();
+  };
+
   return {
     set: set,
-    get: get
+    get: get,
+    clear: clear
   };
 
 }());
