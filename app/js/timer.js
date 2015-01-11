@@ -5,7 +5,10 @@ var timer = (function() {
   var timerInterval;
 
   var intervals = [];
+
   var timer;
+  // how often are we running precise timer to check if second of real time elapsed
+  var timerPrecision = 100;
 
   var init = function () {
     // initialize intervals array
@@ -212,7 +215,20 @@ var timer = (function() {
   };
 
   var runTimer = function () {
-    timer = setInterval(timerTick, 1000);
+    var elapsedTime = 0;
+    var before = new Date();
+
+    timer = setInterval(function() {
+      elapsedTime += new Date().getTime() - before.getTime();
+
+      if(elapsedTime >= 1000) {
+          timerTick();
+          elapsedTime -= 1000;
+      }
+
+      before = new Date();
+    }, timerPrecision);
+
   };
 
   var pauseTimer = function() {
