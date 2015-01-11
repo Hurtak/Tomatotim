@@ -4,7 +4,7 @@ services.favicon = (function() {
   var icon = document.getElementById('favicon-ico');
 
   var init = function() {
-    // When we change .ico favicon, IE switches to otherwise unsused .png icons,
+    // When we change .ico favicon, IE switches to otherwise unused .png icons,
     // instead of using the changed one. If we remove these icons, dynamic
     // favicon change works.
     if (browserDetection.isIE) {
@@ -20,8 +20,8 @@ services.favicon = (function() {
    * types: 'work', 'break', 'longbreak'
    */
   var setFavicon = function(type) {
-    // firefox: only uses .ico, changing href changes the icon
-    // chrome: we need to delete icon and create new one
+    // Firefox: only uses .ico, changing href changes the icon
+    // Chrome: we need to delete icon and create new one
 
     if (browserDetection.isFirefox || browserDetection.isIE) {
       icon.rel = 'shortcut icon';

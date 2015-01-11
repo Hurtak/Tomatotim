@@ -18,7 +18,7 @@ var settings = (function() {
 
   var init = function() {
 
-    // update config defaults with saved settings (if avaliable)
+    // update config defaults with saved settings (if available)
     var audio = services.storage.get('audio');
     if (audio !== null) {
       config.audio = audio;
@@ -120,7 +120,7 @@ var settings = (function() {
       }
     });
 
-    // request permisions in case we have notifications enabled in saved settings
+    // request permission in case we have notifications enabled in saved settings
     if (config.notifications === true) {
       services.notification.requestPermission();
     }

@@ -127,7 +127,7 @@ var timer = (function() {
 
     views.timer.setTime(secondsToTime(timerInterval));
 
-    // invervals[ work, break, work, break, ... , long break ]
+    // intervals[ work, break, work, break, ... , long break ]
     if (index === intervals.length - 1) {
       // last interval
 
