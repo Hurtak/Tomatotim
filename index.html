@@ -29,17 +29,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180x180.png">
     <meta name="apple-mobile-web-app-title" content="Tomatodoro"> <!-- TODO: application name -->
     <link rel="shortcut icon" href="icons/favicon-work.ico" id="favicon-ico">
-    <link rel="icon" type="image/png" href="icons/favicon-192x192.png" sizes="192x192" data-js-favicon-explorer>
-    <link rel="icon" type="image/png" href="icons/favicon-160x160.png" sizes="160x160" data-js-favicon-explorer>
-    <link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96" data-js-favicon-explorer>
-    <link rel="icon" type="image/png" href="icons/favicon-16x16-work.png" sizes="16x16" id="favicon-png" data-js-favicon-explorer>
-    <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" data-js-favicon-explorer>
+    <link rel="icon" type="image/png" href="icons/favicon-192x192.png" sizes="192x192" data-favicon-explorer>
+    <link rel="icon" type="image/png" href="icons/favicon-160x160.png" sizes="160x160" data-favicon-explorer>
+    <link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96" data-favicon-explorer>
+    <link rel="icon" type="image/png" href="icons/favicon-16x16-work.png" sizes="16x16" id="favicon-png" data-favicon-explorer>
+    <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" data-favicon-explorer>
     <meta name="msapplication-TileColor" content="#424242">
     <meta name="msapplication-TileImage" content="icons/mstile-144x144.png">
     <meta name="msapplication-config" content="icons/browserconfig.xml">
     <meta name="application-name" content="Tomatodoro"> <!-- TODO: application name -->
 
-    <link rel="stylesheet" href="css/main-ea759689.css">
+    <link rel="stylesheet" href="css/main-fd31aad4.css">
   </head>
   <body>
     <!-- main -->
@@ -47,11 +47,13 @@
       <div class="centered">
         <div id="description" class="description">
         </div>
+
         <div id="clock" class="clock">
-          25:00 <!-- TODO: remove this and set fixed height to .clock -->
         </div>
+
         <div id="progress" class="progress">
         </div>
+
         <div class="controls">
           <button id="start">
             <i id="start-icon" class="icon-play-1"></i>
@@ -70,10 +72,10 @@
     </div>
 
     <!-- sidebar button -->
-    <button id="sidebar-button" class="sidebar-button no-select">
+    <div id="sidebar-button" class="sidebar-button no-select">
       <i class="icon-cog-circled"></i>
       <i class="icon-cancel-circle-2"></i>
-    </button>
+    </div>
 
     <!-- sidebar overlay -->
     <div id="sidebar-overlay" class="sidebar-overlay">
@@ -86,38 +88,91 @@
         <i class="icon-info-circled-1"></i>
         What is this?
       </h2>
-      <p>
-        Application for time management technique called
-        <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">
-        Pomodoro</a>. The technique uses a timer to break down your working
-        time into 25 minutes long work periods separated by short breaks. The
-        method is based on the idea that frequent breaks can improve mental
-        agility.
-      </p>
-      <p>
-        The most common implementation is as follows:
-      </p>
-      <ol>
-        <li>25 minutes of work</li>
-        <li>5 minute break</li>
-        <li>Repeat four times, after which you have a 20 minute break</li>
-        <li>Start again</li>
-      </ol>
-      <p>
-        For more detailed information see the very helpful
-        <a href="http://pomodorotechnique.com/get-started/" target="_blank">
-        Pomodoro get started guide</a>.
-      </p>
+      <div class="justify">
+        <p>
+          Application for time management technique called
+          <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">
+          Pomodoro</a>. The technique uses a timer to break down your working
+          time into 25 minutes long work periods separated by short breaks. The
+          method is based on the idea that frequent breaks can improve mental
+          agility.
+        </p>
+        <p>
+          The most common implementation is as follows:
+        </p>
+        <ol>
+          <li>25 minutes of work</li>
+          <li>5 minute break</li>
+          <li>Repeat four times, after which you have a 20 minute break</li>
+          <li>Start again</li>
+        </ol>
+        <p>
+          For more detailed information see the very helpful
+          <a href="http://pomodorotechnique.com/get-started/" target="_blank">
+          Pomodoro get started guide</a>.
+        </p>
+      </div>
 
       <!-- settings -->
       <h2>
         <i class="icon-wrench-4"></i>
         Settings
       </h2>
-      <p>
-        Coming soon (sound notifications, web browser notifications,
-        customizable interval lengths...)
-      </p>
+      <div class="settings">
+        <p>
+          <label>
+            <input type="checkbox" id="audio">
+            <span>
+              Audio notifications
+              <button id="audio-test" class="link">
+                <!-- TODO: add icon -->
+                test
+              </button>
+            </span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="checkbox" id="notifications">
+            <span>
+              Web notifications
+              <button id="notifications-test" class="link">
+                <!-- TODO: add icon -->
+                test
+              </button>
+            </span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="number" id="work-interval" value="25" min="5" max="600">
+            <span>Work interval length (minutes)</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="number" id="break-interval" value="5" min="1" max="60">
+            <span>Break interval length (minutes)</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="number" id="longbreak-interval" value="20" min="5" max="120">
+            <span>Long break interval length (minutes)</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="number" id="repeat" value="4" min="1" max="6">
+            <span>Number of intervals</span>
+          </label>
+        </p>
+        <br>
+        <buttton id="reset-settings" class="link">
+          <i class="icon-cw-1"></i>
+          Reset settings
+        </buttton>
+      </div>
 
       <!-- keyboard shortcuts -->
       <h2>
@@ -156,7 +211,7 @@
           Bitcoin
         </i>
       </p>
-      <p>
+      <p class="bitcoin-address">
         1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ
       </p>
       <p>
@@ -200,6 +255,8 @@
           <i class="icon-twitter"></i>
           twitter
         </a>
+      </p>
+      <p>
         <a class="link" href="https://github.com/Hurtak/Tomatodoro" target="_blank">
           <i class="icon-github"></i>
           source code
@@ -211,8 +268,18 @@
 
     
 
-    <script src="js/main-a04521b2.js"></script>
+    <script src="js/main-72b95bbb.js"></script>
 
-    <!-- TODO: google analytics -->
+    <!-- google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-58460326-1', 'auto');
+      ga('send', 'pageview');
+    </script>
   </body>
 </html>
+
