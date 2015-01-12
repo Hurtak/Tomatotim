@@ -130,61 +130,82 @@
         <i class="icon-wrench-4"></i>
         Settings
       </h2>
-      <div class="settings">
-        <p>
-          <label>
+      <table class="settings">
+        <tr>
+          <td>
             <input type="checkbox" id="audio">
-            <span>
+          </td>
+          <td>
+            <label for="audio">
               Audio notifications
-              <button id="audio-test" class="link">
-                <!-- TODO: add icon -->
-                test
-              </button>
-            </span>
-          </label>
-        </p>
-        <p>
-          <label>
+            </label>
+            <button id="audio-test" class="button-inline">
+              <!-- TODO: add icon -->
+              test
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
             <input type="checkbox" id="notifications">
-            <span>
+          </td>
+          <td>
+            <label for="notifications">
               Web notifications
-              <button id="notifications-test" class="link">
-                <!-- TODO: add icon -->
-                test
-              </button>
-            </span>
-          </label>
-        </p>
-        <p>
-          <label>
+            </label>
+            <button id="notifications-test" class="button-inline">
+              <!-- TODO: add icon -->
+              test
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
             <input type="number" id="work-interval" value="25" min="5" max="600">
-            <span>Work interval length (minutes)</span>
-          </label>
-        </p>
-        <p>
-          <label>
-            <input type="number" id="break-interval" value="5" min="1" max="60">
-            <span>Break interval length (minutes)</span>
-          </label>
-        </p>
-        <p>
-          <label>
+          </td>
+          <td>
+            <label for="work-interval">
+              Work interval length (minutes)
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+           <input type="number" id="break-interval" value="5" min="1" max="60">
+          </td>
+          <td>
+            <label for="break-interval">
+              Break interval length (minutes)
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
             <input type="number" id="longbreak-interval" value="20" min="5" max="120">
-            <span>Long break interval length (minutes)</span>
-          </label>
-        </p>
-        <p>
-          <label>
-            <input type="number" id="repeat" value="4" min="1" max="6">
-            <span>Number of intervals</span>
-          </label>
-        </p>
-        <br>
-        <buttton id="reset-settings" class="link">
-          <i class="icon-cw-1"></i>
-          Reset settings
-        </buttton>
-      </div>
+          </td>
+          <td>
+            <label for="longbreak-interval">
+              Long break interval length (minutes)
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <input type="number" id="repeat" value="4" min="1" max="6">
+          </td>
+          <td>
+            <label for="repeat">
+              Number of intervals
+            </label>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <button id="reset-settings" class="button">
+        <i class="icon-cw-1"></i>
+        <!-- TODO: use unique icon? -->
+        Reset settings
+      </button>
 
       <!-- keyboard shortcuts -->
       <h2>
@@ -228,16 +249,16 @@
       </p>
       <p>
         <!-- TODO: maybe change label? -->
-        <a class="link" href="bitcoin:1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ?label=Tomatotim%20donation">
+        <a class="button" href="bitcoin:1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ?label=Tomatotim%20donation">
           <i class="icon-wallet"></i>
           wallet
         </a>
         <!-- TODO: test QR code -->
-        <a class="link" href="http://api.qrserver.com/v1/create-qr-code/?data=bitcoin%3A1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ&amp;size=400x400&amp;prov=goqrme" target="_blank">
+        <a class="button" href="http://api.qrserver.com/v1/create-qr-code/?data=bitcoin%3A1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ&amp;size=400x400&amp;prov=goqrme" target="_blank">
           <i class="icon-qrcode-1"></i>
           QR code
         </a>
-        <a class="link" href="https://blockchain.info/address/1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ" target="_blank">
+        <a class="button" href="https://blockchain.info/address/1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ" target="_blank">
           <i class="icon-search-5"></i>
           blockchain
         </a>
@@ -263,16 +284,15 @@
         Links
       </h2>
       <p>
-        <a class="link" href="https://www.twitter.com/PetrHurtak" target="_blank">
+        <a class="button" href="https://www.twitter.com/PetrHurtak" target="_blank">
           <i class="icon-twitter"></i>
           twitter
         </a>
       </p>
       <p>
-        <a class="link" href="https://github.com/Hurtak/Tomatotim" target="_blank">
+        <a class="button" href="https://github.com/Hurtak/Tomatotim" target="_blank">
           <i class="icon-github"></i>
           source code
-          <!-- TODO: if we rename app, update this link -->
         </a>
       </p>
 
