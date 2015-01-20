@@ -10,7 +10,7 @@ services.title = (function() {
     document.title = titlePrefix + title + ' – ' + config.appName;
   };
 
-  var resetTitle = function () {
+  var resetTitle = function() {
     document.title = config.appName;
   };
 

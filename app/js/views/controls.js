@@ -22,21 +22,21 @@ views.controls = (function() {
     startButtonState = !startButtonState;
   };
 
-  var resetStartButton = function () {
+  var resetStartButton = function() {
     if (!startButtonState) {
       toogleStartButtonCaption();
     }
   };
 
-  var getStartButton = function () {
+  var getStartButton = function() {
     return startButton;
   };
 
-  var getResetButton = function () {
+  var getResetButton = function() {
     return resetButton;
   };
 
-  var getSkipButton = function () {
+  var getSkipButton = function() {
     return skipButton;
   };
 

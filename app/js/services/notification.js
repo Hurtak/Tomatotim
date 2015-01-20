@@ -26,8 +26,8 @@ services.notification = (function() {
       body: message
     });
 
-    notification.onshow = function () {
-      setTimeout(function () {
+    notification.onshow = function() {
+      setTimeout(function() {
         notification.close();
       }, notificationTimeout * 1000);
     };
@@ -36,7 +36,7 @@ services.notification = (function() {
     //       each interval, click on notification could unpause, also we
     //       should increase the close interval when this option is selected
     //
-    // notification.onclick = function () {
+    // notification.onclick = function() {
     //
     // };
 

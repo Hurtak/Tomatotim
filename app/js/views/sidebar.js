@@ -6,22 +6,22 @@ views.sidebar = (function() {
   var sidebarButton = document.getElementById('sidebar-button');
   var sidebarOverlay = document.getElementById('sidebar-overlay');
 
-  var getSidebarOverlay = function () {
+  var getSidebarOverlay = function() {
     return sidebarOverlay;
   };
 
-  var getSidebarButton = function () {
+  var getSidebarButton = function() {
     return sidebarButton;
   };
 
-  var openSidebar = function () {
+  var openSidebar = function() {
     if (!sidebarOpen) {
       document.body.setAttribute('data-sidebar-open', '');
       sidebarOpen = true;
     }
   };
 
-  var closeSidebar = function () {
+  var closeSidebar = function() {
     if (sidebarOpen) {
       document.body.removeAttribute('data-sidebar-open');
       sidebarOpen = false;

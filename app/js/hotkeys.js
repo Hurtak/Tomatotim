@@ -11,12 +11,12 @@ var hotkeys = (function() {
     h: 72
   };
 
-  var init = function () {
+  var init = function() {
     document.addEventListener('keydown', keyDown);
   };
 
-  var keyDown = function (e) {
-    e = window.event || e; // TODO: is this necessary?
+  var keyDown = function(e) {
+    e = e || window.event;
 
     switch (e.keyCode) {
       case keys.space:

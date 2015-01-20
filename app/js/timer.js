@@ -8,9 +8,9 @@ var timer = (function() {
 
   var timer;
   // how often are we running precise timer to check if second of real time elapsed
-  var timerPrecision = 100;
+  var timerPrecision = 100; // ms
 
-  var init = function () {
+  var init = function() {
     // initialize intervals array
     updateIntervals();
 
@@ -82,7 +82,7 @@ var timer = (function() {
     return addLeadingZero(minutes) + ':' + addLeadingZero(seconds);
   };
 
-  var timerTick = function () {
+  var timerTick = function() {
     timerInterval--;
 
     if (timerInterval <= 0) {
@@ -194,7 +194,7 @@ var timer = (function() {
 
   };
 
-  var skipInterval = function () {
+  var skipInterval = function() {
     nextInterval(true);
   };
 
@@ -214,7 +214,7 @@ var timer = (function() {
     }
   };
 
-  var runTimer = function () {
+  var runTimer = function() {
     var elapsedTime = 0;
     var before = new Date();
 
