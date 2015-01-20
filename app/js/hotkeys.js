@@ -15,13 +15,6 @@ var hotkeys = (function() {
     document.addEventListener('keydown', keyDown);
   };
 
-  var loseFocus = function() {
-    var focus = document.querySelector(':focus');
-    if (focus) {
-      focus.blur();
-    }
-  };
-
   var keyDown = function (e) {
     e = window.event || e; // TODO: is this necessary?
 
@@ -40,7 +33,6 @@ var hotkeys = (function() {
         timer.skipInterval();
         break;
       case keys.h:
-        loseFocus();
         views.sidebar.toogleSidebar();
         break;
       case keys.tab:

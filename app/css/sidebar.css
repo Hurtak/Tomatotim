@@ -1,5 +1,5 @@
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: -450px;
   width: 450px;
@@ -141,7 +141,7 @@ input[type=checkbox] {
 /* Sidebar overlay */
 
 .sidebar-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 100%;
   width: 100%;
