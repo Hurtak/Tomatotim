@@ -1,4 +1,4 @@
-views.progress = (function() {
+Views.Progress = (function() {
   'use strict';
 
   var imagesWrapper = document.getElementById('progress');

@@ -1,4 +1,4 @@
-views.settings = (function() {
+Views.Settings = (function() {
   'use strict';
 
   var audio = document.getElementById('audio');

@@ -1,4 +1,4 @@
-views.sidebar = (function() {
+Views.Sidebar = (function() {
   'use strict';
 
   var sidebarOpen = false;

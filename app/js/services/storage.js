@@ -1,4 +1,4 @@
-services.storage = (function() {
+Services.Storage = (function() {
   'use strict';
 
   var get = function(storageName) {

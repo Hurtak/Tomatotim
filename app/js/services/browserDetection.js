@@ -1,4 +1,4 @@
-var browserDetection = (function() {
+Services.BrowserDetection = (function() {
   'use strict';
 
   // browser detection from http://stackoverflow.com/a/9851769/2955574

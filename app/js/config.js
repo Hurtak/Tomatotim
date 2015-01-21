@@ -1,4 +1,4 @@
-var config = (function() {
+var Config = (function() {
   'use strict';
 
   var debug = false;
@@ -44,5 +44,5 @@ var config = (function() {
 
 }());
 
-var services = {};
-var views = {};
+var Services = {};
+var Views = {};

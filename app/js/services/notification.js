@@ -1,4 +1,4 @@
-services.notification = (function() {
+Services.Notification = (function() {
   'use strict';
 
   var notificationTimeout = 5; // seconds
@@ -21,7 +21,7 @@ services.notification = (function() {
       return;
     }
 
-    var notification = new Notification(config.appName, {
+    var notification = new Notification(Config.appName, {
       icon: 'icons/favicon-' + iconType + '.ico',
       body: message
     });

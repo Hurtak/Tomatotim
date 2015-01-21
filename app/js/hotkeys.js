@@ -1,4 +1,4 @@
-var hotkeys = (function() {
+var Hotkeys = (function() {
   'use strict';
 
   var keys = {
@@ -21,22 +21,22 @@ var hotkeys = (function() {
     switch (e.keyCode) {
       case keys.space:
         e.preventDefault();
-        timer.startTimer();
+        Timer.startTimer();
         break;
       case keys.esc:
-        views.sidebar.closeSidebar();
+        Views.Sidebar.closeSidebar();
         break;
       case keys.r:
-        timer.resetTimer();
+        Timer.resetTimer();
         break;
       case keys.s:
-        timer.skipInterval();
+        Timer.skipInterval();
         break;
       case keys.h:
-        views.sidebar.toogleSidebar();
+        Views.Sidebar.toogleSidebar();
         break;
       case keys.tab:
-        if (!views.sidebar.isSidebarOpen()) {
+        if (!Views.Sidebar.isSidebarOpen()) {
           e.preventDefault();
         }
         break;

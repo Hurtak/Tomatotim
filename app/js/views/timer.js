@@ -1,4 +1,4 @@
-views.timer = (function() {
+Views.Timer = (function() {
   'use strict';
 
   var timerDiv = document.getElementById('clock');

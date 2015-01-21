@@ -1,4 +1,4 @@
-var timer = (function() {
+var Timer = (function() {
   'use strict';
 
   var intervalIndex;
@@ -15,8 +15,8 @@ var timer = (function() {
     updateIntervals();
 
     // load save progress
-    intervalIndex = services.storage.get('intervalIndex') || 0;
-    timerInterval = services.storage.get('timerInterval') || config.workInterval;
+    intervalIndex = Services.Storage.get('intervalIndex') || 0;
+    timerInterval = Services.Storage.get('timerInterval') || Config.workInterval;
 
     // when user changes number of intervals in settings
     if (intervalIndex > intervals.length - 1) {
@@ -28,43 +28,43 @@ var timer = (function() {
     }
 
     // initialize progress images
-    for (var i = 0; i < config.repeat; i++) {
-      views.progress.createImage('unfinished');
+    for (var i = 0; i < Config.repeat; i++) {
+      Views.Progress.createImage('unfinished');
     }
 
     for (var index = 0; index <= intervalIndex; index++) {
       updateTimerViews(index, true);
     }
 
-    if (intervalIndex === 0 && timerInterval < config.workInterval) {
-      views.progress.setImageType('work', 0);
-      views.progress.setDescription('work');
+    if (intervalIndex === 0 && timerInterval < Config.workInterval) {
+      Views.Progress.setImageType('work', 0);
+      Views.Progress.setDescription('work');
     }
 
-    if (intervalIndex === 0 && timerInterval === config.workInterval) {
-      services.title.resetTitle();
+    if (intervalIndex === 0 && timerInterval === Config.workInterval) {
+      Services.Title.resetTitle();
     } else {
-      services.title.setTitle(secondsToTime(timerInterval));
+      Services.Title.setTitle(secondsToTime(timerInterval));
     }
 
     // binding
-    views.controls.getStartButton().addEventListener('click', startTimer);
-    views.controls.getSkipButton().addEventListener('click', skipInterval);
-    views.controls.getResetButton().addEventListener('click', resetTimer);
+    Views.Controls.getStartButton().addEventListener('click', startTimer);
+    Views.Controls.getSkipButton().addEventListener('click', skipInterval);
+    Views.Controls.getResetButton().addEventListener('click', resetTimer);
 
   };
 
   var updateIntervals = function() {
     intervals = [];
 
-    for (var i = 0; i < config.repeat; i++) {
-      intervals.push(config.workInterval);
-      intervals.push(config.breakInterval);
+    for (var i = 0; i < Config.repeat; i++) {
+      intervals.push(Config.workInterval);
+      intervals.push(Config.breakInterval);
     }
 
     // replace last break with long break
     intervals.pop();
-    intervals.push(config.longbreakInterval);
+    intervals.push(Config.longbreakInterval);
   };
 
   var secondsToTime = function(seconds) {
@@ -91,10 +91,10 @@ var timer = (function() {
 
     var time = secondsToTime(timerInterval);
 
-    views.timer.setTime(time);
+    Views.Timer.setTime(time);
 
-    services.title.setTitle(time, timer);
-    services.storage.set('timerInterval', timerInterval);
+    Services.Title.setTitle(time, timer);
+    Services.Storage.set('timerInterval', timerInterval);
   };
 
   var nextInterval = function(skipped) {
@@ -110,7 +110,7 @@ var timer = (function() {
 
     updateTimerViews(intervalIndex, skipped);
 
-    services.storage.set('intervalIndex', intervalIndex);
+    Services.Storage.set('intervalIndex', intervalIndex);
 
     if (skipped) {
       if (timer) {
@@ -119,76 +119,76 @@ var timer = (function() {
         runTimer();
       }
 
-      services.title.setTitle(secondsToTime(timerInterval), timer);
-      services.storage.set('intervalIndex', intervalIndex);
-      services.storage.set('timerInterval', timerInterval);
+      Services.Title.setTitle(secondsToTime(timerInterval), timer);
+      Services.Storage.set('intervalIndex', intervalIndex);
+      Services.Storage.set('timerInterval', timerInterval);
     }
   };
 
   var updateTimerViews = function(index, skipped) {
     var imageIndex = Math.floor(index / 2);
 
-    views.timer.setTime(secondsToTime(timerInterval));
+    Views.Timer.setTime(secondsToTime(timerInterval));
 
     // intervals[ work, break, work, break, ... , long break ]
     if (index === intervals.length - 1) {
       // last interval
 
-      services.favicon.setFavicon('longbreak');
-      if (!skipped && config.notifications) {
-        services.notification.newNotification(config.longbreakInterval / 60 + ' minute long break', 'longbreak');
-          services.audio.play();
+      Services.Favicon.setFavicon('longbreak');
+      if (!skipped && Config.notifications) {
+        Services.Notification.newNotification(Config.longbreakInterval / 60 + ' minute long break', 'longbreak');
+          Services.Audio.play();
       }
 
-      views.progress.setDescription('long break');
-      views.progress.setImageType('longbreak', imageIndex);
+      Views.Progress.setDescription('long break');
+      Views.Progress.setImageType('longbreak', imageIndex);
 
     } else if (index === 0) {
       // first interval: 0
 
-      services.favicon.setFavicon('work');
+      Services.Favicon.setFavicon('work');
       if (!skipped) {
-        if (config.notifications) {
+        if (Config.notifications) {
           // TODO: think of better notification text
-          services.notification.newNotification('Done', 'work');
+          Services.Notification.newNotification('Done', 'work');
         }
-        if (config.audio) {
-          services.audio.play();
+        if (Config.audio) {
+          Services.Audio.play();
         }
       }
 
     } else if (index % 2 === 0) {
       // even interval: 2, 4, 6
 
-      services.favicon.setFavicon('work');
+      Services.Favicon.setFavicon('work');
       if (!skipped) {
-        if (config.notifications) {
-          services.notification.newNotification(config.workInterval / 60 + ' minute work', 'work');
+        if (Config.notifications) {
+          Services.Notification.newNotification(Config.workInterval / 60 + ' minute work', 'work');
         }
-        if (config.audio) {
-          services.audio.play();
+        if (Config.audio) {
+          Services.Audio.play();
         }
       }
 
-      views.progress.setDescription('work');
-      views.progress.setImageType('work', imageIndex);
-      views.progress.setImageType('finished', imageIndex - 1);
+      Views.Progress.setDescription('work');
+      Views.Progress.setImageType('work', imageIndex);
+      Views.Progress.setImageType('finished', imageIndex - 1);
 
     } else if (index % 2 === 1) {
       // odd interval: 1, 3, 6..
 
-      services.favicon.setFavicon('break');
+      Services.Favicon.setFavicon('break');
       if (!skipped) {
-        if (config.notifications) {
-          services.notification.newNotification(config.breakInterval / 60 + ' minute break', 'break');
+        if (Config.notifications) {
+          Services.Notification.newNotification(Config.breakInterval / 60 + ' minute break', 'break');
         }
-        if (config.audio) {
-          services.audio.play();
+        if (Config.audio) {
+          Services.Audio.play();
         }
       }
 
-      views.progress.setDescription('break');
-      views.progress.setImageType('break', imageIndex);
+      Views.Progress.setDescription('break');
+      Views.Progress.setImageType('break', imageIndex);
 
     }
 
@@ -205,12 +205,12 @@ var timer = (function() {
       pauseTimer();
     }
 
-    services.title.setTitle(secondsToTime(timerInterval), timer);
-    views.controls.toogleStartButtonCaption();
+    Services.Title.setTitle(secondsToTime(timerInterval), timer);
+    Views.Controls.toogleStartButtonCaption();
 
     if (intervalIndex === 0) {
-      views.progress.setImageType('work', 0);
-      views.progress.setDescription('work');
+      Views.Progress.setImageType('work', 0);
+      Views.Progress.setDescription('work');
     }
   };
 
@@ -239,19 +239,19 @@ var timer = (function() {
     pauseTimer();
 
     intervalIndex = 0;
-    timerInterval = config.workInterval;
+    timerInterval = Config.workInterval;
 
     var time = secondsToTime(timerInterval);
 
-    views.timer.setTime(time);
-    views.controls.resetStartButton();
+    Views.Timer.setTime(time);
+    Views.Controls.resetStartButton();
 
-    services.title.resetTitle();
-    services.favicon.setFavicon('work');
-    services.storage.set('intervalIndex', intervalIndex);
-    services.storage.set('timerInterval', timerInterval);
+    Services.Title.resetTitle();
+    Services.Favicon.setFavicon('work');
+    Services.Storage.set('intervalIndex', intervalIndex);
+    Services.Storage.set('timerInterval', timerInterval);
 
-    views.progress.resetProgress();
+    Views.Progress.resetProgress();
   };
 
   return {

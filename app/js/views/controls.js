@@ -1,4 +1,4 @@
-views.controls = (function() {
+Views.Controls = (function() {
   'use strict';
 
   var startButtonState = true; // true == start state, false == pause state

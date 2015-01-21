@@ -1,4 +1,4 @@
-services.title = (function() {
+Services.Title = (function() {
   'use strict';
 
   var setTitle = function(title, paused) {
@@ -7,11 +7,11 @@ services.title = (function() {
       titlePrefix = '\u25A0 '; // black square character
     }
 
-    document.title = titlePrefix + title + ' – ' + config.appName;
+    document.title = titlePrefix + title + ' – ' + Config.appName;
   };
 
   var resetTitle = function() {
-    document.title = config.appName;
+    document.title = Config.appName;
   };
 
   return {

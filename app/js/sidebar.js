@@ -1,9 +1,9 @@
-var sidebar = (function() {
+var Sidebar = (function() {
   'use strict';
 
   var init = function() {
-    views.sidebar.getSidebarButton().addEventListener('click', views.sidebar.toogleSidebar);
-    views.sidebar.getSidebarOverlay().addEventListener('click', views.sidebar.closeSidebar);
+    Views.Sidebar.getSidebarButton().addEventListener('click', Views.Sidebar.toogleSidebar);
+    Views.Sidebar.getSidebarOverlay().addEventListener('click', Views.Sidebar.closeSidebar);
   };
 
   return {

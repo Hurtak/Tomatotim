@@ -1,4 +1,4 @@
-var settings = (function() {
+var Settings = (function() {
   'use strict';
 
   var validateInput = function(value, min, max, defaultValue) {
@@ -19,110 +19,110 @@ var settings = (function() {
   var init = function() {
 
     // update config defaults with saved settings (if available)
-    var audio = services.storage.get('audio');
+    var audio = Services.Storage.get('audio');
     if (audio !== null) {
-      config.audio = audio;
+      Config.audio = audio;
     }
 
-    var notifications = services.storage.get('notifications');
+    var notifications = Services.Storage.get('notifications');
     if (notifications !== null) {
-      config.notifications = notifications;
+      Config.notifications = notifications;
     }
 
-    config.workInterval = services.storage.get('workInterval') || config.workInterval;
-    config.breakInterval = services.storage.get('breakInterval') || config.breakInterval;
-    config.longbreakInterval = services.storage.get('longbreakInterval') || config.longbreakInterval;
+    Config.workInterval = Services.Storage.get('workInterval') || Config.workInterval;
+    Config.breakInterval = Services.Storage.get('breakInterval') || Config.breakInterval;
+    Config.longbreakInterval = Services.Storage.get('longbreakInterval') || Config.longbreakInterval;
 
-    config.repeat = services.storage.get('repeat') || config.repeat;
+    Config.repeat = Services.Storage.get('repeat') || Config.repeat;
 
     // update settings view
-    views.settings.audio.checked = config.audio;
-    views.settings.notifications.checked = config.notifications;
+    Views.Settings.audio.checked = Config.audio;
+    Views.Settings.notifications.checked = Config.notifications;
 
-    views.settings.workInterval.value = config.workInterval / 60;
-    views.settings.breakInterval.value = config.breakInterval / 60;
-    views.settings.longbreakInterval.value = config.longbreakInterval / 60;
+    Views.Settings.workInterval.value = Config.workInterval / 60;
+    Views.Settings.breakInterval.value = Config.breakInterval / 60;
+    Views.Settings.longbreakInterval.value = Config.longbreakInterval / 60;
 
-    views.settings.repeat.value = config.repeat;
+    Views.Settings.repeat.value = Config.repeat;
 
     // notifications
-    views.settings.audio.addEventListener('click', function() {
-      config.audio = this.checked;
+    Views.Settings.audio.addEventListener('click', function() {
+      Config.audio = this.checked;
 
-      services.storage.set('audio', config.audio);
+      Services.Storage.set('audio', Config.audio);
     });
 
-    views.settings.notifications.addEventListener('click', function() {
-      config.notifications = this.checked;
+    Views.Settings.notifications.addEventListener('click', function() {
+      Config.notifications = this.checked;
 
-      if (config.notifications === true) {
-        services.notification.requestPermission();
+      if (Config.notifications === true) {
+        Services.Notification.requestPermission();
       }
 
-      services.storage.set('notifications', config.notifications);
+      Services.Storage.set('notifications', Config.notifications);
     });
 
     // notifications test buttons
-    views.settings.audioTest.addEventListener('click', function() {
-      services.audio.play();
+    Views.Settings.audioTest.addEventListener('click', function() {
+      Services.Audio.play();
     });
 
-    views.settings.notificationsTest.addEventListener('click', function() {
-      services.notification.newNotification('Web notification test', 'work');
+    Views.Settings.notificationsTest.addEventListener('click', function() {
+      Services.Notification.newNotification('Web notification test', 'work');
     });
 
     // interval settings
-    views.settings.workInterval.addEventListener('blur', function() {
-      this.value = validateInput(this.value, this.min, this.max, config.workInterval / 60);
+    Views.Settings.workInterval.addEventListener('blur', function() {
+      this.value = validateInput(this.value, this.min, this.max, Config.workInterval / 60);
 
-      config.workInterval = this.value * 60;
-      timer.updateIntervals();
+      Config.workInterval = this.value * 60;
+      Timer.updateIntervals();
 
-      services.storage.set('workInterval', config.workInterval);
+      Services.Storage.set('workInterval', Config.workInterval);
     });
 
-    views.settings.breakInterval.addEventListener('blur', function() {
-      this.value = validateInput(this.value, this.min, this.max, config.breakInterval / 60);
+    Views.Settings.breakInterval.addEventListener('blur', function() {
+      this.value = validateInput(this.value, this.min, this.max, Config.breakInterval / 60);
 
-      config.breakInterval = this.value * 60;
-      timer.updateIntervals();
+      Config.breakInterval = this.value * 60;
+      Timer.updateIntervals();
 
-      services.storage.set('breakInterval', config.breakInterval);
+      Services.Storage.set('breakInterval', Config.breakInterval);
     });
 
-    views.settings.longbreakInterval.addEventListener('blur', function() {
-      this.value = validateInput(this.value, this.min, this.max, config.longbreakInterval / 60);
+    Views.Settings.longbreakInterval.addEventListener('blur', function() {
+      this.value = validateInput(this.value, this.min, this.max, Config.longbreakInterval / 60);
 
-      config.longbreakInterval = this.value * 60;
-      timer.updateIntervals();
+      Config.longbreakInterval = this.value * 60;
+      Timer.updateIntervals();
 
-      services.storage.set('longbreakInterval', config.longbreakInterval);
+      Services.Storage.set('longbreakInterval', Config.longbreakInterval);
     });
 
     // repeat
-    views.settings.repeat.addEventListener('input', function() {
-      this.value = validateInput(this.value, this.min, this.max, config.repeat);
+    Views.Settings.repeat.addEventListener('input', function() {
+      this.value = validateInput(this.value, this.min, this.max, Config.repeat);
 
-      config.repeat = this.value * 1;
+      Config.repeat = this.value * 1;
 
-      views.progress.removeImages();
-      timer.init();
+      Views.Progress.removeImages();
+      Timer.init();
 
-      services.storage.set('repeat', config.repeat);
+      Services.Storage.set('repeat', Config.repeat);
     });
 
     // reset settings
-    views.settings.resetSettings.addEventListener('click', function() {
+    Views.Settings.resetSettings.addEventListener('click', function() {
       var confim = confirm('Are you sure?');
       if (confim) {
-        services.storage.clear();
+        Services.Storage.clear();
         location.reload(false);
       }
     });
 
     // request permission in case we have notifications enabled in saved settings
-    if (config.notifications === true) {
-      services.notification.requestPermission();
+    if (Config.notifications === true) {
+      Services.Notification.requestPermission();
     }
 
   };

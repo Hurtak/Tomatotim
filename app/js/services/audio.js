@@ -1,4 +1,4 @@
-services.audio = (function() {
+Services.Audio = (function() {
   'use strict';
 
   var audio;
