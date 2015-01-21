@@ -12,6 +12,12 @@
   background-color: #213a57;
 }
 
+  .sidebar:hover {
+    /* NOTE: hack for Chrome, sidebar will be focused on
+       hover so we can mouse scroll on sidebar instantly */
+    overflow-y: auto;
+  }
+
   .sidebar h2 {
     font-family: Verdana;
     font-weight: 400;
