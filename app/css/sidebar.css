@@ -93,6 +93,17 @@
     padding-right: 10px;
   }
 
+input[type=checkbox] {
+  -moz-appearance: none;
+
+  position: relative;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+
+  margin-left: 20px;
+}
+
 input[type=number] {
   width: 3.7em;
   height: 25px;
@@ -105,15 +116,29 @@ input[type=number] {
   background-color: transparent;
 }
 
-input[type=checkbox] {
-  -moz-appearance: none;
+  input[type=number]:invalid {
+    background-color: rgba(255, 0, 0, .6);
+  }
 
-  position: relative;
-  top: 3px;
-  width: 20px;
-  height: 20px;
 
-  margin-left: 20px;
+.plus-button,
+.minus-button {
+  border: 1px solid #fff;
+  line-height: 23px;
+  /*padding: 0 5px;*/
+  width: 25px;
+  text-align: center;
+  float: left;
+
+}
+
+.plus-button {
+  border-radius: 0 5px 5px 0;
+  border-left: 0;
+}
+
+.minus-button {
+  border-radius: 5px 0 0 5px;
 }
 
 /* Sidebar button */

@@ -147,13 +147,15 @@
             <input type="checkbox" id="audio">
           </td>
           <td>
-            <label for="audio">
-              Audio notifications
-            </label>
             <button id="audio-test" class="button-inline">
               <!-- TODO: add icon -->
               test
             </button>
+          </td>
+          <td>
+            <label for="audio">
+              Audio notifications
+            </label>
           </td>
         </tr>
         <tr>
@@ -161,18 +163,24 @@
             <input type="checkbox" id="notifications">
           </td>
           <td>
-            <label for="notifications">
-              Web notifications
-            </label>
             <button id="notifications-test" class="button-inline">
               <!-- TODO: add icon -->
               test
             </button>
           </td>
+          <td>
+            <label for="notifications">
+              Web notifications
+            </label>
+          </td>
         </tr>
         <tr>
           <td>
             <input type="number" id="work-interval" value="25" min="5" max="600">
+          </td>
+          <td>
+            <div class="minus-button">-</div>
+            <div class="plus-button">+</div>
           </td>
           <td>
             <label for="work-interval">
@@ -185,6 +193,10 @@
            <input type="number" id="break-interval" value="5" min="1" max="60">
           </td>
           <td>
+            <div class="minus-button">-</div>
+            <div class="plus-button">+</div>
+          </td>
+          <td>
             <label for="break-interval">
               Break interval length (minutes)
             </label>
@@ -195,6 +207,10 @@
             <input type="number" id="longbreak-interval" value="20" min="5" max="120">
           </td>
           <td>
+            <div class="minus-button">-</div>
+            <div class="plus-button">+</div>
+          </td>
+          <td>
             <label for="longbreak-interval">
               Long break interval length (minutes)
             </label>
@@ -202,7 +218,11 @@
         </tr>
         <tr>
           <td>
-          <input type="number" id="repeat" value="4" min="1" max="6">
+            <input type="number" id="repeat" value="4" min="1" max="6">
+          </td>
+          <td>
+            <div class="minus-button">-</div>
+            <div class="plus-button">+</div>
           </td>
           <td>
             <label for="repeat">
