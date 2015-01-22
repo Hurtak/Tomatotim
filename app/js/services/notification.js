@@ -22,7 +22,7 @@ Services.Notification = (function() {
     }
 
     var notification = new Notification(Config.appName, {
-      icon: 'icons/favicon-' + iconType + '.ico',
+      icon: 'img/notification-96x96-' + iconType + '.png',
       body: message
     });
 
