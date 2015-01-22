@@ -9,6 +9,8 @@ Tomatotim
 
 ### Features
 
+<img src="http://i.imgur.com/ljeEqjA.png" alt="Dynamic favicon and title">
+
 * Dynamic favicon and title
 
 <img src="https://i.imgur.com/rgzEe9u.png" alt="Dynamic favicon and title">
