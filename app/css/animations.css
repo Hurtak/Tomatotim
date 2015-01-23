@@ -15,13 +15,14 @@ body[data-sidebar-open] .sidebar-button {
     transform: rotate(-180deg);
   }
 
-    body[data-sidebar-open] .sidebar-button i:first-child {
-      opacity: 0;
-    }
+  body[data-sidebar-open] .sidebar-button .cog {
+    opacity: 0;
+  }
 
-    body[data-sidebar-open] .sidebar-button i:last-child {
-      opacity: 1;
-    }
+  body[data-sidebar-open] .sidebar-button .cancel,
+  body[data-sidebar-open] .sidebar-button .background {
+    opacity: 1;
+  }
 
 /* transitions */
 

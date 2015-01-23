@@ -122,6 +122,7 @@ input[type=checkbox] {
   position: absolute;
   top: 10px;
   right: 10px;
+
   width: 55px;
   height: 55px;
   z-index: 10;
@@ -138,11 +139,25 @@ input[type=checkbox] {
     position: absolute;
     top: 5px;
     left: 0;
+    z-index: 15;
   }
 
-    .sidebar-button i:last-child {
-      opacity: 0;
-    }
+  .sidebar-button .cancel,
+  .sidebar-button .background {
+    opacity: 0;
+  }
+
+  .sidebar-button .background {
+    position: relative;
+    top: 5px;
+    left: 5px;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+    background-color: #213a57;
+  }
 
 /* Sidebar overlay */
 
