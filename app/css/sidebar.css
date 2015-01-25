@@ -103,6 +103,7 @@
 
   border: 1px solid #fff;
   border-radius: 5px;
+  padding-right: 1em;
 
   text-align: right;
   font-family: 'Consolas', 'Courier New';
@@ -113,46 +114,55 @@
     background-color: rgba(255, 0, 0, .6);
   }
 
-  .settings .test,
-  .settings .plus,
-  .settings .minus {
-    height: 25px;
-    line-height: 23px;
-    padding: 0;
+.settings input[type='number'] {
+  -moz-appearance:textfield;
+}
 
-    border: 1px solid #fff;
-    border-radius: 5px;
+.settings input::-webkit-outer-spin-button,
+.settings input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 
-    background-color: transparent;
+.settings .test,
+.settings .plus,
+.settings .minus {
+  height: 25px;
+  line-height: 23px;
+  padding: 0;
+
+  border: 1px solid #fff;
+  border-radius: 5px;
+
+  background-color: transparent;
+}
+
+  .settings .test:active,
+  .settings .plus:active,
+  .settings .minus:active {
+    transform: translateY(1px);
   }
 
-    .settings .test:active,
-    .settings .plus:active,
-    .settings .minus:active {
-      transform: translateY(1px);
-    }
+.settings .plus,
+.settings .minus {
+  float: left;
+  width: 30px;
 
-  .settings .plus,
-  .settings .minus {
-    float: left;
-    width: 30px;
+  text-align: center;
+  font-family: 'Courier';
+}
 
-    text-align: center;
-    font-family: 'Courier';
-  }
+.settings .plus {
+  border-radius: 0 5px 5px 0;
+  border-left: 0;
+}
 
-  .settings .plus {
-    border-radius: 0 5px 5px 0;
-    border-left: 0;
-  }
+.settings .minus {
+  border-radius: 5px 0 0 5px;
+}
 
-  .settings .minus {
-    border-radius: 5px 0 0 5px;
-  }
-
-  .settings .test {
-    width: 60px;
-  }
+.settings .test {
+  width: 60px;
+}
 
 /* Sidebar button */
 

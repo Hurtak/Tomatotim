@@ -1,21 +1,6 @@
 var Settings = (function() {
   'use strict';
 
-  var validateInput = function(value, min, max, defaultValue) {
-    var number = Math.floor(value);
-
-    if (!number) {
-      // after Math.floor all non-number values are converted to 0
-      number = defaultValue;
-    } else if (number < min * 1) {
-      number = min;
-    } else if (number > max * 1) {
-      number = max;
-    }
-
-    return number;
-  };
-
   var init = function() {
 
     // update config defaults with saved settings (if available)
@@ -71,45 +56,20 @@ var Settings = (function() {
       Services.Notification.newNotification('Web notification test', 'work');
     });
 
-    // interval settings
-    Views.Settings.workInterval.addEventListener('blur', function() {
-      this.value = validateInput(this.value, this.min, this.max, Config.workInterval / 60);
+    var intervals = ['workInterval', 'breakInterval', 'longbreakInterval', 'repeat'];
 
-      Config.workInterval = this.value * 60;
-      Timer.updateIntervals();
+    var inputs = document.querySelectorAll('.settings input[type=number]'); // TODO: move to views
+    var plusminus = document.querySelectorAll('.settings [data-increment]'); // TODO: move to views
 
-      Services.Storage.set('workInterval', Config.workInterval);
-    });
+    for (var i = 0; i < intervals.length; i++) {
+      // interval settings inputs
+      inputs[i].addEventListener('blur', makeClickHandlerInput(inputs[i], intervals[i]));
 
-    Views.Settings.breakInterval.addEventListener('blur', function() {
-      this.value = validateInput(this.value, this.min, this.max, Config.breakInterval / 60);
-
-      Config.breakInterval = this.value * 60;
-      Timer.updateIntervals();
-
-      Services.Storage.set('breakInterval', Config.breakInterval);
-    });
-
-    Views.Settings.longbreakInterval.addEventListener('blur', function() {
-      this.value = validateInput(this.value, this.min, this.max, Config.longbreakInterval / 60);
-
-      Config.longbreakInterval = this.value * 60;
-      Timer.updateIntervals();
-
-      Services.Storage.set('longbreakInterval', Config.longbreakInterval);
-    });
-
-    // repeat
-    Views.Settings.repeat.addEventListener('input', function() {
-      this.value = validateInput(this.value, this.min, this.max, Config.repeat);
-
-      Config.repeat = this.value * 1;
-
-      Views.Progress.removeImages();
-      Timer.init();
-
-      Services.Storage.set('repeat', Config.repeat);
-    });
+      // plus minus buttons
+      for (var j = 0; j < 2; j++) {
+        plusminus[i * 2 + j].addEventListener('click', makeClickHandlerControls(plusminus[i * 2 + j], intervals[i]));
+      }
+    }
 
     // reset settings
     Views.Settings.resetSettings.addEventListener('click', function() {
@@ -125,6 +85,60 @@ var Settings = (function() {
       Services.Notification.requestPermission();
     }
 
+  };
+
+  var validateInput = function(value, min, max, defaultValue) {
+    value = Math.floor(value);
+
+    if (!value) {
+      // after Math.floor all non-number values are converted to 0
+      value = defaultValue;
+    } else if (value < min * 1) {
+      value = min;
+    } else if (value > max * 1) {
+      value = max;
+    }
+
+    return value * 1;
+  };
+
+// TODO: rename interval and intervalRepeat
+  var interval = function(that, configValue) {
+    var multiplier = 60; // for conversion from seconds to minutes
+    if (configValue === 'repeat') {
+      multiplier = 1;
+    }
+
+    that.value = validateInput(that.value, that.min, that.max, Config.get(configValue) / multiplier);
+    Config.set(configValue, that.value * multiplier);
+
+    if (configValue === 'repeat') {
+      Views.Progress.removeImages();
+      Timer.init();
+    } else {
+      Timer.updateIntervals();
+    }
+
+    Services.Storage.set(configValue, Config.get(configValue));
+  };
+
+  // click handlers for inputs in settings
+  var makeClickHandlerInput = function(that, intervalName) {
+    return function() {
+      interval(that, intervalName);
+    };
+  };
+
+  // click handler for +- buttons next to settings inputs
+  var makeClickHandlerControls = function(that, intervalName) {
+    return function() {
+      var target = that.getAttribute('data-target'); // TODO: move to views
+      target = document.getElementById(target);
+
+      target.value = target.value * 1 + that.getAttribute('data-increment') * 1;
+
+      interval(target, intervalName);
+    };
   };
 
   return {
