@@ -21,7 +21,7 @@ Services.Notification = (function() {
       return;
     }
 
-    var notification = new Notification(Config.appName, {
+    var notification = new Notification(Config.get('appName'), {
       icon: 'icons/favicon-' + iconType + '.ico',
       body: message
     });

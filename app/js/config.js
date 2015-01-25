@@ -1,45 +1,49 @@
 var Config = (function() {
   'use strict';
 
-  var debug = false;
+  var config = {};
+
+  config.debug = false;
   if (window.location.search.indexOf('debug') > -1) {
     // '?debug' at the end of URL activates debug mode
-    debug = true;
+    config.debug = true;
   }
 
-  var appName = document.title;
+  config.appName = document.title;
 
-  var audio = false;
-  var notifications = false;
+  config.audio = false;
+  config.notifications = false;
 
-  var workInterval = 25 * 60; // seconds
-  var breakInterval = 5 * 60;
-  var longbreakInterval = 20 * 60;
+  config.workInterval = 25 * 60; // seconds
+  config.breakInterval = 5 * 60;
+  config.longbreakInterval = 20 * 60;
 
-  var repeat = 4;
+  config.repeat = 4;
 
-  if (debug) {
-    audio = true;
-    notifications = true;
+  if (config.debug) {
+    config.appName = 'DEBUG';
 
-    workInterval = 10;
-    breakInterval = 5;
-    longbreakInterval = 5;
+    config.audio = true;
+    config.notifications = true;
 
-    repeat = 3;
+    config.workInterval = 10;
+    config.breakInterval = 5;
+    config.longbreakInterval = 5;
 
-    appName = 'DEBUG';
+    config.repeat = 3;
   }
+
+  var get = function(name) {
+    return config[name];
+  };
+
+  var set = function(name, value) {
+    config[name] = value;
+  };
 
   return {
-    debug: debug,
-    appName: appName,
-    audio: audio,
-    notifications: notifications,
-    workInterval: workInterval,
-    breakInterval: breakInterval,
-    longbreakInterval: longbreakInterval,
-    repeat: repeat
+    get: get,
+    set: set
   };
 
 }());

@@ -21,45 +21,45 @@ var Settings = (function() {
     // update config defaults with saved settings (if available)
     var audio = Services.Storage.get('audio');
     if (audio !== null) {
-      Config.audio = audio;
+      Config.set('audio', audio);
     }
 
     var notifications = Services.Storage.get('notifications');
     if (notifications !== null) {
-      Config.notifications = notifications;
+      Config.set('notifications', notifications);
     }
 
-    Config.workInterval = Services.Storage.get('workInterval') || Config.workInterval;
-    Config.breakInterval = Services.Storage.get('breakInterval') || Config.breakInterval;
-    Config.longbreakInterval = Services.Storage.get('longbreakInterval') || Config.longbreakInterval;
+    Config.set('workInterval', Services.Storage.get('workInterval') || Config.get('workInterval'));
+    Config.set('breakInterval', Services.Storage.get('breakInterval') || Config.get('breakInterval'));
+    Config.set('longbreakInterval', Services.Storage.get('longbreakInterval') || Config.get('longbreakInterval'));
 
-    Config.repeat = Services.Storage.get('repeat') || Config.repeat;
+    Config.set('repeat', Services.Storage.get('repeat') || Config.get('repeat'));
 
     // update settings view
-    Views.Settings.audio.checked = Config.audio;
-    Views.Settings.notifications.checked = Config.notifications;
+    Views.Settings.audio.checked = Config.get('audio');
+    Views.Settings.notifications.checked = Config.get('notifications');
 
-    Views.Settings.workInterval.value = Config.workInterval / 60;
-    Views.Settings.breakInterval.value = Config.breakInterval / 60;
-    Views.Settings.longbreakInterval.value = Config.longbreakInterval / 60;
+    Views.Settings.workInterval.value = Config.get('workInterval') / 60;
+    Views.Settings.breakInterval.value = Config.get('breakInterval') / 60;
+    Views.Settings.longbreakInterval.value = Config.get('longbreakInterval') / 60;
 
-    Views.Settings.repeat.value = Config.repeat;
+    Views.Settings.repeat.value = Config.get('repeat');
 
     // notifications
     Views.Settings.audio.addEventListener('click', function() {
-      Config.audio = this.checked;
+      Config.set('audio', this.checked);
 
-      Services.Storage.set('audio', Config.audio);
+      Services.Storage.set('audio', Config.get('audio'));
     });
 
     Views.Settings.notifications.addEventListener('click', function() {
-      Config.notifications = this.checked;
+      Config.set('notifications', this.checked);
 
-      if (Config.notifications === true) {
+      if (Config.get('notifications') === true) {
         Services.Notification.requestPermission();
       }
 
-      Services.Storage.set('notifications', Config.notifications);
+      Services.Storage.set('notifications', Config.get('notifications'));
     });
 
     // notifications test buttons
@@ -121,7 +121,7 @@ var Settings = (function() {
     });
 
     // request permission in case we have notifications enabled in saved settings
-    if (Config.notifications === true) {
+    if (Config.get('notifications') === true) {
       Services.Notification.requestPermission();
     }
 

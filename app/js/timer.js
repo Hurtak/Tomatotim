@@ -16,7 +16,7 @@ var Timer = (function() {
 
     // load save progress
     intervalIndex = Services.Storage.get('intervalIndex') || 0;
-    timerInterval = Services.Storage.get('timerInterval') || Config.workInterval;
+    timerInterval = Services.Storage.get('timerInterval') || Config.get('workInterval');
 
     // when user changes number of intervals in settings
     if (intervalIndex > intervals.length - 1) {
@@ -28,7 +28,7 @@ var Timer = (function() {
     }
 
     // initialize progress images
-    for (var i = 0; i < Config.repeat; i++) {
+    for (var i = 0; i < Config.get('repeat'); i++) {
       Views.Progress.createImage('unfinished');
     }
 
@@ -36,12 +36,12 @@ var Timer = (function() {
       updateTimerViews(index, true);
     }
 
-    if (intervalIndex === 0 && timerInterval < Config.workInterval) {
+    if (intervalIndex === 0 && timerInterval < Config.get('workInterval')) {
       Views.Progress.setImageType('work', 0);
       Views.Progress.setDescription('work');
     }
 
-    if (intervalIndex === 0 && timerInterval === Config.workInterval) {
+    if (intervalIndex === 0 && timerInterval === Config.get('workInterval')) {
       Services.Title.resetTitle();
     } else {
       Services.Title.setTitle(secondsToTime(timerInterval));
@@ -57,14 +57,14 @@ var Timer = (function() {
   var updateIntervals = function() {
     intervals = [];
 
-    for (var i = 0; i < Config.repeat; i++) {
-      intervals.push(Config.workInterval);
-      intervals.push(Config.breakInterval);
+    for (var i = 0; i < Config.get('repeat'); i++) {
+      intervals.push(Config.get('workInterval'));
+      intervals.push(Config.get('breakInterval'));
     }
 
     // replace last break with long break
     intervals.pop();
-    intervals.push(Config.longbreakInterval);
+    intervals.push(Config.get('longbreakInterval'));
   };
 
   var secondsToTime = function(seconds) {
@@ -135,8 +135,8 @@ var Timer = (function() {
       // last interval
 
       Services.Favicon.setFavicon('longbreak');
-      if (!skipped && Config.notifications) {
-        Services.Notification.newNotification(Config.longbreakInterval / 60 + ' minute long break', 'longbreak');
+      if (!skipped && Config.get('notifications')) {
+        Services.Notification.newNotification(Config.get('longbreakInterval') / 60 + ' minute long break', 'longbreak');
           Services.Audio.play();
       }
 
@@ -148,11 +148,11 @@ var Timer = (function() {
 
       Services.Favicon.setFavicon('work');
       if (!skipped) {
-        if (Config.notifications) {
+        if (Config.get('notifications')) {
           // TODO: think of better notification text
           Services.Notification.newNotification('Done', 'work');
         }
-        if (Config.audio) {
+        if (Config.get('audio')) {
           Services.Audio.play();
         }
       }
@@ -162,10 +162,10 @@ var Timer = (function() {
 
       Services.Favicon.setFavicon('work');
       if (!skipped) {
-        if (Config.notifications) {
-          Services.Notification.newNotification(Config.workInterval / 60 + ' minute work', 'work');
+        if (Config.get('notifications')) {
+          Services.Notification.newNotification(Config.get('workInterval') / 60 + ' minute work', 'work');
         }
-        if (Config.audio) {
+        if (Config.get('audio')) {
           Services.Audio.play();
         }
       }
@@ -179,10 +179,10 @@ var Timer = (function() {
 
       Services.Favicon.setFavicon('break');
       if (!skipped) {
-        if (Config.notifications) {
-          Services.Notification.newNotification(Config.breakInterval / 60 + ' minute break', 'break');
+        if (Config.get('notifications')) {
+          Services.Notification.newNotification(Config.get('breakInterval') / 60 + ' minute break', 'break');
         }
-        if (Config.audio) {
+        if (Config.get('audio')) {
           Services.Audio.play();
         }
       }
@@ -239,7 +239,7 @@ var Timer = (function() {
     pauseTimer();
 
     intervalIndex = 0;
-    timerInterval = Config.workInterval;
+    timerInterval = Config.get('workInterval');
 
     var time = secondsToTime(timerInterval);
 
