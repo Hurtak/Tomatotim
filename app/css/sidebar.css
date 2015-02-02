@@ -131,6 +131,7 @@ input[type=checkbox] {
   color: #fff;
   border: 0;
   outline: 0;
+  cursor: pointer;
 
   font-size: 40px;
 }
