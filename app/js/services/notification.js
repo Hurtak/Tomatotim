@@ -21,7 +21,7 @@ Services.Notification = (function() {
       return;
     }
 
-    var notification = new Notification(Config.appName, {
+    var notification = new Notification(Config.get('appName'), {
       icon: 'img/notification-96x96-' + iconType + '.png',
       body: message
     });

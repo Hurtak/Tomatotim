@@ -102,7 +102,6 @@ var Settings = (function() {
     return value * 1;
   };
 
-  // TODO: rename interval
   var intervalInput = function(that, intervalType) {
     var multiplier = 60; // for conversion from seconds to minutes
     if (intervalType === 'repeat') {
@@ -122,7 +121,7 @@ var Settings = (function() {
     Services.Storage.set(intervalType, Config.get(intervalType));
   };
 
-  // click handlers for inputs in settings
+  // click handlers for number inputs in settings
   var makeClickHandlerInput = function(that, intervalName) {
     return function() {
       intervalInput(that, intervalName);
