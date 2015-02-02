@@ -14,6 +14,14 @@ Views.Settings = (function() {
 
   var resetSettings = document.getElementById('reset-settings');
 
+  var getNumberInputs = function() {
+    return document.querySelectorAll('.settings input[type=number]');
+  };
+
+  var getPlusMinusButtons = function() {
+    return document.querySelectorAll('.settings [data-increment]');
+  };
+
   return {
     audio: audio,
     audioTest: audioTest,
@@ -23,7 +31,9 @@ Views.Settings = (function() {
     breakInterval: breakInterval,
     longbreakInterval: longbreakInterval,
     repeat: repeat,
-    resetSettings: resetSettings
+    resetSettings: resetSettings,
+    getNumberInputs: getNumberInputs,
+    getPlusMinusButtons: getPlusMinusButtons
   };
 
 }());

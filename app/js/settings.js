@@ -56,18 +56,18 @@ var Settings = (function() {
       Services.Notification.newNotification('Web notification test', 'work');
     });
 
-    var intervals = ['workInterval', 'breakInterval', 'longbreakInterval', 'repeat'];
+    var intervalNames = ['workInterval', 'breakInterval', 'longbreakInterval', 'repeat'];
 
-    var inputs = document.querySelectorAll('.settings input[type=number]'); // TODO: move to views
-    var plusminus = document.querySelectorAll('.settings [data-increment]'); // TODO: move to views
+    var numberInputs = Views.Settings.getNumberInputs();
+    var plusMinusButtons = Views.Settings.getPlusMinusButtons();
 
-    for (var i = 0; i < intervals.length; i++) {
+    for (var i = 0; i < intervalNames.length; i++) {
       // interval settings inputs
-      inputs[i].addEventListener('blur', makeClickHandlerInput(inputs[i], intervals[i]));
+      numberInputs[i].addEventListener('blur', makeClickHandlerInput(numberInputs[i], intervalNames[i]));
 
       // plus minus buttons
       for (var j = 0; j < 2; j++) {
-        plusminus[i * 2 + j].addEventListener('click', makeClickHandlerControls(plusminus[i * 2 + j], intervals[i]));
+        plusMinusButtons[i * 2 + j].addEventListener('click', makeClickHandlerControls(plusMinusButtons[i * 2 + j], intervalNames[i]));
       }
     }
 
@@ -102,30 +102,30 @@ var Settings = (function() {
     return value * 1;
   };
 
-// TODO: rename interval and intervalRepeat
-  var interval = function(that, configValue) {
+  // TODO: rename interval
+  var intervalInput = function(that, intervalType) {
     var multiplier = 60; // for conversion from seconds to minutes
-    if (configValue === 'repeat') {
+    if (intervalType === 'repeat') {
       multiplier = 1;
     }
 
-    that.value = validateInput(that.value, that.min, that.max, Config.get(configValue) / multiplier);
-    Config.set(configValue, that.value * multiplier);
+    that.value = validateInput(that.value, that.min, that.max, Config.get(intervalType) / multiplier);
+    Config.set(intervalType, that.value * multiplier);
 
-    if (configValue === 'repeat') {
+    if (intervalType === 'repeat') {
       Views.Progress.removeImages();
       Timer.init();
     } else {
       Timer.updateIntervals();
     }
 
-    Services.Storage.set(configValue, Config.get(configValue));
+    Services.Storage.set(intervalType, Config.get(intervalType));
   };
 
   // click handlers for inputs in settings
   var makeClickHandlerInput = function(that, intervalName) {
     return function() {
-      interval(that, intervalName);
+      intervalInput(that, intervalName);
     };
   };
 
@@ -137,7 +137,7 @@ var Settings = (function() {
 
       target.value = target.value * 1 + that.getAttribute('data-increment') * 1;
 
-      interval(target, intervalName);
+      intervalInput(target, intervalName);
     };
   };
 

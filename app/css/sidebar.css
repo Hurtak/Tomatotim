@@ -111,10 +111,6 @@
   background-color: transparent;
 }
 
-  .settings input[type=number]:invalid {
-    background-color: rgba(255, 0, 0, .6);
-  }
-
 .settings input[type='number'] {
   -moz-appearance:textfield;
 }
