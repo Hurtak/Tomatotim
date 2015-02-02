@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Tomatotim - customizable Pomodoro time management app">
     <meta property="og:description" content="Open Tomatotim website">
-    <meta property="og:image" content="https://hurtak.github.io/Tomatotim/icons/apple-touch-icon-precomposed.png">
+    <meta property="og:image" content="https://hurtak.github.io/Tomatotim/icons/apple-touch-icon-120x120.png">
     <meta property="og:url" content="https://hurtak.github.io/Tomatotim/">
 
     <!-- twitter meta tags -->
@@ -21,7 +21,7 @@
     <meta name="twitter:creator" content="@PetrHurtak">
     <meta name="twitter:title" content="Tomatotim - customizable Pomodoro time management app">
     <meta name="twitter:description" content="Open Tomatotim website">
-    <meta name="twitter:image" content="https://hurtak.github.io/Tomatotim/icons/apple-touch-icon-precomposed.png">
+    <meta name="twitter:image" content="https://hurtak.github.io/Tomatotim/icons/apple-touch-icon-120x120.png">
     <meta name="twitter:url" content="https://hurtak.github.io/Tomatotim/">
 
     <!-- google meta tags -->
@@ -49,7 +49,7 @@
     <meta name="msapplication-config" content="icons/browserconfig.xml">
     <meta name="application-name" content="Tomatotim">
 
-    <link rel="stylesheet" href="css/main-5ada252d.css">
+    <link rel="stylesheet" href="css/main-adce403e.css">
   </head>
   <body>
     <!-- main -->
@@ -83,8 +83,9 @@
 
     <!-- sidebar button -->
     <div id="sidebar-button" class="sidebar-button no-select">
-      <i class="icon-cog-circled"></i>
-      <i class="icon-cancel-circle-2"></i>
+      <i class="cog icon-cog-circled"></i>
+      <i class="cancel icon-cancel-circle-2"></i>
+      <div class="background"></div>
     </div>
 
     <!-- sidebar overlay -->
@@ -135,13 +136,15 @@
             <input type="checkbox" id="audio">
           </td>
           <td>
+            <button id="audio-test" class="test">
+              <i class="icon-volume-down"></i>
+              <span>test</span>
+            </button>
+          </td>
+          <td>
             <label for="audio">
               Audio notifications
             </label>
-            <button id="audio-test" class="button-inline">
-              <!-- TODO: add icon -->
-              test
-            </button>
           </td>
         </tr>
         <tr>
@@ -149,18 +152,28 @@
             <input type="checkbox" id="notifications">
           </td>
           <td>
+            <button id="notifications-test" class="test">
+              <i class="icon-bell-1"></i>
+              <span>test</span>
+            </button>
+          </td>
+          <td>
             <label for="notifications">
               Web notifications
             </label>
-            <button id="notifications-test" class="button-inline">
-              <!-- TODO: add icon -->
-              test
-            </button>
           </td>
         </tr>
         <tr>
           <td>
             <input type="number" id="work-interval" value="25" min="5" max="600">
+          </td>
+          <td>
+            <button class="minus" data-target="work-interval" data-increment="-1">
+              <i class="icon-minus-3"></i>
+            </button>
+            <button class="plus" data-target="work-interval" data-increment="1">
+              <i class="icon-plus-3"></i>
+            </button>
           </td>
           <td>
             <label for="work-interval">
@@ -173,6 +186,14 @@
            <input type="number" id="break-interval" value="5" min="1" max="60">
           </td>
           <td>
+            <button class="minus" data-target="break-interval" data-increment="-1">
+              <i class="icon-minus-3"></i>
+            </button>
+            <button class="plus" data-target="break-interval" data-increment="1">
+              <i class="icon-plus-3"></i>
+            </button>
+          </td>
+          <td>
             <label for="break-interval">
               Break interval length (minutes)
             </label>
@@ -183,6 +204,14 @@
             <input type="number" id="longbreak-interval" value="20" min="5" max="120">
           </td>
           <td>
+            <button class="minus" data-target="longbreak-interval" data-increment="-1">
+              <i class="icon-minus-3"></i>
+            </button>
+            <button class="plus" data-target="longbreak-interval" data-increment="1">
+              <i class="icon-plus-3"></i>
+            </button>
+          </td>
+          <td>
             <label for="longbreak-interval">
               Long break interval length (minutes)
             </label>
@@ -190,7 +219,15 @@
         </tr>
         <tr>
           <td>
-          <input type="number" id="repeat" value="4" min="1" max="6">
+            <input type="number" id="repeat" value="4" min="1" max="6">
+          </td>
+          <td>
+            <button class="minus" data-target="repeat" data-increment="-1">
+              <i class="icon-minus-3"></i>
+            </button>
+            <button class="plus" data-target="repeat" data-increment="1">
+              <i class="icon-plus-3"></i>
+            </button>
           </td>
           <td>
             <label for="repeat">
@@ -282,9 +319,15 @@
         <i class="icon-link-ext"></i>
         Links
       </h2>
+      <div class="share-buttons">
+        <!-- TODO: change default tweet text (data-text) -->
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Tomatotim" data-count="vertical">Tweet</a>
+        <div class="fb-share-button" data-href="https://hurtak.github.io/Tomatotim/" data-layout="box_count"></div>
+        <div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-href="https://hurtak.github.io/Tomatotim/"></div>
+      </div>
       <p>
         <a class="button" href="https://www.twitter.com/PetrHurtak" target="_blank">
-          <i class="icon-twitter"></i>
+          <i class="icon-twitter-1"></i>
           twitter
         </a>
       </p>
@@ -299,7 +342,7 @@
 
     
 
-    <script src="js/main-076730ae.js"></script>
+    <script src="js/main-e059ae38.js"></script>
 
     <!-- google analytics -->
     <script>
@@ -311,6 +354,33 @@
       ga('create', 'UA-58460326-1', 'auto');
       ga('send', 'pageview');
     </script>
+
+    <!-- twitter share button -->
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
+
+    <!-- facebook share button -->
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- google plus share button -->
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+
   </body>
 </html>
 
