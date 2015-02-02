@@ -148,13 +148,15 @@
             <input type="checkbox" id="audio">
           </td>
           <td>
+            <button id="audio-test" class="test">
+              <i class="icon-volume-down"></i>
+              <span>test</span>
+            </button>
+          </td>
+          <td>
             <label for="audio">
               Audio notifications
             </label>
-            <button id="audio-test" class="button-inline">
-              <!-- TODO: add icon -->
-              test
-            </button>
           </td>
         </tr>
         <tr>
@@ -162,18 +164,28 @@
             <input type="checkbox" id="notifications">
           </td>
           <td>
+            <button id="notifications-test" class="test">
+              <i class="icon-bell-1"></i>
+              <span>test</span>
+            </button>
+          </td>
+          <td>
             <label for="notifications">
               Web notifications
             </label>
-            <button id="notifications-test" class="button-inline">
-              <!-- TODO: add icon -->
-              test
-            </button>
           </td>
         </tr>
         <tr>
           <td>
             <input type="number" id="work-interval" value="25" min="5" max="600">
+          </td>
+          <td>
+            <button class="minus" data-target="work-interval" data-increment="-1">
+              <i class="icon-minus-3"></i>
+            </button>
+            <button class="plus" data-target="work-interval" data-increment="1">
+              <i class="icon-plus-3"></i>
+            </button>
           </td>
           <td>
             <label for="work-interval">
@@ -186,6 +198,14 @@
            <input type="number" id="break-interval" value="5" min="1" max="60">
           </td>
           <td>
+            <button class="minus" data-target="break-interval" data-increment="-1">
+              <i class="icon-minus-3"></i>
+            </button>
+            <button class="plus" data-target="break-interval" data-increment="1">
+              <i class="icon-plus-3"></i>
+            </button>
+          </td>
+          <td>
             <label for="break-interval">
               Break interval length (minutes)
             </label>
@@ -196,6 +216,14 @@
             <input type="number" id="longbreak-interval" value="20" min="5" max="120">
           </td>
           <td>
+            <button class="minus" data-target="longbreak-interval" data-increment="-1">
+              <i class="icon-minus-3"></i>
+            </button>
+            <button class="plus" data-target="longbreak-interval" data-increment="1">
+              <i class="icon-plus-3"></i>
+            </button>
+          </td>
+          <td>
             <label for="longbreak-interval">
               Long break interval length (minutes)
             </label>
@@ -203,7 +231,15 @@
         </tr>
         <tr>
           <td>
-          <input type="number" id="repeat" value="4" min="1" max="6">
+            <input type="number" id="repeat" value="4" min="1" max="6">
+          </td>
+          <td>
+            <button class="minus" data-target="repeat" data-increment="-1">
+              <i class="icon-minus-3"></i>
+            </button>
+            <button class="plus" data-target="repeat" data-increment="1">
+              <i class="icon-plus-3"></i>
+            </button>
           </td>
           <td>
             <label for="repeat">
@@ -303,7 +339,7 @@
       </div>
       <p>
         <a class="button" href="https://www.twitter.com/PetrHurtak" target="_blank">
-          <i class="icon-twitter"></i>
+          <i class="icon-twitter-1"></i>
           twitter
         </a>
       </p>

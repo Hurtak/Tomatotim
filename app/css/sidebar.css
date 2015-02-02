@@ -50,8 +50,7 @@
     font-family: 'Consolas', 'Courier New';
   }
 
-  .sidebar .button,
-  .sidebar .button-inline {
+  .sidebar .button {
     display: inline-block;
 
     background-color: transparent;
@@ -78,43 +77,105 @@
     word-wrap: break-word;
   }
 
-  .sidebar .button-inline {
-    line-height: 25px;
-    margin: 0 5px;
-  }
-
 /* Settings */
 
 .settings td {
   padding: 5px 0;
+  padding-right: 10px;
 }
 
-  .settings td:first-child {
-    padding-right: 10px;
+  .settings td:last-child {
+    padding-right: 0;
   }
 
-input[type=number] {
-  width: 3.7em;
+.settings input[type=checkbox] {
+  -moz-appearance: none;
+
+  width: 20px;
+  height: 20px;
+
+  display: block;
+  margin: 0 auto;
+}
+
+.settings input[type=number] {
+  width: 60px;
   height: 25px;
 
   border: 1px solid #fff;
   border-radius: 5px;
+  padding-right: 1em;
 
   text-align: right;
   font-family: 'Consolas', 'Courier New';
   background-color: transparent;
 }
 
-input[type=checkbox] {
-  -moz-appearance: none;
-
-  position: relative;
-  top: 3px;
-  width: 20px;
-  height: 20px;
-
-  margin-left: 20px;
+.settings input[type='number'] {
+  -moz-appearance:textfield;
 }
+
+.settings input::-webkit-outer-spin-button,
+.settings input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.settings .test,
+.settings .plus,
+.settings .minus {
+  height: 25px;
+  line-height: 23px;
+  padding: 0;
+
+  border: 1px solid #fff;
+  border-radius: 5px;
+
+  background-color: transparent;
+}
+
+  .settings .test:active,
+  .settings .plus:active,
+  .settings .minus:active {
+    transform: translateY(1px);
+  }
+
+.settings .plus,
+.settings .minus {
+  float: left;
+  width: 30px;
+
+  text-align: center;
+}
+
+  .settings .plus i,
+  .settings .minus i {
+    font-size: 70%;
+    position: relative;
+    top: -2px;
+  }
+
+.settings .plus {
+  border-radius: 0 5px 5px 0;
+  border-left: 0;
+}
+
+.settings .minus {
+  border-radius: 5px 0 0 5px;
+}
+
+.settings .test {
+  width: 60px;
+}
+
+  .settings .test i {
+    position: relative;
+    left: -1px;
+  }
+
+  .settings .test span {
+    position: relative;
+    left: -4px;
+  }
 
 /* Share buttons */
 

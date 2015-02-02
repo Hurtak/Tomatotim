@@ -7,11 +7,11 @@ Services.Title = (function() {
       titlePrefix = '\u25A0 '; // black square character
     }
 
-    document.title = titlePrefix + title + ' – ' + Config.appName;
+    document.title = titlePrefix + title + ' – ' + Config.get('appName');
   };
 
   var resetTitle = function() {
-    document.title = Config.appName;
+    document.title = Config.get('appName');
   };
 
   return {
