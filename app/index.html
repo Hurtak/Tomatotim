@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Tomatotim - customizable Pomodoro time management app">
     <meta property="og:description" content="Open Tomatotim website">
-    <meta property="og:image" content="https://hurtak.github.io/Tomatotim/icons/apple-touch-icon-precomposed.png">
+    <meta property="og:image" content="https://hurtak.github.io/Tomatotim/icons/apple-touch-icon-120x120.png">
     <meta property="og:url" content="https://hurtak.github.io/Tomatotim/">
 
     <!-- twitter meta tags -->
@@ -21,7 +21,7 @@
     <meta name="twitter:creator" content="@PetrHurtak">
     <meta name="twitter:title" content="Tomatotim - customizable Pomodoro time management app">
     <meta name="twitter:description" content="Open Tomatotim website">
-    <meta name="twitter:image" content="https://hurtak.github.io/Tomatotim/icons/apple-touch-icon-precomposed.png">
+    <meta name="twitter:image" content="https://hurtak.github.io/Tomatotim/icons/apple-touch-icon-120x120.png">
     <meta name="twitter:url" content="https://hurtak.github.io/Tomatotim/">
 
     <!-- google meta tags -->
@@ -295,6 +295,12 @@
         <i class="icon-link-ext"></i>
         Links
       </h2>
+      <div class="share-buttons">
+        <!-- TODO: change default tweet text (data-text) -->
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Tomatotim" data-count="vertical">Tweet</a>
+        <div class="fb-share-button" data-href="https://hurtak.github.io/Tomatotim/" data-layout="box_count"></div>
+        <div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-href="https://hurtak.github.io/Tomatotim/"></div>
+      </div>
       <p>
         <a class="button" href="https://www.twitter.com/PetrHurtak" target="_blank">
           <i class="icon-twitter"></i>
@@ -349,6 +355,33 @@
       ga('create', 'UA-58460326-1', 'auto');
       ga('send', 'pageview');
     </script>
+
+    <!-- twitter share button -->
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
+
+    <!-- facebook share button -->
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- google plus share button -->
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+
   </body>
 </html>
 

@@ -116,6 +116,18 @@ input[type=checkbox] {
   margin-left: 20px;
 }
 
+/* Share buttons */
+
+.share-buttons > div,
+.share-buttons > iframe {
+  float: left;
+  margin-right: 10px;
+}
+
+  .share-buttons > div:last-child {
+    margin-right: 0;
+  }
+
 /* Sidebar button */
 
 .sidebar-button {
