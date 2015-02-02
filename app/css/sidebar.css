@@ -1,7 +1,7 @@
 .sidebar {
   position: fixed;
   top: 0;
-  /*right: -450px;*/
+  right: -450px;
   width: 450px;
   height: 100%;
 
@@ -94,11 +94,12 @@
   width: 20px;
   height: 20px;
 
-  margin-left: 20px;
+  display: block;
+  margin: 0 auto;
 }
 
 .settings input[type=number] {
-  width: 3.7em;
+  width: 60px;
   height: 25px;
 
   border: 1px solid #fff;
@@ -148,8 +149,14 @@
   width: 30px;
 
   text-align: center;
-  font-family: 'Courier';
 }
+
+  .settings .plus i,
+  .settings .minus i {
+    font-size: 70%;
+    position: relative;
+    top: -2px;
+  }
 
 .settings .plus {
   border-radius: 0 5px 5px 0;
@@ -163,6 +170,16 @@
 .settings .test {
   width: 60px;
 }
+
+  .settings .test i {
+    position: relative;
+    left: -1px;
+  }
+
+  .settings .test span {
+    position: relative;
+    left: -4px;
+  }
 
 /* Sidebar button */
 
