@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'fontello';
-  src: url('../fonts/fontello.eot?46258677');
-  src: url('../fonts/fontello.eot?46258677#iefix') format('embedded-opentype'),
-       url('../fonts/fontello.woff?46258677') format('woff'),
-       url('../fonts/fontello.ttf?46258677') format('truetype'),
-       url('../fonts/fontello.svg?46258677#fontello') format('svg');
+  src: url('../fonts/fontello.eot?48631468');
+  src: url('../fonts/fontello.eot?48631468#iefix') format('embedded-opentype'),
+       url('../fonts/fontello.woff?48631468') format('woff'),
+       url('../fonts/fontello.ttf?48631468') format('truetype'),
+       url('../fonts/fontello.svg?48631468#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../fonts/fontello.svg?46258677#fontello') format('svg');
+    src: url('../fonts/fontello.svg?48631468#fontello') format('svg');
   }
 }
 */
@@ -59,16 +59,17 @@
 .icon-info-circled-1:before { content: '\e806'; } /* '' */
 .icon-wrench-4:before { content: '\e807'; } /* '' */
 .icon-keyboard:before { content: '\e808'; } /* '' */
-.icon-gift-2:before { content: '\e809'; } /* '' */
+.icon-github-circled:before { content: '\e809'; } /* '' */
 .icon-bitcoin:before { content: '\e80a'; } /* '' */
 .icon-wallet:before { content: '\e80b'; } /* '' */
 .icon-qrcode-1:before { content: '\e80c'; } /* '' */
 .icon-search-5:before { content: '\e80d'; } /* '' */
+.icon-file-code:before { content: '\e80e'; } /* '' */
 .icon-link-ext:before { content: '\e80f'; } /* '' */
 .icon-twitter-1:before { content: '\e810'; } /* '' */
-.icon-github:before { content: '\e811'; } /* '' */
 .icon-pause-1:before { content: '\e812'; } /* '' */
 .icon-bell-1:before { content: '\e815'; } /* '' */
 .icon-volume-down:before { content: '\e816'; } /* '' */
 .icon-plus-3:before { content: '\e817'; } /* '' */
 .icon-minus-3:before { content: '\e818'; } /* '' */
+.icon-mail-4:before { content: '\e81b'; } /* '' */

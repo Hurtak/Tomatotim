@@ -44,10 +44,13 @@
 
     border-radius: 5px;
     padding: 3px 8px 4px;
-    margin-right: 6px;
 
     font-family: 'Consolas', 'Courier New';
   }
+
+    .sidebar .hotkeys .highlight {
+      margin-right: 6px;
+    }
 
   .sidebar .button {
     display: inline-block;
@@ -78,6 +81,19 @@
   .sidebar .bitcoin-address {
     word-wrap: break-word;
   }
+
+  .sidebar .links i {
+    font-size: 120%;
+  }
+
+    .sidebar .links .email {
+      position: relative;
+      top: 1px;
+    }
+
+    .sidebar .links .code {
+      font-size: 100%;
+    }
 
 /* Settings */
 
