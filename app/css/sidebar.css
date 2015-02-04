@@ -38,9 +38,8 @@
     color: #fff;
   }
 
-  .sidebar .hotkey {
-    /* TODO: change to hex */
-    background-color: rgba(255, 255, 255, 0.15);
+  .sidebar .highlight {
+    background-color: #41576F;
     color: #ffffff;
 
     border-radius: 5px;
@@ -61,17 +60,20 @@
 
     text-decoration: none;
     line-height: 30px;
-    margin-right: 15px;
     padding: 0 10px 0 7px;
   }
-
-    .sidebar .button:last-child {
-      margin-right: 0;
-    }
 
     .sidebar .button:active {
       transform: translateY(2px);
     }
+
+    .sidebar .donation .button {
+      margin-right: 14px;
+    }
+
+      .sidebar .donation .button:last-child {
+        margin-right: 0;
+      }
 
   .sidebar .bitcoin-address {
     word-wrap: break-word;
