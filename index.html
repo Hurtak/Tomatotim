@@ -37,19 +37,28 @@
     <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-touch-icon-76x76.png">
     <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180x180.png">
-    <meta name="apple-mobile-web-app-title" content="Tomatotim">
     <link rel="shortcut icon" href="icons/favicon-work.ico" id="favicon-ico">
     <link rel="icon" type="image/png" href="icons/favicon-192x192.png" sizes="192x192" data-favicon-explorer>
     <link rel="icon" type="image/png" href="icons/favicon-160x160.png" sizes="160x160" data-favicon-explorer>
     <link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96" data-favicon-explorer>
     <link rel="icon" type="image/png" href="icons/favicon-16x16-work.png" sizes="16x16" id="favicon-png" data-favicon-explorer>
     <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" data-favicon-explorer>
-    <meta name="msapplication-TileColor" content="#424242">
     <meta name="msapplication-TileImage" content="icons/mstile-144x144.png">
-    <meta name="msapplication-config" content="icons/browserconfig.xml">
-    <meta name="application-name" content="Tomatotim">
+    <meta name="msapplication-TileColor" content="#424242">
 
-    <link rel="stylesheet" href="css/main-adce403e.css">
+    <!-- microsoft meta tags -->
+    <meta name="application-name" content="Tomatotim">
+    <!-- TODO: write better tooltip, where is tooltip displayed? -->
+    <meta name="msapplication-tooltip" content="Tomatotim">
+    <meta name="msapplication-navbutton-color" content="#424242">
+    <meta name="msapplication-config" content="icons/browserconfig.xml">
+    <!-- TODO: uncomment in dist -->
+    <!-- <meta name="msapplication-starturl" content="https://hurtak.github.io/Tomatotim"> -->
+
+    <!-- apple meta tags -->
+    <meta name="apple-mobile-web-app-title" content="Tomatotim">
+
+    <link rel="stylesheet" href="css/main-b61de393.css">
   </head>
   <body>
     <!-- main -->
@@ -248,42 +257,40 @@
         <i class="icon-keyboard"></i>
         Keyboard shortcuts
       </h2>
-      <p>
-        <span class="hotkey">Space</span>
-        start/pause timer
-      </p>
-      <p>
-        <span class="hotkey">S</span>
-        skip interval
-      </p>
-      <p>
-        <span class="hotkey">R</span>
-        reset timer
-      </p>
-      <p>
-        <span class="hotkey">H</span>
-        open/close this menu
-      </p>
-      <p>
-        <span class="hotkey">Esc</span>
-        closes this menu
-      </p>
+      <div class="hotkeys">
+        <p>
+          <span class="highlight">Space</span>
+          start/pause timer
+        </p>
+        <p>
+          <span class="highlight">S</span>
+          skip interval
+        </p>
+        <p>
+          <span class="highlight">R</span>
+          reset timer
+        </p>
+        <p>
+          <span class="highlight">H</span>
+          open/close this menu
+        </p>
+        <p>
+          <span class="highlight">Esc</span>
+          closes this menu
+        </p>
+      </div>
 
       <!-- donate -->
       <h2>
-        <i class="icon-gift-2"></i>
-        Donate
+        <i class="icon-bitcoin"></i>
+        Bitcoin donation
       </h2>
-      <p>
-        <i>
-          <i class="icon-bitcoin"></i>
-          Bitcoin
-        </i>
-      </p>
       <p class="bitcoin-address">
-        1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ
+        <span class="highlight" title="Bitcoin address">
+          1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ
+        </span>
       </p>
-      <p>
+      <p class="donation">
         <!-- TODO: maybe change label? -->
         <a class="button" href="bitcoin:1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ?label=Tomatotim%20donation">
           <i class="icon-wallet"></i>
@@ -292,57 +299,49 @@
         <!-- TODO: test QR code -->
         <a class="button" href="http://api.qrserver.com/v1/create-qr-code/?data=bitcoin%3A1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ&amp;size=400x400&amp;prov=goqrme" target="_blank">
           <i class="icon-qrcode-1"></i>
-          QR code
+          QR
         </a>
         <a class="button" href="https://blockchain.info/address/1Ae1Y1qJ48h9bfuCpYK6awJYeEdzUcvgnQ" target="_blank">
           <i class="icon-search-5"></i>
           blockchain
         </a>
       </p>
-      <!-- <p>
-        <i class="icon-paypal-1"></i>
-        Paypal
-
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_donations">
-          <input type="hidden" name="business" value="petr.hurtak@gmail.com">
-          <input type="hidden" name="lc" value="US">
-          <input type="hidden" name="currency_code" value="USD">
-          <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_SM.gif:NonHosted">
-          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-        </form>
-      </p> -->
 
       <!-- links -->
       <h2>
         <i class="icon-link-ext"></i>
         Links
       </h2>
+      <div class="links">
+        <p>
+          Have you found a bug or do you have a suggestion? Write me
+          <i class="email icon-mail-4"></i>
+          <a href="mailto:petr.hurtak@gmail.com" target="_blank">e-mail</a>
+          or create
+          <i class="icon-github-circled"></i>
+          <a href="https://www.github.com/Hurtak/Tomatotim/issues" target="_blank">Github issue</a>.
+        </p>
+        <p>
+          You can also follow me on
+          <i class="icon-twitter-1"></i>
+          <a href="https://www.twitter.com/PetrHurtak" target="_blank">twitter</a>
+          or take a look on the
+          <i class="code icon-file-code"></i>
+          <a href="https://github.com/Hurtak/Tomatotim" target="_blank">source code</a>.
+        </p>
+      </div>
       <div class="share-buttons">
         <!-- TODO: change default tweet text (data-text) -->
         <a href="https://twitter.com/share" class="twitter-share-button" data-text="Tomatotim" data-count="vertical">Tweet</a>
         <div class="fb-share-button" data-href="https://hurtak.github.io/Tomatotim/" data-layout="box_count"></div>
         <div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-href="https://hurtak.github.io/Tomatotim/"></div>
       </div>
-      <p>
-        <a class="button" href="https://www.twitter.com/PetrHurtak" target="_blank">
-          <i class="icon-twitter-1"></i>
-          twitter
-        </a>
-      </p>
-      <p>
-        <a class="button" href="https://github.com/Hurtak/Tomatotim" target="_blank">
-          <i class="icon-github"></i>
-          source code
-        </a>
-      </p>
 
     </div>
 
     
 
-    <script src="js/main-e059ae38.js"></script>
+    <script src="js/main-eb3065a4.js"></script>
 
     <!-- google analytics -->
     <script>
