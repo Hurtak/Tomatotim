@@ -9,7 +9,7 @@ var Config = (function() {
     config.debug = true;
   }
 
-  config.appName = document.title;
+  config.appName = 'Tomatotim';
 
   config.audio = false;
   config.notifications = false;
@@ -23,14 +23,9 @@ var Config = (function() {
   if (config.debug) {
     config.appName = 'DEBUG';
 
-    config.audio = true;
-    config.notifications = true;
-
-    config.workInterval = 10;
+    config.workInterval = 7;
     config.breakInterval = 5;
-    config.longbreakInterval = 5;
-
-    config.repeat = 3;
+    config.longbreakInterval = 6;
   }
 
   var get = function(name) {
