@@ -97,6 +97,10 @@ var Timer = (function() {
     Services.Storage.set('timerInterval', timerInterval);
   };
 
+  var skipInterval = function() {
+    nextInterval(true);
+  };
+
   var nextInterval = function(skipped) {
     skipped = skipped || false;
 
@@ -120,7 +124,6 @@ var Timer = (function() {
       }
 
       Services.Title.setTitle(secondsToTime(timerInterval), timer);
-      Services.Storage.set('intervalIndex', intervalIndex);
       Services.Storage.set('timerInterval', timerInterval);
     }
   };
@@ -137,7 +140,6 @@ var Timer = (function() {
       Services.Favicon.setFavicon('longbreak');
       if (!skipped && Config.get('notifications')) {
         Services.Notification.newNotification(Config.get('longbreakInterval') / 60 + ' minute long break', 'longbreak');
-          Services.Audio.play();
       }
 
       Views.Progress.setDescription('long break');
@@ -147,55 +149,43 @@ var Timer = (function() {
       // first interval: 0
 
       Services.Favicon.setFavicon('work');
-      if (!skipped) {
-        if (Config.get('notifications')) {
-          // TODO: think of better notification text
-          Services.Notification.newNotification('Done', 'work');
-        }
-        if (Config.get('audio')) {
-          Services.Audio.play();
-        }
+      if (!skipped && Config.get('notifications')) {
+        // TODO: think of better notification text
+        Services.Notification.newNotification('Done', 'work');
       }
 
+    } else if (index % 2 === 1) {
+      // odd interval: 1, 3, 5..
+
+      Services.Favicon.setFavicon('break');
+      if (!skipped && Config.get('notifications')) {
+        Services.Notification.newNotification(Config.get('breakInterval') / 60 + ' minute break', 'break');
+      }
+
+      Views.Progress.setDescription('break');
+      Views.Progress.setImageType('break', imageIndex);
+
     } else if (index % 2 === 0) {
-      // even interval: 2, 4, 6
+      // even interval: 2, 4, 6..
 
       Services.Favicon.setFavicon('work');
-      if (!skipped) {
-        if (Config.get('notifications')) {
-          Services.Notification.newNotification(Config.get('workInterval') / 60 + ' minute work', 'work');
-        }
-        if (Config.get('audio')) {
-          Services.Audio.play();
-        }
+      if (!skipped && Config.get('notifications')) {
+        Services.Notification.newNotification(Config.get('workInterval') / 60 + ' minute work', 'work');
       }
 
       Views.Progress.setDescription('work');
       Views.Progress.setImageType('work', imageIndex);
       Views.Progress.setImageType('finished', imageIndex - 1);
 
-    } else if (index % 2 === 1) {
-      // odd interval: 1, 3, 6..
-
-      Services.Favicon.setFavicon('break');
-      if (!skipped) {
-        if (Config.get('notifications')) {
-          Services.Notification.newNotification(Config.get('breakInterval') / 60 + ' minute break', 'break');
-        }
-        if (Config.get('audio')) {
-          Services.Audio.play();
-        }
-      }
-
-      Views.Progress.setDescription('break');
-      Views.Progress.setImageType('break', imageIndex);
-
     }
 
-  };
+    if (!skipped) {
+      Services.TaskbarFlash.flash();
+      if (Config.get('audio')) {
+        Services.Audio.play();
+      }
+    }
 
-  var skipInterval = function() {
-    nextInterval(true);
   };
 
   var startTimer = function() {
