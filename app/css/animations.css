@@ -3,8 +3,8 @@ body[data-sidebar-open] .sidebar {
 }
 
 body[data-sidebar-open] .sidebar-overlay {
-  transform: translateX(-100%);
   opacity: 1;
+  transform: translateX(-100%);
 }
 
 body[data-sidebar-open] .sidebar-button {

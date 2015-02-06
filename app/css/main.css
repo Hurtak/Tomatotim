@@ -5,37 +5,42 @@ body {
 /* Wrapper */
 
 .wrapper {
-  text-align: center;
   height: 100%;
+
+  text-align: center;
 }
 
   .wrapper:before {
-    content: '';
     display: inline-block;
-    vertical-align: middle;
     height: 100%;
-    margin-right: -0.25em;
+    margin-right: -.25em;
+
+    content: '';
+    vertical-align: middle;
   }
 
   .wrapper .centered {
     display: inline-block;
+
     vertical-align: middle;
   }
 
 /* Description */
 
 .description {
-  color: #fff;
   height: 60px;
+
+  color: #fff;
   font-size: 60px;
 }
 
 /* Clock */
 
 .clock {
-  font-size: 150px;
   height: 170px;
+
   color: #fff;
+  font-size: 150px;
 }
 
 /* Progress */
@@ -57,12 +62,11 @@ body {
   .controls button {
     position: relative;
     width: 180px;
-
-    padding: 20px;
     margin: 0 10px;
+    padding: 20px;
 
-    background-color: transparent;
     color: #fff;
+    background-color: transparent;
     border: 3px solid #fff;
     border-radius: 10px;
     font-size: 25px;
