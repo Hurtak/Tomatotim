@@ -14,7 +14,7 @@ var Timer = (function() {
     // initialize intervals array
     updateIntervals();
 
-    // load save progress
+    // load saved progress
     intervalIndex = Services.Storage.get('intervalIndex') || 0;
     timerInterval = Services.Storage.get('timerInterval') || Config.get('workInterval');
 
@@ -126,6 +126,12 @@ var Timer = (function() {
       Services.Title.setTitle(secondsToTime(timerInterval), timer);
       Services.Storage.set('timerInterval', timerInterval);
     }
+
+    if (Config.get('timerAutoPause')) {
+      pauseTimer();
+      Views.Controls.resetStartButton(); // TODO: refactor this into pauseTimer()
+      Services.Title.setTitle(secondsToTime(timerInterval), timer);
+    }
   };
 
   var updateTimerViews = function(index, skipped) {
@@ -214,8 +220,8 @@ var Timer = (function() {
       elapsedTime += new Date().getTime() - before.getTime();
 
       if(elapsedTime >= 1000) {
-          timerTick();
-          elapsedTime -= 1000;
+        timerTick();
+        elapsedTime -= 1000;
       }
 
       before = new Date();

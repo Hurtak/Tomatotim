@@ -7,6 +7,7 @@ Views.Settings = (function() {
   var notificationsTest = document.getElementById('notifications-test');
   var taskbarFlash = document.getElementById('taskbar-flash');
   var taskbarFlashTest = document.getElementById('taskbar-flash-test');
+  var timerAutoPause = document.getElementById('timer-auto-pause');
 
   var workInterval = document.getElementById('work-interval');
   var breakInterval = document.getElementById('break-interval');
@@ -24,8 +25,8 @@ Views.Settings = (function() {
     return document.querySelectorAll('.settings [data-increment]');
   };
 
-  var hide = function(that) {
-    that.parentNode.parentNode.style.display = 'none';
+  var hide = function(el) {
+    el.parentNode.parentNode.style.display = 'none';
   };
 
   return {
@@ -35,6 +36,7 @@ Views.Settings = (function() {
     notificationsTest: notificationsTest,
     taskbarFlash: taskbarFlash,
     taskbarFlashTest: taskbarFlashTest,
+    timerAutoPause: timerAutoPause,
     workInterval: workInterval,
     breakInterval: breakInterval,
     longbreakInterval: longbreakInterval,

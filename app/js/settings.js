@@ -4,15 +4,10 @@ var Settings = (function() {
   var init = function() {
 
     // update config defaults with saved settings (if available)
-    var audio = Services.Storage.get('audio');
-    if (audio !== null) {
-      Config.set('audio', audio);
-    }
-
-    var notifications = Services.Storage.get('notifications');
-    if (notifications !== null) {
-      Config.set('notifications', notifications);
-    }
+    Config.set('audio', !!Services.Storage.get('audio'));
+    Config.set('notifications', !!Services.Storage.get('notifications'));
+    Config.set('taskbarFlash', !!Services.Storage.get('taskbarFlash'));
+    Config.set('timerAutoPause', !!Services.Storage.get('timerAutoPause'));
 
     Config.set('workInterval', Services.Storage.get('workInterval') || Config.get('workInterval'));
     Config.set('breakInterval', Services.Storage.get('breakInterval') || Config.get('breakInterval'));
@@ -24,6 +19,7 @@ var Settings = (function() {
     Views.Settings.audio.checked = Config.get('audio');
     Views.Settings.notifications.checked = Config.get('notifications');
     Views.Settings.taskbarFlash.checked = Config.get('taskbarFlash');
+    Views.Settings.timerAutoPause.checked = Config.get('timerAutoPause');
 
     Views.Settings.workInterval.value = Config.get('workInterval') / 60;
     Views.Settings.breakInterval.value = Config.get('breakInterval') / 60;
@@ -34,7 +30,6 @@ var Settings = (function() {
     // checkboxes
     Views.Settings.audio.addEventListener('click', function() {
       Config.set('audio', this.checked);
-
       Services.Storage.set('audio', Config.get('audio'));
     });
 
@@ -55,10 +50,16 @@ var Settings = (function() {
     if (Services.TaskbarFlash.isAvaliable()) {
       Views.Settings.taskbarFlash.addEventListener('click', function() {
         Config.set('taskbarFlash', this.checked);
+        Services.Storage.set('taskbarFlash', this.checked);
       });
     } else {
       Views.Settings.hide(Views.Settings.taskbarFlash);
     }
+
+    Views.Settings.timerAutoPause.addEventListener('click', function() {
+      Config.set('timerAutoPause', this.checked);
+      Services.Storage.set('timerAutoPause', this.checked);
+    });
 
     // test buttons
     Views.Settings.audioTest.addEventListener('click', function() {
