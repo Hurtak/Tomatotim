@@ -23,6 +23,7 @@ var Settings = (function() {
     // update settings view
     Views.Settings.audio.checked = Config.get('audio');
     Views.Settings.notifications.checked = Config.get('notifications');
+    Views.Settings.taskbarFlash.checked = Config.get('taskbarFlash');
 
     Views.Settings.workInterval.value = Config.get('workInterval') / 60;
     Views.Settings.breakInterval.value = Config.get('breakInterval') / 60;
@@ -30,24 +31,36 @@ var Settings = (function() {
 
     Views.Settings.repeat.value = Config.get('repeat');
 
-    // notifications
+    // checkboxes
     Views.Settings.audio.addEventListener('click', function() {
       Config.set('audio', this.checked);
 
       Services.Storage.set('audio', Config.get('audio'));
     });
 
-    Views.Settings.notifications.addEventListener('click', function() {
-      Config.set('notifications', this.checked);
+    if (Services.Notification.isAvaliable()) {
+      Views.Settings.notifications.addEventListener('click', function() {
+        Config.set('notifications', this.checked);
 
-      if (Config.get('notifications') === true) {
-        Services.Notification.requestPermission();
-      }
+        if (Config.get('notifications') === true) {
+          Services.Notification.requestPermission();
+        }
 
-      Services.Storage.set('notifications', Config.get('notifications'));
-    });
+        Services.Storage.set('notifications', Config.get('notifications'));
+      });
+    } else {
+      Views.Settings.hide(Views.Settings.notifications);
+    }
 
-    // notifications test buttons
+    if (Services.TaskbarFlash.isAvaliable()) {
+      Views.Settings.taskbarFlash.addEventListener('click', function() {
+        Config.set('taskbarFlash', this.checked);
+      });
+    } else {
+      Views.Settings.hide(Views.Settings.taskbarFlash);
+    }
+
+    // test buttons
     Views.Settings.audioTest.addEventListener('click', function() {
       Services.Audio.play();
     });
@@ -56,6 +69,14 @@ var Settings = (function() {
       Services.Notification.newNotification('Web notification test', 'work');
     });
 
+    Views.Settings.taskbarFlashTest.addEventListener('click', function() {
+      // flashing only works when browser doesent have focus
+      for (var i = 0; i < 20; i++) {
+        setTimeout(Services.TaskbarFlash.flash, 500 * i);
+      }
+    });
+
+    // inputs type number and +- buttons
     var intervalNames = ['workInterval', 'breakInterval', 'longbreakInterval', 'repeat'];
 
     var numberInputs = Views.Settings.getNumberInputs();
@@ -88,10 +109,9 @@ var Settings = (function() {
   };
 
   var validateInput = function(value, min, max, defaultValue) {
-    value = Math.floor(value);
+    value = Math.floor(value); // non-number values converted to NaN
 
     if (!value) {
-      // after Math.floor all non-number values are converted to 0
       value = defaultValue;
     } else if (value < min * 1) {
       value = min;

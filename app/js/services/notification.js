@@ -3,17 +3,21 @@ Services.Notification = (function() {
 
   var notificationTimeout = 5; // seconds
 
+  var isAvaliable = function() {
+    return typeof window.Notification === 'function';
+  };
+
   var requestPermission = function() {
-    if (!window.Notification) {
+    if (!isAvaliable()) {
       return false;
     }
 
     if (Notification.permission !== 'granted') {
       Notification.requestPermission();
       return false;
-    } else {
-      return true;
     }
+
+    return true;
   };
 
   var newNotification = function(message, iconType) {
@@ -43,6 +47,7 @@ Services.Notification = (function() {
   };
 
   return {
+    isAvaliable: isAvaliable,
     requestPermission: requestPermission,
     newNotification: newNotification
   };

@@ -180,9 +180,11 @@ var Timer = (function() {
     }
 
     if (!skipped) {
-      Services.TaskbarFlash.flash();
       if (Config.get('audio')) {
         Services.Audio.play();
+      }
+      if (Config.get('taskbarFlash')) {
+        Services.TaskbarFlash.flash();
       }
     }
 
