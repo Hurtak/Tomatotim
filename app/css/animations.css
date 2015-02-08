@@ -57,3 +57,11 @@ body[data-sidebar-open] .sidebar-overlay {
                       transform .3s step-end,
                         opacity .3s ease-out;
 }
+
+.checkbox + .checkbox-button,
+.checkbox + .checkbox-button:after,
+.checkbox + .checkbox-button:before {
+  transition: -webkit-transform .2s ease,
+                      transform .2s ease,
+                     background .2s ease;
+}
