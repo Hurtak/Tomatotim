@@ -1,7 +1,26 @@
 Tomatotim
 ==========
 
-#### Customizable application for time management inspired by Pomodoro technique
+### Description
+
+Application for time management inspired by technique called
+[Pomodoro](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+The technique uses a timer to break down your working time into
+25 minutes long work periods separated by short breaks. The
+method is based on the idea that frequent breaks can improve
+mental agility.
+
+The most common implementation is as follows:
+
+<ol>
+  <li>25 minutes of work</li>
+  <li>5 minute break</li>
+  <li>Repeat four times, after which you have a 20–30 minute break</li>
+  <li>Start again</li>
+</ol>
+
+For more detailed information see the very helpful
+[Pomodoro get started guide](http://pomodorotechnique.com/get-started/).
 
 ### Demo
 
