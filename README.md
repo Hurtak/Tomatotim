@@ -24,7 +24,7 @@ For more detailed information see the very helpful
 
 ### Demo
 
-* https://hurtak.github.io/Tomatotim
+* http://tomatotim.com
 
 ### Features
 
