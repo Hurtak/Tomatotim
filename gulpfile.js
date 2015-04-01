@@ -1,4 +1,3 @@
-/* jshint node:true */
 'use strict';
 
 var gulp = require('gulp');
@@ -30,6 +29,7 @@ var paths = {
 };
 
 // Options
+
 var options = {
   autoprefixer: {
     browsers: [
@@ -55,106 +55,103 @@ var options = {
 
 // linters
 
-  // js
-  gulp.task('lintjs', function() {
-    return gulp.src(paths.app.js)
-      .pipe($.jshint())
-      .pipe($.jshint.reporter('jshint-stylish'));
-  });
+gulp.task('lintjs', function() {
+  return gulp.src(paths.app.js)
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('jshint-stylish'));
+});
 
-  // css
-  gulp.task('lintcss', function() {
-    return gulp.src(paths.app.css)
-      .pipe($.csslint())
-      .pipe($.csslint.reporter());
-  });
+gulp.task('lintcss', function() {
+  return gulp.src(paths.app.css)
+    .pipe($.csslint())
+    .pipe($.csslint.reporter());
+});
 
 // clean
 
-  gulp.task('clean', function () {
-    del([
-      distPath + '/*'
-    ]);
-  });
+gulp.task('clean', function() {
+  del([
+    distPath + '/*'
+  ]);
+});
 
 // compile
 
-  gulp.task('compile', function () {
-    var assets = $.useref.assets();
-    return gulp.src(paths.app.html)
-      .pipe(assets)
-      .pipe($.if('*.js', $.uglify()))
-      .pipe($.if('*.css', $.autoprefixer(options.autoprefixer)))
-      .pipe($.if('*.css', $.csso()))
-      .pipe($.rev())
-      .pipe(assets.restore())
-      .pipe($.useref())
-      .pipe($.revReplace())
-      .pipe($.if('*.{html, htm}', $.htmlmin(options.htmlmin)))
-      .pipe(gulp.dest(distPath));
-  });
+gulp.task('compile', function() {
+  var assets = $.useref.assets();
+  return gulp.src(paths.app.html)
+    .pipe(assets)
+    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.css', $.autoprefixer(options.autoprefixer)))
+    .pipe($.if('*.css', $.csso()))
+    .pipe($.rev())
+    .pipe(assets.restore())
+    .pipe($.useref())
+    .pipe($.revReplace())
+    .pipe($.if('*.{html, htm}', $.htmlmin(options.htmlmin)))
+    .pipe(gulp.dest(distPath));
+});
 
-  gulp.task('img', function () {
-      return gulp.src(paths.app.img)
-          .pipe($.imagemin(options.imagemin))
-          .pipe(gulp.dest(paths.dist.img));
-  });
+gulp.task('img', function() {
+  return gulp.src(paths.app.img)
+      .pipe($.imagemin(options.imagemin))
+      .pipe(gulp.dest(paths.dist.img));
+});
 
-  gulp.task('fonts', function () {
-    return gulp.src(paths.app.fonts)
-      .pipe($.flatten())
-      .pipe(gulp.dest(paths.dist.fonts));
-  });
+gulp.task('fonts', function() {
+  return gulp.src(paths.app.fonts)
+    .pipe($.flatten())
+    .pipe(gulp.dest(paths.dist.fonts));
+});
 
-  gulp.task('icons', function () {
-    return gulp.src(paths.app.icons)
-      .pipe(gulp.dest(paths.dist.icons));
-  });
+gulp.task('icons', function() {
+  return gulp.src(paths.app.icons)
+    .pipe(gulp.dest(paths.dist.icons));
+});
 
-  gulp.task('audio', function () {
-    return gulp.src(paths.app.audio)
-      .pipe(gulp.dest(paths.dist.audio));
-  });
+gulp.task('audio', function() {
+  return gulp.src(paths.app.audio)
+    .pipe(gulp.dest(paths.dist.audio));
+});
 
 // Browser sync
 
-  gulp.task('browser-sync', function() {
-    return browserSync({
-      server: {
-        baseDir: distPath,
-        index: 'index.html'
-      },
-      browser: 'chrome'
-    });
+gulp.task('browser-sync', function() {
+  return browserSync({
+    server: {
+      baseDir: distPath,
+      index: 'index.html'
+    },
+    browser: 'chrome'
   });
+});
 
-  gulp.task('browser-sync-dev', function() {
-    return browserSync({
-      server: {
-        baseDir: appPath,
-        index: 'index.html'
-      },
-      browser: 'chrome'
-    });
+gulp.task('browser-sync-dev', function() {
+  return browserSync({
+    server: {
+      baseDir: appPath,
+      index: 'index.html'
+    },
+    browser: 'chrome'
   });
+});
 
 // Main gulp tasks
 
-  // builds all files and runs from dist directory
-  gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'icons',
-                        'audio', 'browser-sync']);
+// builds all files and runs from dist directory
+gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'icons', 'audio', 'browser-sync']);
 
-  // skips building phase and runs from dist directory
-  gulp.task('run', ['browser-sync']);
+// skips building phase and runs from dist directory
+gulp.task('run', ['browser-sync']);
 
-  // runs from app directory
-  gulp.task('dev', ['browser-sync-dev'], function() {
-    // watch for JS changes
-    gulp.watch(paths.app.js, ['lintjs', browserSync.reload]);
+// runs from app directory
+gulp.task('dev', ['browser-sync-dev'], function() {
+  // watch for JS changes
+  gulp.watch(paths.app.js, ['lintjs', browserSync.reload]);
 
-    // watch for CSS changes
-    gulp.watch(paths.app.css, browserSync.reload);
+  // watch for CSS changes
+  gulp.watch(paths.app.css, browserSync.reload);
 
-    // watch for HTML changes
-    gulp.watch(paths.app.html, browserSync.reload);
-  });
+  // watch for HTML changes
+  gulp.watch(paths.app.html, browserSync.reload);
+});
