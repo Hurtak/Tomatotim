@@ -72,8 +72,8 @@ var Settings = (function() {
 
     Views.Settings.taskbarFlashTest.addEventListener('click', function() {
       // flashing only works when browser doesent have focus
-      for (var i = 0; i < 20; i++) {
-        setTimeout(Services.TaskbarFlash.flash, 500 * i);
+      for (var count = 0; count < 20; count++) {
+        setTimeout(Services.TaskbarFlash.flash, 500 * count);
       }
     });
 
@@ -95,6 +95,7 @@ var Settings = (function() {
 
     // reset settings
     Views.Settings.resetSettings.addEventListener('click', function() {
+      /* eslint "no-alert": 0 */
       var confim = confirm('Are you sure?');
       if (confim) {
         Services.Storage.clear();

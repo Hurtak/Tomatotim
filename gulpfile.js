@@ -1,3 +1,4 @@
+/* eslint "strict": [2, "global"] */
 'use strict';
 
 var gulp = require('gulp');
@@ -25,7 +26,7 @@ var paths = {
     icons: distPath + '/icons',
     audio: distPath + '/audio',
     img: distPath + '/img'
-  },
+  }
 };
 
 // Options
@@ -57,8 +58,8 @@ var options = {
 
 gulp.task('lintjs', function() {
   return gulp.src(paths.app.js)
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'));
+    .pipe($.eslint())
+    .pipe($.eslint.format());
 });
 
 gulp.task('lintcss', function() {
@@ -79,6 +80,7 @@ gulp.task('clean', function() {
 
 gulp.task('compile', function() {
   var assets = $.useref.assets();
+
   return gulp.src(paths.app.html)
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
@@ -88,7 +90,7 @@ gulp.task('compile', function() {
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
-    .pipe($.if('*.{html, htm}', $.htmlmin(options.htmlmin)))
+    .pipe($.if('*.html', $.htmlmin(options.htmlmin)))
     .pipe(gulp.dest(distPath));
 });
 
