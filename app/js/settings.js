@@ -4,10 +4,10 @@ var Settings = (function() {
   var init = function() {
 
     // update config defaults with saved settings (if available)
-    Config.set('audio', !!Services.Storage.get('audio'));
-    Config.set('notifications', !!Services.Storage.get('notifications'));
-    Config.set('taskbarFlash', !!Services.Storage.get('taskbarFlash'));
-    Config.set('timerAutoPause', !!Services.Storage.get('timerAutoPause'));
+    Config.set('audio', Boolean(Services.Storage.get('audio')));
+    Config.set('notifications', Boolean(Services.Storage.get('notifications')));
+    Config.set('taskbarFlash', Boolean(Services.Storage.get('taskbarFlash')));
+    Config.set('timerAutoPause', Boolean(Services.Storage.get('timerAutoPause')));
 
     Config.set('workInterval', Services.Storage.get('workInterval') || Config.get('workInterval'));
     Config.set('breakInterval', Services.Storage.get('breakInterval') || Config.get('breakInterval'));
@@ -166,4 +166,3 @@ var Settings = (function() {
   };
 
 }());
-

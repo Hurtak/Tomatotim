@@ -11,7 +11,7 @@ Views.Progress = (function() {
     'work': 'Work interval',
     'break': 'Break interval',
     'longbreak': 'Long break interval',
-    'finished' : 'Finished interval'
+    'finished': 'Finished interval'
   };
 
   var setImageType = function(type, index) {

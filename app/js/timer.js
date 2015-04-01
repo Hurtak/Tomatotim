@@ -219,7 +219,7 @@ var Timer = (function() {
     timer = setInterval(function() {
       elapsedTime += new Date().getTime() - before.getTime();
 
-      if(elapsedTime >= 1000) {
+      if (elapsedTime >= 1000) {
         timerTick();
         elapsedTime -= 1000;
       }
