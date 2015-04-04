@@ -2,44 +2,45 @@
 {
   "rules": {
     // Possible Errors
-    "no-extra-parens": [1, true],
+    "no-extra-parens": 1, // disallow unnecessary parentheses (off by default)
+    "valid-jsdoc": [1, {"requireReturn": false}], // Ensure JSDoc comments are valid (off by default)
 
     // Best Practices
-    "block-scoped-var": [0, true],
-    "guard-for-in": [1, true],
-    "no-else-return": [1, true],
-    "no-eq-null": [2, true],
-    "no-floating-decimal": [2, true],
-    "no-param-reassign": [0, true],
-    "no-process-env": [1, true],
-    "no-self-compare": [2, true],
-    "no-throw-literal": [1, true],
-    "no-unused-vars": 0,
-    "no-use-before-define": 0,
-    "no-void": [1, true],
-    "wrap-iife": [2, "outside"],
+    "block-scoped-var": 0, // treat var statements as if they were block scoped (off by default)
+    "guard-for-in": 1, // make sure for-in loops have an if statement (off by default)
+    "no-alert": 1, // disallow the use of alert, confirm, and prompt
+    "no-else-return": 1, // disallow else after a return in an if (off by default)
+    "no-eq-null": 2, // disallow comparisons to null without a type-checking operator (off by default)
+    "no-floating-decimal": 1, // disallow the use of leading or trailing decimal points in numeric literals (off by default)
+    "no-self-compare": 2, // disallow comparisons where both sides are exactly the same (off by default)
+    "no-throw-literal": 1, // restrict what can be thrown as an exception (off by default)
+    "no-void": 1, // disallow use of void operator (off by default)
+    "wrap-iife": [2, "inside"], // require immediate function invocation to be wrapped in parentheses (off by default)
 
     // Strict Mode
-    "strict": [2, "function"],
+    "strict": [2, "function"], // controls location of Use Strict Directives
 
     // Variables
-    "no-undef": 0,
-    "no-undefined": [2, true],
+    "no-undef": 0, // disallow use of undeclared variables unless mentioned in a /*global */ block
+    "no-undefined": 1, // disallow use of undefined variable (off by default)
+    "no-unused-vars": 0, // disallow usage of expressions in statement position
+    "no-use-before-define": 0, // disallow use of variables before they are defined
 
     // Node.js
 
     // Stylistic Issues
-    "brace-style": [2, "1tbs", {"allowSingleLine": false}],
-    "comma-style": [1, "last"],
-    "consistent-this": [1, "_this"],
-    "func-style": [1, "epression"],
-    "indent": [1, 2],
-    "max-nested-callbacks": [1, 3],
-    "no-lonely-if": [1, "tab"],
-    "no-multiple-empty-lines": [1, {"max": 2}],
-    "no-nested-ternary": [1, true],
-    "one-var": [0, "never"],
-    "quotes": [2, "single"],
+    "indent": [1, 2], // this option sets a specific tab width for your code (off by default)
+    "brace-style": [1, "1tbs", {"allowSingleLine": false}], // enforce one true brace style (off by default)
+    "comma-style": [1, "last"], // enforce one true comma style (off by default)
+    "consistent-this": [1, "_this"], // enforces consistent naming when capturing the current execution context (off by default)
+    "comma-spacing": [2, {"before": false, "after": true}], // enforce spacing before and after comma
+    "func-style": [1, "epression"], // enforces use of function declarations or expressions (off by default)
+    "max-nested-callbacks": [1, 2], // specify the maximum depth callbacks can be nested (off by default)
+    "no-lonely-if": [1, "tab"], // disallow if as the only statement in an else block (off by default)
+    "no-multiple-empty-lines": [1, {"max": 2}], // disallow multiple empty lines (off by default)
+    "no-nested-ternary": 1, // disallow nested ternary expressions (off by default)
+    "one-var": [1, "never"],
+    "quotes": [1, "single"],
     "space-after-keywords": [1, "always"],
     "space-before-blocks": [1, "always"],
     "space-before-function-paren": [0, "never"],
@@ -50,12 +51,19 @@
 
     // ECMAScript 6
     "generator-star-spacing": [2, "after"],
-    "no-var": [0, true],
+    "no-var": 0,
 
     // Legacy
-    "no-bitwise": [1, true],
+    "no-bitwise": 1
   },
   "env": {
-    "node": true
+    "browser": false,   // browser global variables
+    "es6": false,        // enable all ECMAScript 6 features except for modules
+    "node": false,      // Node.js global variables and Node.js-specific rules
+    "amd": false,       // defines require() and define() as global variables as per the amd spec
+    "mocha": false,     // adds all of the Mocha testing global variables
+    "jasmine": false,   // adds all of the Jasmine testing global variables for version 1.3 and 2.0
+    "phantomjs": false, // phantomjs global variables
+    "jquery": false    // jquery global variables
   }
 }
