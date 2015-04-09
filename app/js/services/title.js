@@ -19,4 +19,4 @@ Services.Title = (function() {
     resetTitle: resetTitle
   };
 
-}());
+})();

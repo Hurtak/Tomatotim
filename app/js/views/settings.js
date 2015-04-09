@@ -47,4 +47,4 @@ Views.Settings = (function() {
     hide: hide
   };
 
-}());
+})();

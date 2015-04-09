@@ -48,4 +48,4 @@ Views.Sidebar = (function() {
     toogleSidebar: toogleSidebar
   };
 
-}());
+})();

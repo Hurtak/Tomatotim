@@ -16,4 +16,4 @@ Views.Timer = (function() {
     setTime: setTime
   };
 
-}());
+})();

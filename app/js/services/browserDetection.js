@@ -17,4 +17,4 @@ Services.BrowserDetection = (function() {
     isIE: isIE
   };
 
-}());
+})();

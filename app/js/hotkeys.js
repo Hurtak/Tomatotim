@@ -52,4 +52,4 @@ var Hotkeys = (function() {
     init: init
   };
 
-}());
+})();

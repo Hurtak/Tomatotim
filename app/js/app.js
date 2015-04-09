@@ -9,4 +9,4 @@
   Timer.init();
   Hotkeys.init();
 
-}());
+})();

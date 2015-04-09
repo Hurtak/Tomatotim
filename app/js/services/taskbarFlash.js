@@ -18,4 +18,4 @@ Services.TaskbarFlash = (function() {
     flash: flash
   };
 
-}());
+})();

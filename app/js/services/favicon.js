@@ -16,9 +16,7 @@ Services.Favicon = (function() {
     }
   };
 
-  /**
-   * types: 'work', 'break', 'longbreak'
-   */
+  // type: 'work', 'break', 'longbreak'
   var setFavicon = function(type) {
     // Firefox: only uses .ico, changing href changes the icon
     // Chrome: we need to delete icon and create new one
@@ -53,4 +51,4 @@ Services.Favicon = (function() {
     setFavicon: setFavicon
   };
 
-}());
+})();

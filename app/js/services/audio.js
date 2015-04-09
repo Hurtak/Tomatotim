@@ -26,4 +26,4 @@ Services.Audio = (function() {
     setVolume: setVolume
   };
 
-}());
+})();

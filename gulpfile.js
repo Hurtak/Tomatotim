@@ -1,4 +1,4 @@
-/* eslint "strict": [2, "global"] */
+/*eslint-disable strict, global-strict */
 'use strict';
 
 var gulp = require('gulp');

@@ -261,4 +261,4 @@ var Timer = (function() {
     resetTimer: resetTimer
   };
 
-}());
+})();

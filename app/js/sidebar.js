@@ -10,4 +10,4 @@ var Sidebar = (function() {
     init: init
   };
 
-}());
+})();

@@ -7,11 +7,11 @@ Views.Progress = (function() {
   var description = document.getElementById('description');
 
   var imagesTitle = {
-    'unfinished': 'Unfinished interval',
-    'work': 'Work interval',
-    'break': 'Break interval',
-    'longbreak': 'Long break interval',
-    'finished': 'Finished interval'
+    unfinished: 'Unfinished interval',
+    work: 'Work interval',
+    break: 'Break interval',
+    longbreak: 'Long break interval',
+    finished: 'Finished interval'
   };
 
   var setImageType = function(type, index) {
@@ -52,4 +52,4 @@ Views.Progress = (function() {
     removeImages: removeImages
   };
 
-}());
+})();

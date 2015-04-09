@@ -48,4 +48,4 @@ Views.Controls = (function() {
     toogleStartButtonCaption: toogleStartButtonCaption
   };
 
-}());
+})();

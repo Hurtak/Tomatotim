@@ -41,7 +41,7 @@ var Config = (function() {
     set: set
   };
 
-}());
+})();
 
 var Services = {};
 var Views = {};

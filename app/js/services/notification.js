@@ -52,4 +52,4 @@ Services.Notification = (function() {
     newNotification: newNotification
   };
 
-}());
+})();

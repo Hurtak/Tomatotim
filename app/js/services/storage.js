@@ -2,7 +2,6 @@ Services.Storage = (function() {
   'use strict';
 
   var get = function(storageName) {
-    // return JSON.parse(localStorage.getItem(storageName) || '[]');
     return JSON.parse(localStorage.getItem(storageName));
   };
 
@@ -20,4 +19,4 @@ Services.Storage = (function() {
     clear: clear
   };
 
-}());
+})();

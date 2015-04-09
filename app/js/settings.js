@@ -95,8 +95,7 @@ var Settings = (function() {
 
     // reset settings
     Views.Settings.resetSettings.addEventListener('click', function() {
-      /* eslint "no-alert": 0 */
-      var confim = confirm('Are you sure?');
+      var confim = confirm('Are you sure?'); // eslint-disable-line no-alert
       if (confim) {
         Services.Storage.clear();
         location.reload(false);
@@ -166,4 +165,4 @@ var Settings = (function() {
     init: init
   };
 
-}());
+})();
