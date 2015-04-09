@@ -53,7 +53,6 @@ For more detailed information see the very helpful
 [Node.js](http://nodejs.org) is required.
 ```
 npm install -g gulp
-npm install -g bower
 ```
 
 ##### Create App
@@ -62,7 +61,6 @@ npm install -g bower
 git clone https://github.com/Hurtak/Tomatotim.git
 cd Tomatotim
 npm install
-bower install
 ```
 
 ##### Usage
