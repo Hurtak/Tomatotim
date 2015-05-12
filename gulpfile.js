@@ -116,9 +116,11 @@ gulp.task('browser-sync', function() {
   return browserSync({
     server: {
       baseDir: distPath,
-      index: 'index.html'
-    },
-    browser: 'chrome'
+      index: 'index.html',
+      routes: {
+        '/node_modules': 'node_modules'
+      }
+    }
   });
 });
 
@@ -126,9 +128,11 @@ gulp.task('browser-sync-dev', function() {
   return browserSync({
     server: {
       baseDir: appPath,
-      index: 'index.html'
-    },
-    browser: 'chrome'
+      index: 'index.html',
+      routes: {
+        '/node_modules': 'node_modules'
+      }
+    }
   });
 });
 
