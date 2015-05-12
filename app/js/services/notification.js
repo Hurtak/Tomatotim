@@ -35,15 +35,6 @@ Services.Notification = (function() {
         notification.close();
       }, notificationTimeout * 1000);
     };
-
-    // TODO: when we have option which automatically pauses timer after
-    //       each interval, click on notification could unpause, also we
-    //       should increase the close interval when this option is selected
-    //
-    // notification.onclick = function() {
-    //
-    // };
-
   };
 
   return {
