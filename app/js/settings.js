@@ -85,11 +85,11 @@ var Settings = (function() {
 
     for (var i = 0; i < intervalNames.length; i++) {
       // interval settings inputs
-      numberInputs[i].addEventListener('blur', makeClickHandlerInput(numberInputs[i], intervalNames[i]));
+      numberInputs[i].addEventListener('blur', makeClickHandlerForInput(numberInputs[i], intervalNames[i]));
 
       // plus minus buttons
       for (var j = 0; j < 2; j++) {
-        plusMinusButtons[i * 2 + j].addEventListener('click', makeClickHandlerControls(plusMinusButtons[i * 2 + j], intervalNames[i]));
+        plusMinusButtons[i * 2 + j].addEventListener('click', makeClickHandlerForControls(plusMinusButtons[i * 2 + j], intervalNames[i]));
       }
     }
 
@@ -143,14 +143,14 @@ var Settings = (function() {
   };
 
   // click handlers for number inputs in settings
-  var makeClickHandlerInput = function(that, intervalName) {
+  var makeClickHandlerForInput = function(that, intervalName) {
     return function() {
       intervalInput(that, intervalName);
     };
   };
 
   // click handler for +- buttons next to settings inputs
-  var makeClickHandlerControls = function(that, intervalName) {
+  var makeClickHandlerForControls = function(that, intervalName) {
     return function() {
       var target = that.getAttribute('data-target'); // TODO: move to views
       target = document.getElementById(target);
