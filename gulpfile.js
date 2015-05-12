@@ -56,16 +56,10 @@ var options = {
 
 // linters
 
-gulp.task('lintjs', function() {
+gulp.task('lint', function() {
   return gulp.src(paths.app.js)
     .pipe($.eslint())
     .pipe($.eslint.format());
-});
-
-gulp.task('lintcss', function() {
-  return gulp.src(paths.app.css)
-    .pipe($.csslint())
-    .pipe($.csslint.reporter());
 });
 
 // clean
@@ -141,7 +135,7 @@ gulp.task('browser-sync-dev', function() {
 // Main gulp tasks
 
 // builds all files and runs from dist directory
-gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'icons', 'audio', 'browser-sync']);
+gulp.task('default', ['lint', 'compile', 'img', 'fonts', 'icons', 'audio', 'browser-sync']);
 
 // skips building phase and runs from dist directory
 gulp.task('run', ['browser-sync']);
@@ -149,7 +143,7 @@ gulp.task('run', ['browser-sync']);
 // runs from app directory
 gulp.task('dev', ['browser-sync-dev'], function() {
   // watch for JS changes
-  gulp.watch(paths.app.js, ['lintjs', browserSync.reload]);
+  gulp.watch(paths.app.js, ['lint', browserSync.reload]);
 
   // watch for CSS changes
   gulp.watch(paths.app.css, browserSync.reload);
