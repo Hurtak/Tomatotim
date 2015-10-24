@@ -1,4 +1,4 @@
-Services.Notification = (function () {
+TT.Services.Notification = (function () {
 	'use strict';
 
 	// seconds
@@ -26,7 +26,7 @@ Services.Notification = (function () {
 			return;
 		}
 
-		var notification = new Notification(Config.get('appName'), {
+		var notification = new Notification(TT.Config.get('appName'), {
 			icon: 'img/notification-96x96-' + iconType + '.png',
 			body: message
 		});

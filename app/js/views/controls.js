@@ -1,4 +1,4 @@
-Views.Controls = (function () {
+TT.Views.Controls = (function () {
 	'use strict';
 
 	// true == start state, false == pause state

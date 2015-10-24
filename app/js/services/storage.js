@@ -1,4 +1,4 @@
-Services.Storage = (function () {
+TT.Services.Storage = (function () {
 	'use strict';
 
 	function get(storageName) {

@@ -1,4 +1,4 @@
-Views.Settings = (function () {
+TT.Views.Settings = (function () {
 	'use strict';
 
 	var audio = document.getElementById('audio');

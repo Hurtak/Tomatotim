@@ -1,4 +1,4 @@
-window.Timer = (function () {
+TT.Timer = (function () {
 	'use strict';
 
 	var intervalIndex;
@@ -15,8 +15,8 @@ window.Timer = (function () {
 		updateIntervals();
 
 		// load saved progress
-		intervalIndex = Services.Storage.get('intervalIndex') || 0;
-		timerInterval = Services.Storage.get('timerInterval') || Config.get('workInterval');
+		intervalIndex = TT.Services.Storage.get('intervalIndex') || 0;
+		timerInterval = TT.Services.Storage.get('timerInterval') || TT.Config.get('workInterval');
 
 		// when user changes number of intervals in settings
 		if (intervalIndex > intervals.length - 1) {
@@ -28,42 +28,42 @@ window.Timer = (function () {
 		}
 
 		// initialize progress images
-		for (var i = 0; i < Config.get('repeat'); i++) {
-			Views.Progress.createImage('unfinished');
+		for (var i = 0; i < TT.Config.get('repeat'); i++) {
+			TT.Views.Progress.createImage('unfinished');
 		}
 
 		for (var index = 0; index <= intervalIndex; index++) {
 			updateTimerViews(index, true);
 		}
 
-		if (intervalIndex === 0 && timerInterval < Config.get('workInterval')) {
-			Views.Progress.setImageType('work', 0);
-			Views.Progress.setDescription('work');
+		if (intervalIndex === 0 && timerInterval < TT.Config.get('workInterval')) {
+			TT.Views.Progress.setImageType('work', 0);
+			TT.Views.Progress.setDescription('work');
 		}
 
-		if (intervalIndex === 0 && timerInterval === Config.get('workInterval')) {
-			Services.Title.resetTitle();
+		if (intervalIndex === 0 && timerInterval === TT.Config.get('workInterval')) {
+			TT.Services.Title.resetTitle();
 		} else {
-			Services.Title.setTitle(secondsToTime(timerInterval));
+			TT.Services.Title.setTitle(secondsToTime(timerInterval));
 		}
 
 		// binding
-		Views.Controls.getStartButton().addEventListener('click', startTimer);
-		Views.Controls.getSkipButton().addEventListener('click', skipInterval);
-		Views.Controls.getResetButton().addEventListener('click', resetTimer);
+		TT.Views.Controls.getStartButton().addEventListener('click', startTimer);
+		TT.Views.Controls.getSkipButton().addEventListener('click', skipInterval);
+		TT.Views.Controls.getResetButton().addEventListener('click', resetTimer);
 	}
 
 	function updateIntervals() {
 		intervals = [];
 
-		for (var i = 0; i < Config.get('repeat'); i++) {
-			intervals.push(Config.get('workInterval'));
-			intervals.push(Config.get('breakInterval'));
+		for (var i = 0; i < TT.Config.get('repeat'); i++) {
+			intervals.push(TT.Config.get('workInterval'));
+			intervals.push(TT.Config.get('breakInterval'));
 		}
 
 		// replace last break with long break
 		intervals.pop();
-		intervals.push(Config.get('longbreakInterval'));
+		intervals.push(TT.Config.get('longbreakInterval'));
 	}
 
 	function secondsToTime(seconds) {
@@ -89,10 +89,10 @@ window.Timer = (function () {
 
 		var time = secondsToTime(timerInterval);
 
-		Views.Timer.setTime(time);
+		TT.Views.Timer.setTime(time);
 
-		Services.Title.setTitle(time, timer);
-		Services.Storage.set('timerInterval', timerInterval);
+		TT.Services.Title.setTitle(time, timer);
+		TT.Services.Storage.set('timerInterval', timerInterval);
 	}
 
 	function skipInterval() {
@@ -112,7 +112,7 @@ window.Timer = (function () {
 
 		updateTimerViews(intervalIndex, skipped);
 
-		Services.Storage.set('intervalIndex', intervalIndex);
+		TT.Services.Storage.set('intervalIndex', intervalIndex);
 
 		if (skipped) {
 			if (timer) {
@@ -121,68 +121,68 @@ window.Timer = (function () {
 				runTimer();
 			}
 
-			Services.Title.setTitle(secondsToTime(timerInterval), timer);
-			Services.Storage.set('timerInterval', timerInterval);
+			TT.Services.Title.setTitle(secondsToTime(timerInterval), timer);
+			TT.Services.Storage.set('timerInterval', timerInterval);
 		}
 
-		if (Config.get('timerAutoPause')) {
+		if (TT.Config.get('timerAutoPause')) {
 			pauseTimer();
 			// TODO: refactor this into pauseTimer()
-			Views.Controls.resetStartButton();
-			Services.Title.setTitle(secondsToTime(timerInterval), timer);
+			TT.Views.Controls.resetStartButton();
+			TT.Services.Title.setTitle(secondsToTime(timerInterval), timer);
 		}
 	}
 
 	function updateTimerViews(index, skipped) {
 		var imageIndex = Math.floor(index / 2);
 
-		Views.Timer.setTime(secondsToTime(timerInterval));
+		TT.Views.Timer.setTime(secondsToTime(timerInterval));
 
 		// intervals[ work, break, work, break, ... , long break ]
 		if (index === intervals.length - 1) {
 			// last interval
 
-			Services.Favicon.setFavicon('longbreak');
-			if (!skipped && Config.get('notifications')) {
-				Services.Notification.newNotification(Config.get('longbreakInterval') / 60 + ' minute long break', 'longbreak');
+			TT.Services.Favicon.setFavicon('longbreak');
+			if (!skipped && TT.Config.get('notifications')) {
+				TT.Services.Notification.newNotification(TT.Config.get('longbreakInterval') / 60 + ' minute long break', 'longbreak');
 			}
 
-			Views.Progress.setDescription('long break');
-			Views.Progress.setImageType('longbreak', imageIndex);
+			TT.Views.Progress.setDescription('long break');
+			TT.Views.Progress.setImageType('longbreak', imageIndex);
 		} else if (index === 0) {
 			// first interval: 0
-			Services.Favicon.setFavicon('work');
-			if (!skipped && Config.get('notifications')) {
+			TT.Services.Favicon.setFavicon('work');
+			if (!skipped && TT.Config.get('notifications')) {
 				// TODO: think of better notification text
-				Services.Notification.newNotification('Done', 'work');
+				TT.Services.Notification.newNotification('Done', 'work');
 			}
 		} else if (index % 2 === 1) {
 			// odd interval: 1, 3, 5..
-			Services.Favicon.setFavicon('break');
-			if (!skipped && Config.get('notifications')) {
-				Services.Notification.newNotification(Config.get('breakInterval') / 60 + ' minute break', 'break');
+			TT.Services.Favicon.setFavicon('break');
+			if (!skipped && TT.Config.get('notifications')) {
+				TT.Services.Notification.newNotification(TT.Config.get('breakInterval') / 60 + ' minute break', 'break');
 			}
 
-			Views.Progress.setDescription('break');
-			Views.Progress.setImageType('break', imageIndex);
+			TT.Views.Progress.setDescription('break');
+			TT.Views.Progress.setImageType('break', imageIndex);
 		} else if (index % 2 === 0) {
 			// even interval: 2, 4, 6..
-			Services.Favicon.setFavicon('work');
-			if (!skipped && Config.get('notifications')) {
-				Services.Notification.newNotification(Config.get('workInterval') / 60 + ' minute work', 'work');
+			TT.Services.Favicon.setFavicon('work');
+			if (!skipped && TT.Config.get('notifications')) {
+				TT.Services.Notification.newNotification(TT.Config.get('workInterval') / 60 + ' minute work', 'work');
 			}
 
-			Views.Progress.setDescription('work');
-			Views.Progress.setImageType('work', imageIndex);
-			Views.Progress.setImageType('finished', imageIndex - 1);
+			TT.Views.Progress.setDescription('work');
+			TT.Views.Progress.setImageType('work', imageIndex);
+			TT.Views.Progress.setImageType('finished', imageIndex - 1);
 		}
 
 		if (!skipped) {
-			if (Config.get('audio')) {
-				Services.Audio.play();
+			if (TT.Config.get('audio')) {
+				TT.Services.Audio.play();
 			}
-			if (Config.get('taskbarFlash')) {
-				Services.TaskbarFlash.flash();
+			if (TT.Config.get('taskbarFlash')) {
+				TT.Services.TaskbarFlash.flash();
 			}
 		}
 	}
@@ -194,12 +194,12 @@ window.Timer = (function () {
 			pauseTimer();
 		}
 
-		Services.Title.setTitle(secondsToTime(timerInterval), timer);
-		Views.Controls.toogleStartButtonCaption();
+		TT.Services.Title.setTitle(secondsToTime(timerInterval), timer);
+		TT.Views.Controls.toogleStartButtonCaption();
 
 		if (intervalIndex === 0) {
-			Views.Progress.setImageType('work', 0);
-			Views.Progress.setDescription('work');
+			TT.Views.Progress.setImageType('work', 0);
+			TT.Views.Progress.setDescription('work');
 		}
 	}
 
@@ -227,19 +227,19 @@ window.Timer = (function () {
 		pauseTimer();
 
 		intervalIndex = 0;
-		timerInterval = Config.get('workInterval');
+		timerInterval = TT.Config.get('workInterval');
 
 		var time = secondsToTime(timerInterval);
 
-		Views.Timer.setTime(time);
-		Views.Controls.resetStartButton();
+		TT.Views.Timer.setTime(time);
+		TT.Views.Controls.resetStartButton();
 
-		Services.Title.resetTitle();
-		Services.Favicon.setFavicon('work');
-		Services.Storage.set('intervalIndex', intervalIndex);
-		Services.Storage.set('timerInterval', timerInterval);
+		TT.Services.Title.resetTitle();
+		TT.Services.Favicon.setFavicon('work');
+		TT.Services.Storage.set('intervalIndex', intervalIndex);
+		TT.Services.Storage.set('timerInterval', timerInterval);
 
-		Views.Progress.resetProgress();
+		TT.Views.Progress.resetProgress();
 	}
 
 	return {

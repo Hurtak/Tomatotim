@@ -1,11 +1,11 @@
 (function () {
 	'use strict';
 
-	Services.Favicon.init();
-	Services.Audio.init();
+	TT.Services.Favicon.init();
+	TT.Services.Audio.init();
 
-	Settings.init();
-	Sidebar.init();
-	Timer.init();
-	Hotkeys.init();
+	TT.Settings.init();
+	TT.Sidebar.init();
+	TT.Timer.init();
+	TT.Hotkeys.init();
 })();

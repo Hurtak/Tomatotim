@@ -1,9 +1,9 @@
-window.Sidebar = (function () {
+TT.Sidebar = (function () {
 	'use strict';
 
 	function init() {
-		Views.Sidebar.getSidebarButton().addEventListener('click', Views.Sidebar.toogleSidebar);
-		Views.Sidebar.getSidebarOverlay().addEventListener('click', Views.Sidebar.closeSidebar);
+		TT.Views.Sidebar.getSidebarButton().addEventListener('click', TT.Views.Sidebar.toogleSidebar);
+		TT.Views.Sidebar.getSidebarOverlay().addEventListener('click', TT.Views.Sidebar.closeSidebar);
 	}
 
 	return {

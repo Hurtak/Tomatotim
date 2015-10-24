@@ -31,13 +31,7 @@
       "browser"
     ],
     "globals": [
-      "Services",
-      "Config",
-      "Settings",
-      "Sidebar",
-      "Timer",
-      "Views",
-      "Hotkeys"
+      "TT"
     ]
   },
   "author": "Petr Huřťák",

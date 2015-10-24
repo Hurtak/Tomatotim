@@ -1,86 +1,86 @@
-window.Settings = (function () {
+TT.Settings = (function () {
 	'use strict';
 
 	function init() {
 		// update config defaults with saved settings (if available)
-		Config.set('audio', Boolean(Services.Storage.get('audio')));
-		Config.set('notifications', Boolean(Services.Storage.get('notifications')));
-		Config.set('taskbarFlash', Boolean(Services.Storage.get('taskbarFlash')));
-		Config.set('timerAutoPause', Boolean(Services.Storage.get('timerAutoPause')));
+		TT.Config.set('audio', Boolean(TT.Services.Storage.get('audio')));
+		TT.Config.set('notifications', Boolean(TT.Services.Storage.get('notifications')));
+		TT.Config.set('taskbarFlash', Boolean(TT.Services.Storage.get('taskbarFlash')));
+		TT.Config.set('timerAutoPause', Boolean(TT.Services.Storage.get('timerAutoPause')));
 
-		Config.set('workInterval', Services.Storage.get('workInterval') || Config.get('workInterval'));
-		Config.set('breakInterval', Services.Storage.get('breakInterval') || Config.get('breakInterval'));
-		Config.set('longbreakInterval', Services.Storage.get('longbreakInterval') || Config.get('longbreakInterval'));
+		TT.Config.set('workInterval', TT.Services.Storage.get('workInterval') || TT.Config.get('workInterval'));
+		TT.Config.set('breakInterval', TT.Services.Storage.get('breakInterval') || TT.Config.get('breakInterval'));
+		TT.Config.set('longbreakInterval', TT.Services.Storage.get('longbreakInterval') || TT.Config.get('longbreakInterval'));
 
-		Config.set('repeat', Services.Storage.get('repeat') || Config.get('repeat'));
+		TT.Config.set('repeat', TT.Services.Storage.get('repeat') || TT.Config.get('repeat'));
 
 		// update settings view
-		Views.Settings.audio.checked = Config.get('audio');
-		Views.Settings.notifications.checked = Config.get('notifications');
-		Views.Settings.taskbarFlash.checked = Config.get('taskbarFlash');
-		Views.Settings.timerAutoPause.checked = Config.get('timerAutoPause');
+		TT.Views.Settings.audio.checked = TT.Config.get('audio');
+		TT.Views.Settings.notifications.checked = TT.Config.get('notifications');
+		TT.Views.Settings.taskbarFlash.checked = TT.Config.get('taskbarFlash');
+		TT.Views.Settings.timerAutoPause.checked = TT.Config.get('timerAutoPause');
 
-		Views.Settings.workInterval.value = Config.get('workInterval') / 60;
-		Views.Settings.breakInterval.value = Config.get('breakInterval') / 60;
-		Views.Settings.longbreakInterval.value = Config.get('longbreakInterval') / 60;
+		TT.Views.Settings.workInterval.value = TT.Config.get('workInterval') / 60;
+		TT.Views.Settings.breakInterval.value = TT.Config.get('breakInterval') / 60;
+		TT.Views.Settings.longbreakInterval.value = TT.Config.get('longbreakInterval') / 60;
 
-		Views.Settings.repeat.value = Config.get('repeat');
+		TT.Views.Settings.repeat.value = TT.Config.get('repeat');
 
 		// checkboxes
-		Views.Settings.audio.addEventListener('click', function () {
-			Config.set('audio', this.checked);
-			Services.Storage.set('audio', Config.get('audio'));
+		TT.Views.Settings.audio.addEventListener('click', function () {
+			TT.Config.set('audio', this.checked);
+			TT.Services.Storage.set('audio', TT.Config.get('audio'));
 		});
 
-		if (Services.Notification.isAvaliable()) {
-			Views.Settings.notifications.addEventListener('click', function () {
-				Config.set('notifications', this.checked);
+		if (TT.Services.Notification.isAvaliable()) {
+			TT.Views.Settings.notifications.addEventListener('click', function () {
+				TT.Config.set('notifications', this.checked);
 
-				if (Config.get('notifications') === true) {
-					Services.Notification.requestPermission();
+				if (TT.Config.get('notifications') === true) {
+					TT.Services.Notification.requestPermission();
 				}
 
-				Services.Storage.set('notifications', Config.get('notifications'));
+				TT.Services.Storage.set('notifications', TT.Config.get('notifications'));
 			});
 		} else {
-			Views.Settings.hide(Views.Settings.notifications);
+			TT.Views.Settings.hide(TT.Views.Settings.notifications);
 		}
 
-		if (Services.TaskbarFlash.isAvaliable()) {
-			Views.Settings.taskbarFlash.addEventListener('click', function () {
-				Config.set('taskbarFlash', this.checked);
-				Services.Storage.set('taskbarFlash', this.checked);
+		if (TT.Services.TaskbarFlash.isAvaliable()) {
+			TT.Views.Settings.taskbarFlash.addEventListener('click', function () {
+				TT.Config.set('taskbarFlash', this.checked);
+				TT.Services.Storage.set('taskbarFlash', this.checked);
 			});
 		} else {
-			Views.Settings.hide(Views.Settings.taskbarFlash);
+			TT.Views.Settings.hide(TT.Views.Settings.taskbarFlash);
 		}
 
-		Views.Settings.timerAutoPause.addEventListener('click', function () {
-			Config.set('timerAutoPause', this.checked);
-			Services.Storage.set('timerAutoPause', this.checked);
+		TT.Views.Settings.timerAutoPause.addEventListener('click', function () {
+			TT.Config.set('timerAutoPause', this.checked);
+			TT.Services.Storage.set('timerAutoPause', this.checked);
 		});
 
 		// test buttons
-		Views.Settings.audioTest.addEventListener('click', function () {
-			Services.Audio.play();
+		TT.Views.Settings.audioTest.addEventListener('click', function () {
+			TT.Services.Audio.play();
 		});
 
-		Views.Settings.notificationsTest.addEventListener('click', function () {
-			Services.Notification.newNotification('Web notification test', 'work');
+		TT.Views.Settings.notificationsTest.addEventListener('click', function () {
+			TT.Services.Notification.newNotification('Web notification test', 'work');
 		});
 
-		Views.Settings.taskbarFlashTest.addEventListener('click', function () {
+		TT.Views.Settings.taskbarFlashTest.addEventListener('click', function () {
 			// flashing only works when browser doesn't have focus
 			for (var count = 0; count < 20; count++) {
-				setTimeout(Services.TaskbarFlash.flash, 500 * count);
+				setTimeout(TT.Services.TaskbarFlash.flash, 500 * count);
 			}
 		});
 
 		// inputs type number and +- buttons
 		var intervalNames = ['workInterval', 'breakInterval', 'longbreakInterval', 'repeat'];
 
-		var numberInputs = Views.Settings.getNumberInputs();
-		var plusMinusButtons = Views.Settings.getPlusMinusButtons();
+		var numberInputs = TT.Views.Settings.getNumberInputs();
+		var plusMinusButtons = TT.Views.Settings.getPlusMinusButtons();
 
 		for (var i = 0; i < intervalNames.length; i++) {
 			// interval settings inputs
@@ -93,17 +93,17 @@ window.Settings = (function () {
 		}
 
 		// reset settings
-		Views.Settings.resetSettings.addEventListener('click', function () {
+		TT.Views.Settings.resetSettings.addEventListener('click', function () {
 			var confim = confirm('Are you sure?'); // eslint-disable-line no-alert
 			if (confim) {
-				Services.Storage.clear();
+				TT.Services.Storage.clear();
 				location.reload(false);
 			}
 		});
 
 		// request permission in case we have notifications enabled in saved settings
-		if (Config.get('notifications') === true) {
-			Services.Notification.requestPermission();
+		if (TT.Config.get('notifications') === true) {
+			TT.Services.Notification.requestPermission();
 		}
 	}
 
@@ -129,17 +129,17 @@ window.Settings = (function () {
 			multiplier = 1;
 		}
 
-		that.value = validateInput(that.value, that.min, that.max, Config.get(intervalType) / multiplier);
-		Config.set(intervalType, that.value * multiplier);
+		that.value = validateInput(that.value, that.min, that.max, TT.Config.get(intervalType) / multiplier);
+		TT.Config.set(intervalType, that.value * multiplier);
 
 		if (intervalType === 'repeat') {
-			Views.Progress.removeImages();
-			Timer.init();
+			TT.Views.Progress.removeImages();
+			TT.Timer.init();
 		} else {
-			Timer.updateIntervals();
+			TT.Timer.updateIntervals();
 		}
 
-		Services.Storage.set(intervalType, Config.get(intervalType));
+		TT.Services.Storage.set(intervalType, TT.Config.get(intervalType));
 	}
 
 	// click handlers for number inputs in settings

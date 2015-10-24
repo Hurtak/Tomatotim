@@ -1,4 +1,4 @@
-Services.TaskbarFlash = (function () {
+TT.Services.TaskbarFlash = (function () {
 	'use strict';
 
 	// TODO: fix, doesent work for android

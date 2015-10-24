@@ -1,4 +1,4 @@
-Services.Title = (function () {
+TT.Services.Title = (function () {
 	'use strict';
 
 	function setTitle(title, paused) {
@@ -8,11 +8,11 @@ Services.Title = (function () {
 			titlePrefix = '\u25A0 ';
 		}
 
-		document.title = titlePrefix + title + ' – ' + Config.get('appName');
+		document.title = titlePrefix + title + ' – ' + TT.Config.get('appName');
 	}
 
 	function resetTitle() {
-		document.title = Config.get('appName');
+		document.title = TT.Config.get('appName');
 	}
 
 	return {

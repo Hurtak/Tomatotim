@@ -1,4 +1,4 @@
-window.Config = (function () {
+TT.Config = (function () {
 	'use strict';
 
 	var config = {};

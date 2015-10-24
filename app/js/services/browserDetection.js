@@ -1,4 +1,4 @@
-Services.BrowserDetection = (function () {
+TT.Services.BrowserDetection = (function () {
 	'use strict';
 
 	// @source: browser detection from http://stackoverflow.com/a/9851769/2955574

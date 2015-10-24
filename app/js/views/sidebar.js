@@ -1,4 +1,4 @@
-Views.Sidebar = (function () {
+TT.Views.Sidebar = (function () {
 	'use strict';
 
 	var sidebarOpen = false;

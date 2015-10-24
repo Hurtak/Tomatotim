@@ -1,4 +1,4 @@
-window.Hotkeys = (function () {
+TT.Hotkeys = (function () {
 	'use strict';
 
 	var keys = {
@@ -19,22 +19,22 @@ window.Hotkeys = (function () {
 		switch (e.keyCode) {
 			case keys.space:
 				e.preventDefault();
-				Timer.startTimer();
+				TT.Timer.startTimer();
 				break;
 			case keys.esc:
-				Views.Sidebar.closeSidebar();
+				TT.Views.Sidebar.closeSidebar();
 				break;
 			case keys.r:
-				Timer.resetTimer();
+				TT.Timer.resetTimer();
 				break;
 			case keys.s:
-				Timer.skipInterval();
+				TT.Timer.skipInterval();
 				break;
 			case keys.h:
-				Views.Sidebar.toogleSidebar();
+				TT.Views.Sidebar.toogleSidebar();
 				break;
 			case keys.tab:
-				if (!Views.Sidebar.isSidebarOpen()) {
+				if (!TT.Views.Sidebar.isSidebarOpen()) {
 					e.preventDefault();
 				}
 				break;

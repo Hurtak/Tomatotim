@@ -1,4 +1,4 @@
-Services.Audio = (function () {
+TT.Services.Audio = (function () {
 	'use strict';
 
 	var audio;

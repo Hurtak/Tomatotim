@@ -1,4 +1,4 @@
-Views.Progress = (function () {
+TT.Views.Progress = (function () {
 	'use strict';
 
 	var imagesWrapper = document.getElementById('progress');
