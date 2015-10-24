@@ -151,11 +151,11 @@
 			</h2>
 			<table class="settings">
 				<tr>
-					<td>
+					<td class="no-select">
 						<input class="checkbox" id="audio" type="checkbox">
 						<label class="checkbox-button" data-caption-off="OFF" data-caption-on="ON" for="audio"></label>
 					</td>
-					<td>
+					<td class="no-select">
 						<button id="audio-test" class="test">
 							<i class="icon-volume-down"></i>
 							<span>test</span>
@@ -166,11 +166,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="no-select">
 						<input class="checkbox" id="notifications" type="checkbox">
 						<label class="checkbox-button" data-caption-off="OFF" data-caption-on="ON" for="notifications"></label>
 					</td>
-					<td>
+					<td class="no-select">
 						<button id="notifications-test" class="test">
 							<i class="icon-bell-1"></i>
 							<span>test</span>
@@ -181,12 +181,12 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="no-select">
 						<input class="checkbox" id="taskbar-flash" type="checkbox">
 						<label class="checkbox-button" data-caption-off="OFF" data-caption-on="ON" for="taskbar-flash"></label>
 					</td>
-					<td>
-						<button id="taskbar-flash-test" class="test">
+					<td class="no-select">
+						<button id="taskbar-flash-test" class="test ">
 							<i class="icon-flashlight"></i>
 							<span>test</span>
 						</button>
@@ -196,7 +196,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="no-select">
 						<input class="checkbox" id="timer-auto-pause" type="checkbox">
 						<label class="checkbox-button" data-caption-off="OFF" data-caption-on="ON" for="timer-auto-pause"></label>
 					</td>
@@ -210,7 +210,7 @@
 					<td>
 						<input type="number" id="work-interval" value="25" min="5" max="600">
 					</td>
-					<td>
+					<td class="no-select">
 						<button class="minus" data-target="work-interval" data-increment="-1">
 							<i class="icon-minus-3"></i>
 						</button>
@@ -228,7 +228,7 @@
 					<td>
 					 <input type="number" id="break-interval" value="5" min="1" max="60">
 					</td>
-					<td>
+					<td class="no-select">
 						<button class="minus" data-target="break-interval" data-increment="-1">
 							<i class="icon-minus-3"></i>
 						</button>
@@ -246,7 +246,7 @@
 					<td>
 						<input type="number" id="longbreak-interval" value="20" min="5" max="120">
 					</td>
-					<td>
+					<td class="no-select">
 						<button class="minus" data-target="longbreak-interval" data-increment="-1">
 							<i class="icon-minus-3"></i>
 						</button>
@@ -264,7 +264,7 @@
 					<td>
 						<input type="number" id="repeat" value="4" min="1" max="6">
 					</td>
-					<td>
+					<td class="no-select">
 						<button class="minus" data-target="repeat" data-increment="-1">
 							<i class="icon-minus-3"></i>
 						</button>
@@ -280,7 +280,7 @@
 				</tr>
 			</table>
 			<br>
-			<button id="reset-settings" class="button">
+			<button id="reset-settings" class="button no-select">
 				<i class="icon-cw-1"></i>
 				Reset settings
 			</button>
