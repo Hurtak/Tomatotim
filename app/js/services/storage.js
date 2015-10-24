@@ -1,22 +1,21 @@
-Services.Storage = (function() {
-  'use strict';
+Services.Storage = (function () {
+	'use strict';
 
-  var get = function(storageName) {
-    return JSON.parse(localStorage.getItem(storageName));
-  };
+	function get(storageName) {
+		return JSON.parse(localStorage.getItem(storageName));
+	}
 
-  var set = function(storageName, value) {
-    localStorage.setItem(storageName, JSON.stringify(value));
-  };
+	function set(storageName, value) {
+		localStorage.setItem(storageName, JSON.stringify(value));
+	}
 
-  var clear = function() {
-    localStorage.clear();
-  };
+	function clear() {
+		localStorage.clear();
+	}
 
-  return {
-    set: set,
-    get: get,
-    clear: clear
-  };
-
+	return {
+		set: set,
+		get: get,
+		clear: clear
+	};
 })();

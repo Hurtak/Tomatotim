@@ -1,19 +1,18 @@
-Views.Timer = (function() {
-  'use strict';
+Views.Timer = (function () {
+	'use strict';
 
-  var timerDiv = document.getElementById('clock');
+	var timerDiv = document.getElementById('clock');
 
-  var getTime = function() {
-    return timerDiv.innerHTML.trim();
-  };
+	function getTime() {
+		return timerDiv.innerHTML.trim();
+	}
 
-  var setTime = function(time) {
-    timerDiv.innerHTML = time;
-  };
+	function setTime(time) {
+		timerDiv.innerHTML = time;
+	}
 
-  return {
-    getTime: getTime,
-    setTime: setTime
-  };
-
+	return {
+		getTime: getTime,
+		setTime: setTime
+	};
 })();

@@ -1,12 +1,11 @@
-(function() {
-  'use strict';
+(function () {
+	'use strict';
 
-  Services.Favicon.init();
-  Services.Audio.init();
+	Services.Favicon.init();
+	Services.Audio.init();
 
-  Settings.init();
-  Sidebar.init();
-  Timer.init();
-  Hotkeys.init();
-
+	Settings.init();
+	Sidebar.init();
+	Timer.init();
+	Hotkeys.init();
 })();

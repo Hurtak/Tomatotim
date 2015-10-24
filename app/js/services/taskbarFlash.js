@@ -1,21 +1,22 @@
-Services.TaskbarFlash = (function() {
-  'use strict';
+Services.TaskbarFlash = (function () {
+	'use strict';
 
-  var isAvaliable = function() {
-    return typeof window.external.msIsSiteMode !== 'undefined' &&
-           window.external.msIsSiteMode() && // is webpage pinned to taskbar
-           typeof window.external.msSiteModeActivate !== 'undefined';
-  };
+	// TODO: fix, doesent work for android
+	function isAvaliable() {
+		return typeof window.external.msIsSiteMode !== 'undefined' &&
+			// is webpage pinned to taskbar
+			window.external.msIsSiteMode() &&
+			typeof window.external.msSiteModeActivate !== 'undefined';
+	}
 
-  var flash = function() {
-    if (isAvaliable()) {
-      window.external.msSiteModeActivate();
-    }
-  };
+	function flash() {
+		if (isAvaliable()) {
+			window.external.msSiteModeActivate();
+		}
+	}
 
-  return {
-    isAvaliable: isAvaliable,
-    flash: flash
-  };
-
+	return {
+		isAvaliable: isAvaliable,
+		flash: flash
+	};
 })();

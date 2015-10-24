@@ -1,51 +1,51 @@
-Views.Controls = (function() {
-  'use strict';
+Views.Controls = (function () {
+	'use strict';
 
-  var startButtonState = true; // true == start state, false == pause state
+	// true == start state, false == pause state
+	var startButtonState = true;
 
-  var startButton = document.getElementById('start');
-  var resetButton = document.getElementById('reset');
-  var skipButton = document.getElementById('skip');
+	var startButton = document.getElementById('start');
+	var resetButton = document.getElementById('reset');
+	var skipButton = document.getElementById('skip');
 
-  var startButtonIcon = document.getElementById('start-icon');
-  var startButtonCaption = document.getElementById('start-caption');
+	var startButtonIcon = document.getElementById('start-icon');
+	var startButtonCaption = document.getElementById('start-caption');
 
-  var toogleStartButtonCaption = function() {
-    if (startButtonState) {
-      startButtonCaption.innerHTML = 'pause';
-      startButtonIcon.className = 'icon-pause-1';
-    } else {
-      startButtonCaption.innerHTML = 'start';
-      startButtonIcon.className = 'icon-play-1';
-    }
+	function toogleStartButtonCaption() {
+		if (startButtonState) {
+			startButtonCaption.innerHTML = 'pause';
+			startButtonIcon.className = 'icon-pause-1';
+		} else {
+			startButtonCaption.innerHTML = 'start';
+			startButtonIcon.className = 'icon-play-1';
+		}
 
-    startButtonState = !startButtonState;
-  };
+		startButtonState = !startButtonState;
+	}
 
-  var resetStartButton = function() {
-    if (!startButtonState) {
-      toogleStartButtonCaption();
-    }
-  };
+	function resetStartButton() {
+		if (!startButtonState) {
+			toogleStartButtonCaption();
+		}
+	}
 
-  var getStartButton = function() {
-    return startButton;
-  };
+	function getStartButton() {
+		return startButton;
+	}
 
-  var getResetButton = function() {
-    return resetButton;
-  };
+	function getResetButton() {
+		return resetButton;
+	}
 
-  var getSkipButton = function() {
-    return skipButton;
-  };
+	function getSkipButton() {
+		return skipButton;
+	}
 
-  return {
-    getStartButton: getStartButton,
-    getResetButton: getResetButton,
-    getSkipButton: getSkipButton,
-    resetStartButton: resetStartButton,
-    toogleStartButtonCaption: toogleStartButtonCaption
-  };
-
+	return {
+		getStartButton: getStartButton,
+		getResetButton: getResetButton,
+		getSkipButton: getSkipButton,
+		resetStartButton: resetStartButton,
+		toogleStartButtonCaption: toogleStartButtonCaption
+	};
 })();

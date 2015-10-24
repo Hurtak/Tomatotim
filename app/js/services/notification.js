@@ -1,46 +1,46 @@
-Services.Notification = (function() {
-  'use strict';
+Services.Notification = (function () {
+	'use strict';
 
-  var notificationTimeout = 5; // seconds
+	// seconds
+	var notificationTimeout = 5;
 
-  var isAvaliable = function() {
-    return typeof window.Notification === 'function';
-  };
+	function isAvaliable() {
+		return typeof window.Notification === 'function';
+	}
 
-  var requestPermission = function() {
-    if (!isAvaliable()) {
-      return false;
-    }
+	function requestPermission() {
+		if (!isAvaliable()) {
+			return false;
+		}
 
-    if (Notification.permission !== 'granted') {
-      Notification.requestPermission();
-      return false;
-    }
+		if (Notification.permission !== 'granted') {
+			Notification.requestPermission();
+			return false;
+		}
 
-    return true;
-  };
+		return true;
+	}
 
-  var newNotification = function(message, iconType) {
-    if (!requestPermission()) {
-      return;
-    }
+	function newNotification(message, iconType) {
+		if (!requestPermission()) {
+			return;
+		}
 
-    var notification = new Notification(Config.get('appName'), {
-      icon: 'img/notification-96x96-' + iconType + '.png',
-      body: message
-    });
+		var notification = new Notification(Config.get('appName'), {
+			icon: 'img/notification-96x96-' + iconType + '.png',
+			body: message
+		});
 
-    notification.onshow = function() {
-      setTimeout(function() {
-        notification.close();
-      }, notificationTimeout * 1000);
-    };
-  };
+		notification.onshow = function () {
+			setTimeout(function () {
+				notification.close();
+			}, notificationTimeout * 1000);
+		};
+	}
 
-  return {
-    isAvaliable: isAvaliable,
-    requestPermission: requestPermission,
-    newNotification: newNotification
-  };
-
+	return {
+		isAvaliable: isAvaliable,
+		requestPermission: requestPermission,
+		newNotification: newNotification
+	};
 })();

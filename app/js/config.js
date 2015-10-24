@@ -1,47 +1,44 @@
-var Config = (function() {
-  'use strict';
+window.Config = (function () {
+	'use strict';
 
-  var config = {};
+	var config = {};
 
-  config.debug = false;
-  if (window.location.search.indexOf('debug') > -1) {
-    // '?debug' at the end of URL activates debug mode
-    config.debug = true;
-  }
+	config.debug = false;
+	if (window.location.search.indexOf('debug') > -1) {
+		// '?debug' at the end of URL activates debug mode
+		config.debug = true;
+	}
 
-  config.appName = 'Tomatotim';
+	config.appName = 'Tomatotim';
 
-  config.audio = false;
-  config.notifications = false;
+	config.audio = false;
+	config.notifications = false;
 
-  config.workInterval = 25 * 60; // seconds
-  config.breakInterval = 5 * 60;
-  config.longbreakInterval = 20 * 60;
+	// seconds
+	config.workInterval = 25 * 60;
+	config.breakInterval = 5 * 60;
+	config.longbreakInterval = 20 * 60;
 
-  config.repeat = 4;
+	config.repeat = 4;
 
-  if (config.debug) {
-    config.appName = 'DEBUG';
+	if (config.debug) {
+		config.appName = 'DEBUG';
 
-    config.workInterval = 7;
-    config.breakInterval = 5;
-    config.longbreakInterval = 6;
-  }
+		config.workInterval = 7;
+		config.breakInterval = 5;
+		config.longbreakInterval = 6;
+	}
 
-  var get = function(name) {
-    return config[name];
-  };
+	var get = function (name) {
+		return config[name];
+	};
 
-  var set = function(name, value) {
-    config[name] = value;
-  };
+	var set = function (name, value) {
+		config[name] = value;
+	};
 
-  return {
-    get: get,
-    set: set
-  };
-
+	return {
+		get: get,
+		set: set
+	};
 })();
-
-var Services = {};
-var Views = {};

@@ -1,51 +1,50 @@
-Views.Sidebar = (function() {
-  'use strict';
+Views.Sidebar = (function () {
+	'use strict';
 
-  var sidebarOpen = false;
+	var sidebarOpen = false;
 
-  var sidebarButton = document.getElementById('sidebar-button');
-  var sidebarOverlay = document.getElementById('sidebar-overlay');
+	var sidebarButton = document.getElementById('sidebar-button');
+	var sidebarOverlay = document.getElementById('sidebar-overlay');
 
-  var getSidebarOverlay = function() {
-    return sidebarOverlay;
-  };
+	function getSidebarOverlay() {
+		return sidebarOverlay;
+	}
 
-  var getSidebarButton = function() {
-    return sidebarButton;
-  };
+	function getSidebarButton() {
+		return sidebarButton;
+	}
 
-  var openSidebar = function() {
-    if (!sidebarOpen) {
-      document.body.setAttribute('data-sidebar-open', '');
-      sidebarOpen = true;
-    }
-  };
+	function openSidebar() {
+		if (!sidebarOpen) {
+			document.body.setAttribute('data-sidebar-open', '');
+			sidebarOpen = true;
+		}
+	}
 
-  var closeSidebar = function() {
-    if (sidebarOpen) {
-      document.body.removeAttribute('data-sidebar-open');
-      sidebarOpen = false;
-    }
-  };
+	function closeSidebar() {
+		if (sidebarOpen) {
+			document.body.removeAttribute('data-sidebar-open');
+			sidebarOpen = false;
+		}
+	}
 
-  var toogleSidebar = function() {
-    if (sidebarOpen) {
-      closeSidebar();
-    } else {
-      openSidebar();
-    }
-  };
+	function toogleSidebar() {
+		if (sidebarOpen) {
+			closeSidebar();
+		} else {
+			openSidebar();
+		}
+	}
 
-  var isSidebarOpen = function() {
-    return sidebarOpen;
-  };
+	function isSidebarOpen() {
+		return sidebarOpen;
+	}
 
-  return {
-    getSidebarOverlay: getSidebarOverlay,
-    getSidebarButton: getSidebarButton,
-    isSidebarOpen: isSidebarOpen,
-    closeSidebar: closeSidebar,
-    toogleSidebar: toogleSidebar
-  };
-
+	return {
+		getSidebarOverlay: getSidebarOverlay,
+		getSidebarButton: getSidebarButton,
+		isSidebarOpen: isSidebarOpen,
+		closeSidebar: closeSidebar,
+		toogleSidebar: toogleSidebar
+	};
 })();

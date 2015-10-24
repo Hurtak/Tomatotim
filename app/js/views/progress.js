@@ -1,55 +1,54 @@
-Views.Progress = (function() {
-  'use strict';
+Views.Progress = (function () {
+	'use strict';
 
-  var imagesWrapper = document.getElementById('progress');
-  var images = imagesWrapper.getElementsByTagName('i');
+	var imagesWrapper = document.getElementById('progress');
+	var images = imagesWrapper.getElementsByTagName('i');
 
-  var description = document.getElementById('description');
+	var description = document.getElementById('description');
 
-  var imagesTitle = {
-    unfinished: 'Unfinished interval',
-    work: 'Work interval',
-    break: 'Break interval',
-    longbreak: 'Long break interval',
-    finished: 'Finished interval'
-  };
+	var imagesTitle = {
+		unfinished: 'Unfinished interval',
+		work: 'Work interval',
+		break: 'Break interval',
+		longbreak: 'Long break interval',
+		finished: 'Finished interval'
+	};
 
-  var setImageType = function(type, index) {
-    images[index].className = 'icon-tomato color-' + type;
-    images[index].title = imagesTitle[type];
-  };
+	function setImageType(type, index) {
+		images[index].className = 'icon-tomato color-' + type;
+		images[index].title = imagesTitle[type];
+	}
 
-  var resetProgress = function() {
-    setDescription('');
+	function resetProgress() {
+		setDescription('');
 
-    for (var index = 0; index < images.length; index++) {
-      setImageType('unfinished', index);
-    }
-  };
+		for (var index = 0; index < images.length; index++) {
+			setImageType('unfinished', index);
+		}
+	}
 
-  var createImage = function(type) {
-    var i = document.createElement('i');
-    i.className = 'icon-tomato color-' + type;
-    i.title = imagesTitle[type];
-    imagesWrapper.appendChild(i);
-  };
+	function createImage(type) {
+		var i = document.createElement('i');
+		i.className = 'icon-tomato color-' + type;
+		i.title = imagesTitle[type];
+		imagesWrapper.appendChild(i);
+	}
 
-  var removeImages = function() {
-    while (imagesWrapper.firstChild) {
-      imagesWrapper.removeChild(imagesWrapper.firstChild);
-    }
-  };
+	function removeImages() {
+		while (imagesWrapper.firstChild) {
+			imagesWrapper.removeChild(imagesWrapper.firstChild);
+		}
+	}
 
-  var setDescription = function(text) {
-    description.innerHTML = text;
-  };
+	function setDescription(text) {
+		description.innerHTML = text;
+	}
 
-  return {
-    setDescription: setDescription,
-    setImageType: setImageType,
-    resetProgress: resetProgress,
-    createImage: createImage,
-    removeImages: removeImages
-  };
-
+	return {
+		setDescription: setDescription,
+		setImageType: setImageType,
+		resetProgress: resetProgress,
+		createImage: createImage,
+		removeImages: removeImages
+	};
 })();
