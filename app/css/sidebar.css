@@ -13,7 +13,7 @@
 	.sidebar:hover {
 		/* NOTE: hack for Chrome, sidebar will be focused on
 		   hover so we can mouse scroll on sidebar instantly */
-		overflow-y: auto;
+		overflow-y: scroll;
 	}
 
 	.sidebar h2 {
