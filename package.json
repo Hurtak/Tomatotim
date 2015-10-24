@@ -1,6 +1,6 @@
 {
   "name": "Tomatotim",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Customizable application for time management inspired by Pomodoro technique",
   "main": "gulpfile.js",
   "dependencies": {},
@@ -35,7 +35,7 @@
     ]
   },
   "author": "Petr Huřťák",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Hurtak/Tomatotim/issues"
   },
