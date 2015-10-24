@@ -1,50 +1,45 @@
 @media only screen and (max-width: 620px) {
+	.description {
+		height: 40px;
+		font-size: 40px;
+	}
 
-  .description {
-    height: 40px;
+	.clock {
+		height: 140px;
+		font-size: 120px;
+	}
 
-    font-size: 40px;
-  }
+	.progress {
+		height: 52px;
+	}
 
-  .clock {
-    height: 140px;
+		.progress i {
+			font-size: 45px;
+		}
 
-    font-size: 120px;
-  }
+	.controls {
+		margin-top: 25px;
+	}
 
-  .progress {
-    height: 52px;
-  }
+		.controls button {
+			display: block;
+			width: 65%;
+			margin: 10px auto;
+			padding: 10px;
+			border: 2px solid #fff;
+			font-size: 20px;
+		}
 
-    .progress i {
-      font-size: 45px;
-    }
+		.controls button:first-child {
+			padding: 20px;
+		}
 
-  .controls {
-    margin-top: 25px;
-  }
+	.sidebar {
+		right: -100%;
+		width: 100%;
+	}
 
-    .controls button {
-      display: block;
-      width: 65%;
-      margin: 10px auto;
-      padding: 10px;
-
-      border: 2px solid #fff;
-      font-size: 20px;
-    }
-
-    .controls button:first-child {
-      padding: 20px;
-    }
-
-  .sidebar {
-    right: -100%;
-    width: 100%;
-  }
-
-  body[data-sidebar-open] .sidebar {
-    transform: translateX(-100%);
-  }
-
+	body[data-sidebar-open] .sidebar {
+		transform: translateX(-100%);
+	}
 }

@@ -1,91 +1,85 @@
 body {
-  background-color: #424242;
+	background-color: #424242;
 }
 
 /* Wrapper */
 
 .wrapper {
-  height: 100%;
-
-  text-align: center;
+	height: 100%;
+	text-align: center;
 }
 
-  .wrapper:before {
-    display: inline-block;
-    height: 100%;
-    margin-right: -.25em;
+	.wrapper:before {
+		display: inline-block;
+		height: 100%;
+		margin-right: -0.25em;
+		content: '';
+		vertical-align: middle;
+	}
 
-    content: '';
-    vertical-align: middle;
-  }
-
-  .wrapper .centered {
-    display: inline-block;
-
-    vertical-align: middle;
-  }
+	.wrapper .centered {
+		display: inline-block;
+		vertical-align: middle;
+	}
 
 /* Description */
 
 .description {
-  height: 60px;
-
-  color: #fff;
-  font-size: 60px;
+	height: 60px;
+	color: #fff;
+	font-size: 60px;
 }
 
 /* Clock */
 
 .clock {
-  height: 170px;
-
-  color: #fff;
-  font-size: 150px;
+	height: 170px;
+	color: #fff;
+	font-size: 150px;
 }
 
 /* Progress */
 
 .progress {
-  height: 70px;
+	height: 70px;
 }
 
-  .progress i {
-    font-size: 60px;
-  }
+	.progress i {
+		font-size: 60px;
+	}
 
 /* Controls */
 
 .controls {
-  margin-top: 35px;
+	margin-top: 35px;
 }
 
-  .controls button {
-    position: relative;
-    width: 180px;
-    margin: 0 10px;
-    padding: 20px;
+	.controls button {
+		position: relative;
+		width: 180px;
+		margin: 0 10px;
+		padding: 20px;
+		color: #fff;
+		background-color: transparent;
+		border: 3px solid #fff;
+		border-radius: 10px;
+		font-size: 25px;
+	}
 
-    color: #fff;
-    background-color: transparent;
-    border: 3px solid #fff;
-    border-radius: 10px;
-    font-size: 25px;
-  }
+		.controls button:focus {
+			outline: 0;
+		}
 
-    .controls button:focus {
-      outline: 0;
-    }
+		.controls button:active {
+			position: relative;
+			top: 2px;
+		}
 
-    .controls button:active {
-      position: relative;
-      top: 2px;
-    }
+	.controls button i {
+		position: absolute;
+		left: 25px;
+	}
 
-  .controls button i {
-    position: absolute;
-    left: 25px;
-  }
-
-  .controls button span {
-    padding-left: 32px;
-  }
+	.controls button span {
+		padding-left: 32px;
+	}

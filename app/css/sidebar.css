@@ -1,317 +1,296 @@
 .sidebar {
-  position: fixed;
-  top: 0;
-  right: -450px;
-  width: 450px;
-  height: 100%;
-  padding: 20px;
-  overflow-y: scroll;
-
-  color: #fff;
-  background-color: #213a57;
+	position: fixed;
+	top: 0;
+	right: -450px;
+	width: 450px;
+	height: 100%;
+	padding: 20px;
+	overflow-y: scroll;
+	color: #fff;
+	background-color: #213a57;
 }
 
-  .sidebar:hover {
-    /* NOTE: hack for Chrome, sidebar will be focused on
-       hover so we can mouse scroll on sidebar instantly */
-    overflow-y: auto;
-  }
+	.sidebar:hover {
+		/* NOTE: hack for Chrome, sidebar will be focused on
+		   hover so we can mouse scroll on sidebar instantly */
+		overflow-y: auto;
+	}
 
-  .sidebar h2 {
-    margin-top: 40px;
+	.sidebar h2 {
+		margin-top: 40px;
+		font-family: Verdana;
+		font-weight: 400;
+	}
 
-    font-family: Verdana;
-    font-weight: 400;
-  }
+		.sidebar h2:first-child {
+			margin-top: 10px;
+		}
 
-    .sidebar h2:first-child {
-      margin-top: 10px;
-    }
+	.sidebar p,
+	.sidebar li {
+		line-height: 140%;
+	}
 
-  .sidebar p,
-  .sidebar li {
-    line-height: 140%;
-  }
+	.sidebar a {
+		color: #fff;
+	}
 
-  .sidebar a {
-    color: #fff;
-  }
+	.sidebar .button {
+		display: inline-block;
+		line-height: 30px;
+		padding: 0 10px 0 7px;
+		color: #fff;
+		background-color: transparent;
+		border: 1px solid #fff;
+		border-radius: 5px;
+		text-decoration: none;
+	}
 
-  .sidebar .button {
-    display: inline-block;
-    line-height: 30px;
-    padding: 0 10px 0 7px;
+		.sidebar .button:active {
+			transform: translateY(2px);
+		}
 
-    color: #fff;
-    background-color: transparent;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    text-decoration: none;
-  }
+		.sidebar .donation .button {
+			margin-right: 14px;
+		}
 
-    .sidebar .button:active {
-      transform: translateY(2px);
-    }
+			.sidebar .donation .button:last-child {
+				margin-right: 0;
+			}
 
-    .sidebar .donation .button {
-      margin-right: 14px;
-    }
+	.sidebar .highlight {
+		padding: 3px 8px 4px;
+		color: #fff;
+		background-color: #41576f;
+		border-radius: 5px;
+		font-family: 'Consolas', 'Courier New';
+	}
 
-      .sidebar .donation .button:last-child {
-        margin-right: 0;
-      }
+		.sidebar .hotkeys .highlight {
+			margin-right: 6px;
+		}
 
-  .sidebar .highlight {
-    padding: 3px 8px 4px;
+	.sidebar .bitcoin-address {
+		word-wrap: break-word;
+	}
 
-    color: #fff;
-    background-color: #41576f;
-    border-radius: 5px;
-    font-family: 'Consolas', 'Courier New';
-  }
+	.sidebar .links i {
+		font-size: 120%;
+	}
 
-    .sidebar .hotkeys .highlight {
-      margin-right: 6px;
-    }
+		.sidebar .links .email {
+			position: relative;
+			top: 1px;
+		}
 
-  .sidebar .bitcoin-address {
-    word-wrap: break-word;
-  }
-
-  .sidebar .links i {
-    font-size: 120%;
-  }
-
-    .sidebar .links .email {
-      position: relative;
-      top: 1px;
-    }
-
-    .sidebar .links .code {
-      font-size: 100%;
-    }
+		.sidebar .links .code {
+			font-size: 100%;
+		}
 
 /* Settings */
 
 .settings td {
-  padding: 5px 0;
-  padding-right: 10px;
+	padding: 5px 0;
+	padding-right: 10px;
 }
 
-  .settings td:last-child {
-    padding-right: 0;
-  }
+	.settings td:last-child {
+		padding-right: 0;
+	}
 
 .checkbox {
-  display: none;
+	display: none;
 }
 
 .checkbox + .checkbox-button {
-  position: relative;
-  display: block;
-  width: 60px;
-  height: 25px;
-  overflow: hidden;
-
-  background: rgba(233, 74, 74, .6);
-  border: 1px solid #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+	position: relative;
+	display: block;
+	width: 60px;
+	height: 25px;
+	overflow: hidden;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 .checkbox + .checkbox-button:after,
 .checkbox + .checkbox-button:before {
-  position: absolute;
-  width: 100%;
-  line-height: 25px;
-
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
-  text-align: center;
-  font-family: sans-serif;
-  font-weight: bold;
+	position: absolute;
+	width: 100%;
+	line-height: 25px;
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
+	text-align: center;
+	font-family: sans-serif;
+	font-weight: bold;
 }
 
 .checkbox:checked + .checkbox-button {
-  background: rgba(101, 230, 69, .6);
+	background: rgba(101, 230, 69, .6);
 }
 
 .checkbox + .checkbox-button:after {
-  left: 100%;
-
-  content: attr(data-caption-on);
+	left: 100%;
+	content: attr(data-caption-on);
 }
 
 .checkbox + .checkbox-button:before {
-  left: 0;
-
-  content: attr(data-caption-off);
+	left: 0;
+	content: attr(data-caption-off);
 }
 
 .checkbox + .checkbox-button:active:before {
-  transform: translateX(-10%);
+	transform: translateX(-10%);
 }
 
 .checkbox:checked + .checkbox-button:active:after {
-  transform: translateX(-90%);
+	transform: translateX(-90%);
 }
 
 .checkbox:checked + .checkbox-button:before {
-  transform: translateX(-100%);
+	transform: translateX(-100%);
 }
 
 .checkbox:checked + .checkbox-button:after {
-  transform: translateX(-100%);
+	transform: translateX(-100%);
 }
 
 .settings input[type=number] {
-  width: 60px;
-  height: 25px;
-  padding-right: 1em;
-
-  background-color: transparent;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  text-align: right;
-  font-family: 'Consolas', 'Courier New';
+	width: 60px;
+	height: 25px;
+	padding-right: 1em;
+	background-color: transparent;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	text-align: right;
+	font-family: 'Consolas', 'Courier New';
 }
 
 .settings input[type=number] {
-  /* disable browser's +- buttons inside input  */
-  -moz-appearance: textfield;
+	/* disable browser's +- buttons inside input  */
+	-moz-appearance: textfield;
 }
 
 .settings input::-webkit-outer-spin-button,
 .settings input::-webkit-inner-spin-button {
-  /* disable browser's +- buttons inside input  */
-  -webkit-appearance: none;
+	/* disable browser's +- buttons inside input  */
+	-webkit-appearance: none;
 }
 
 .settings .test,
 .settings .plus,
 .settings .minus {
-  height: 25px;
-  line-height: 23px;
-  padding: 0;
-
-  background-color: transparent;
-  border: 1px solid #fff;
-  border-radius: 5px;
+	height: 25px;
+	line-height: 23px;
+	padding: 0;
+	background-color: transparent;
+	border: 1px solid #fff;
+	border-radius: 5px;
 }
 
-  .settings .test:active,
-  .settings .plus:active,
-  .settings .minus:active {
-    transform: translateY(1px);
-  }
+	.settings .test:active,
+	.settings .plus:active,
+	.settings .minus:active {
+		transform: translateY(1px);
+	}
 
 .settings .plus,
 .settings .minus {
-  float: left;
-  width: 30px;
-
-  text-align: center;
+	float: left;
+	width: 30px;
+	text-align: center;
 }
 
-  .settings .plus i,
-  .settings .minus i {
-    position: relative;
-    top: -2px;
-
-    font-size: 70%;
-  }
+	.settings .plus i,
+	.settings .minus i {
+		position: relative;
+		top: -2px;
+		font-size: 70%;
+	}
 
 .settings .plus {
-  border-left: 0;
-  border-radius: 0 5px 5px 0;
+	border-left: 0;
+	border-radius: 0 5px 5px 0;
 }
 
 .settings .minus {
-  border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px;
 }
 
 .settings .test {
-  width: 60px;
+	width: 60px;
 }
 
-  .settings .test i {
-    position: relative;
-    left: -1px;
-  }
+	.settings .test i {
+		position: relative;
+		left: -1px;
+	}
 
-  .settings .test span {
-    position: relative;
-    left: -4px;
-  }
+	.settings .test span {
+		position: relative;
+		left: -4px;
+	}
 
 /* Share buttons */
 
 .share-buttons > div,
 .share-buttons > iframe {
-  float: left;
-  margin-right: 10px;
+	float: left;
+	margin-right: 10px;
 }
 
-  .share-buttons > div:last-child {
-    margin-right: 0;
-  }
+	.share-buttons > div:last-child {
+		margin-right: 0;
+	}
 
 /* Sidebar button */
 
 .sidebar-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 55px;
-  height: 55px;
-  z-index: 10;
-
-  color: #fff;
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  font-size: 40px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 55px;
+	height: 55px;
+	z-index: 10;
+	color: #fff;
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	font-size: 40px;
 }
 
-  .sidebar-button i {
-    position: absolute;
-    top: 5px;
-    left: 0;
-    z-index: 15;
-  }
+	.sidebar-button i {
+		position: absolute;
+		top: 5px;
+		left: 0;
+		z-index: 15;
+	}
 
-  .sidebar-button .cancel,
-  .sidebar-button .background {
-    opacity: 0;
-  }
+	.sidebar-button .cancel,
+	.sidebar-button .background {
+		opacity: 0;
+	}
 
-  .sidebar-button .background {
-    position: relative;
-    top: 5px;
-    left: 5px;
-    width: 46px;
-    height: 46px;
+	.sidebar-button .background {
+		position: relative;
+		top: 5px;
+		left: 5px;
+		width: 46px;
+		height: 46px;
 
-    background-color: #213a57;
-    border-radius: 50%;
-  }
+		background-color: #213a57;
+		border-radius: 50%;
+	}
 
 /* Sidebar overlay */
 
 .sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 100%;
-  width: 100%;
-  height: 100%;
-
-  opacity: 0;
-  background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background-color: rgba(0, 0, 0, .5);
 }
