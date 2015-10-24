@@ -45,6 +45,7 @@ TT.Views.Sidebar = (function () {
 		getSidebarButton: getSidebarButton,
 		isSidebarOpen: isSidebarOpen,
 		closeSidebar: closeSidebar,
+		openSidebar: openSidebar,
 		toogleSidebar: toogleSidebar
 	};
 })();

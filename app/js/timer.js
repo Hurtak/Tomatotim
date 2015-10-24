@@ -47,6 +47,12 @@ TT.Timer = (function () {
 			TT.Services.Title.setTitle(secondsToTime(timerInterval));
 		}
 
+		var firstVisit = !TT.Services.Storage.get('recurringVisit');
+		if (firstVisit) {
+			TT.Views.Sidebar.openSidebar();
+			TT.Services.Storage.set('recurringVisit', true);
+		}
+
 		// binding
 		TT.Views.Controls.getStartButton().addEventListener('click', startTimer);
 		TT.Views.Controls.getSkipButton().addEventListener('click', skipInterval);
