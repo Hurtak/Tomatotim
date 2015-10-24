@@ -5,16 +5,10 @@
 	width: 450px;
 	height: 100%;
 	padding: 20px;
-	overflow-y: scroll;
+	overflow-y: auto;
 	color: #fff;
 	background-color: #213a57;
 }
-
-	.sidebar:hover {
-		/* NOTE: hack for Chrome, sidebar will be focused on
-		   hover so we can mouse scroll on sidebar instantly */
-		overflow-y: scroll;
-	}
 
 	.sidebar h2 {
 		margin-top: 40px;
